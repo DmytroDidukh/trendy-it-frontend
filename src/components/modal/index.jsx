@@ -26,7 +26,7 @@ const ModalBasic = ({msg, item, setAction}) => {
 
             <Modal.Actions>
                 <Button color='green' name='cancel' inverted onClick={handleButtonClick}>
-                    <Icon name='close' /> Скасувати
+                    Скасувати
                 </Button>
                 <Button basic color='red' inverted name='confirm' onClick={handleButtonClick}>
                     <Icon name='remove' /> Видалити

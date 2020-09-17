@@ -12,6 +12,13 @@
   -13px -13px 26px #ffffff;
   padding: 50px;
   min-height: calc(100vh - (60px + 89px + 200px));
+  position: relative;
+
+  &__labels {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
 
   &__item {
     display: flex;
@@ -44,10 +51,6 @@
     &__description {
       padding: 0 50px;
 
-      .price {
-        font-weight: 600;
-        font-size: 1.3em;
-      }
       h1 {
         text-transform: uppercase;
         text-decoration: underline;
@@ -55,11 +58,11 @@
       pre {
         font-family: inherit;
         white-space: pre-line;
-        margin: 20px 0 50px;
+        margin: 20px 0 20px;
       }
 
       .to-order {
-        margin: 40px 0 5px;
+        margin: 20px 0 5px;
         display: flex;
         align-items: center;
         button {
@@ -83,6 +86,19 @@
         }
       }
     }
+
+    &__price {
+        font-size: 1.1em;
+        color: rgb(41, 41, 41);
+
+        strike {
+          font-size: .8em;
+        }
+
+        span {
+          font-weight: bold;
+        }
+      }
   }
 
   .spinner {

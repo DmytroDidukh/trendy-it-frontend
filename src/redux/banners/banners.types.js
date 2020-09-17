@@ -1,0 +1,9 @@
+const GET_BANNERS = 'GET_BANNERS';
+const SET_BANNERS = 'SET_BANNERS';
+const SET_LOADING = 'SET_LOADING';
+
+export {
+    GET_BANNERS,
+    SET_BANNERS,
+    SET_LOADING,
+}

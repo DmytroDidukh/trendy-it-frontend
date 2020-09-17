@@ -33,11 +33,11 @@ const Wishlist = () => {
                     wishlistItems.length ?
                         (wishlistItems.map((item) => (
                                 <Item key={item.id}>
-                                    <a href={linkGenerator(item)}>
+                                    <a href={`/catalog/${item.id}`}>
                                         <Item.Image size='tiny' src={item.images[0].link}/>
                                     </a>
                                     <Item.Content>
-                                        <Item.Header as='a' href={linkGenerator(item)}>{item.name}</Item.Header>
+                                        <Item.Header as='a' href={`/catalog/${item.id}`}>{item.name}</Item.Header>
                                         <Item.Extra>
                                             {item.price} UAH
                                         </Item.Extra>

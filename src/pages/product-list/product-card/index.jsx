@@ -1,44 +1,41 @@
-import React, {useEffect, useState} from 'react'
-import {Card, Image, Button} from 'semantic-ui-react';
+import React from 'react'
+import {Card, Image, Label} from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
 
-import {linkGenerator} from "../../../utils";
+import {LABELS_DATA} from "../../../constants";
 import './style.scss';
 
 const ProductCard = ({product}) => {
-    const [rating, setRating] = useState(10);
-    const [productAvailable, setProductAvailable] = useState(true)
 
 
-    useEffect(() => {
+    const labelGenerator = ({color, inner}) => (
+        <Label color={color} ribbon>
+            {inner}
+        </Label>
+    )
 
-        if (product && product.rating.length > 0) {
-            setRating(product.rating.reduce((a, b) => a + b.value, 0) / product.rating.length);
-
-            const sizes = Object.values(product.sizes);
-            sizes.pop()
-            setProductAvailable(sizes.some(item => item))
-        }
-    }, [product, productAvailable])
+    const salePercentage = Math.round(((product.oldPrice-product.price)/product.oldPrice)*100)
 
     return (
-        <Link className="ui card product-card" to={{pathname: linkGenerator(product), query: product}}>
-            <Image src={product.images[0].link} wrapped ui={false}/>
+        <Link className="ui card product-card" to={`/catalog/${product.id}`}>
+            <div className={'product-card__label-container'}>
+                {product.newItem && labelGenerator(LABELS_DATA.newItem)}
+                {product.hot && labelGenerator(LABELS_DATA.hot)}
+                {product.sale && labelGenerator(LABELS_DATA.sale)}
+            </div>
+            <Image src={product.images.product[0].link} wrapped ui={false}/>
             <Card.Content>
                 <div className="product-card__name">
                     {product.name}
                 </div>
-
-                <div className="rating-bar">
-                    <div className="rating-bar__text">Рейтинг:</div>
-                    <div className="rating-bar__rate">{`${rating.toFixed(0)}/10`}</div>
-                </div>
             </Card.Content>
             <Card.Content extra>
                 <div className="product-card__price">
-                    {`Ціна: ${product.price} грн.`}
+                    Ціна: {product.sale && <strike>{product.oldPrice} </strike>}
+                    <span> {product.price}</span> UAH
+                    {product.sale && <Label color='red'>-{salePercentage} %</Label>}
                 </div>
-                {!productAvailable && <div>Немає в наявності</div>}
+                {!product.available && <div>Немає в наявності</div>}
             </Card.Content>
         </Link>
     )

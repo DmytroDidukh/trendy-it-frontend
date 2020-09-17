@@ -1,7 +1,53 @@
 .spinner {
-color: #000000;
+  color: #000000;
 
   &:after {
     border-color: #000000 transparent transparent !important;
+  }
+}
+
+.spinner-it {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__flag {
+    animation: spinner-it;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    margin-bottom: 10px;
+
+    > span {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+    }
+
+    span:first-child {
+      background: #009344;
+    }
+
+    span:nth-child(2) {
+      background: #ffffff;
+    }
+
+    span:last-child {
+      background: #cf2734;
+    }
+  }
+
+  & > P {
+    color: #6d6d6d;
+  }
+}
+
+@keyframes spinner-it {
+  0% {
+    transform: rotate(0deg) scale(.3);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.3);
   }
 }

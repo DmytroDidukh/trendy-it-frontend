@@ -2,31 +2,29 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {ConnectedRouter} from "connected-react-router";
 
-import { getCategories } from "../../redux/categories/categories.actions";
 import {getProducts} from "../../redux/products/products.actions";
-import {getSubcategories} from "../../redux/subcategories/subcategories.actions";
 import { Header } from '../../containers';
 import {Footer, LoadingOverlay } from '../index'
 import {history} from '../../store/store';
 import Routes from "../../routes";
 import {getWishlist} from "../../redux/wishlist/wishlist.actions";
+import {getBanners} from "../../redux/banners/banners.actions";
 import {getCart} from "../../redux/cart/cart.actions";
 import { clearLocalStorage } from '../../services/local-storage';
 
 import 'semantic-ui-css/semantic.min.css'
+import {getCategories} from "../../redux/categories/categories.actions";
 
 const App = () => {
     const dispatch = useDispatch();
-    const {productsLoading, categoriesLoading, subcategoriesLoading, router} = useSelector(({Products, Categories, Subcategories, router}) => ({
+    const {productsLoading, bannersLoading} = useSelector(({Products, Banners}) => ({
         productsLoading: Products.loading,
-        categoriesLoading: Categories.loading,
-        subcategoriesLoading: Subcategories.loading,
-        router: router,
+        bannersLoading: Banners.loading,
     }))
 
     const [loadingPageVisibility, setLoadingPageVisibility] = useState(true)
 
-    if (!localStorage.getItem('shkaff')) {
+    if (!localStorage.getItem('trendyIT')) {
         clearLocalStorage();
     }
 
@@ -35,14 +33,14 @@ const App = () => {
         dispatch(getCart())
         dispatch(getCategories())
         //dispatch(getProducts())
-        //dispatch(getSubcategories())
+        //dispatch(getBanners())
     }, [dispatch])
 
     useEffect(() => {
-        if (!productsLoading && !categoriesLoading && !subcategoriesLoading) {
+        if (!productsLoading && !bannersLoading) {
           setLoadingPageVisibility(false)
        }
-    }, [productsLoading, categoriesLoading, subcategoriesLoading])
+    }, [productsLoading, bannersLoading])
 
     return (
         <ConnectedRouter history={history}>

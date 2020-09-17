@@ -10,73 +10,78 @@ client.query({
                 id
                 name
                 images {
-                    link
+                    slider
+                    product {
+                        link
+                    }
+                }
+                colors {
+                    black
+                    silver
+                    white
+                    yellow
+                    orange
+                    red
+                    blue
+                    green
+                    brown
+                    purple
+                    pink
                 }
                 price
+                oldPrice
                 description
-                sizes {
-                    xs
-                    s
-                    m
-                    l
-                    xl
-                    xxl
-                    oneSize
-                }
-                rating {
-                    value
-                }
+                available
+                sale
+                hot
+                newItem
+                toSlider
                 createdAt
-                subcategory {
-                    id
-                    name
-                }
-                category {
-                    id
-                    name
-                }
             }
         }
     `
 }));
 
 export const getProductById = async (id) => (
-    await client.query({
-        variables: {
-            id
-        },
-        query: gql`
-            query($id: ID!) {
-                getProductById(id: $id) {
-                    id
-                    name
-                    images {
+await client.query({
+    variables: {
+        id
+    },
+    query: gql`
+        query($id: ID!) {
+            getProductById(id: $id) {
+                id
+                name
+                images {
+                    slider
+                    product {
                         link
                     }
-                    price
-                    description
-                    sizes {
-                        xs
-                        s
-                        m
-                        l
-                        xl
-                        xxl
-                    }
-                    rating {
-                        value
-                    }
-                    createdAt
-                    subcategory {
-                        id
-                        name
-                    }
-                    category {
-                        id
-                        name
-                    }
                 }
-            }      
-        `
+                colors {
+                    black
+                    silver
+                    white
+                    yellow
+                    orange
+                    red
+                    blue
+                    green
+                    brown
+                    purple
+                    pink
+                }
+                price
+                oldPrice
+                description
+                available
+                sale
+                hot
+                newItem
+                toSlider
+                createdAt
+            }
+        }
+    `
 }))
 

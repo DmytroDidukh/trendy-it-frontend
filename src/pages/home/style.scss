@@ -1,0 +1,20 @@
+.home {
+  //min-height: calc(100vh - 178px);
+  &__hero {
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    grid-gap: 10px;
+
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+
+    .slider {
+
+    }
+
+    .banners {
+
+    }
+  }
+}

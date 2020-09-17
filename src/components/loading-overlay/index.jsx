@@ -17,7 +17,7 @@ const LoadingOverlay = ({isVisible}) => {
 
     return (
         <div className={`loading-page ${opacityToZero && 'opacity'} ${hide && 'disabled'}`}>
-            <h2>Shkaff</h2>
+            <h2>Trendy IT</h2>
             <Spinner/>
         </div>
     )

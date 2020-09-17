@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
   transition: all .5s ease;
   opacity: 1;
 
@@ -21,8 +21,12 @@
   }
 
   h2 {
-    font-family: "Great Vibes", sans-serif;
+    font-family: "MarcellusSC", sans-serif;
     font-size: 10em;
     color: #000000;
+
+    @media screen and (max-width: 500px){
+      font-size: 5em;
+    }
   }
 }

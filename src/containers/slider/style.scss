@@ -1,0 +1,15 @@
+@import "~bootstrap/scss/bootstrap";
+
+.slider {
+  min-height: calc(100vh - 60px);
+  &__image {
+    height: calc(100vh - 60px);
+    min-height: 600px;
+    background-size: cover;
+  }
+
+  h2 {
+    text-shadow: 1px 1px 2px #4a4a4a !important;
+    font-size: 2.5rem;
+  }
+}

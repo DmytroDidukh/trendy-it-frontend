@@ -79,10 +79,8 @@ const CheckoutForm = () => {
                 ...cartItems.map( item => ({
                         name: item.name,
                         price: item.price,
-                        category: item.category.name,
-                        subcategory: item.subcategory.name,
                         quantity: item.quantity,
-                        size: item.selectedSize
+                        color: item.selectedColor
                     }
                 ))
             ],

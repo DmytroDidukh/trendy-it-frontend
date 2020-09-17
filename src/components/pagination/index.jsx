@@ -7,13 +7,12 @@ const Pagination = ({productsFilter, productsToShow, setCurrentPage}) => {
     const onPageChange = (e, data) => {
         let length;
         if (data.activePage.toString().includes('.')) {
-            length = data.activePage.toString().split('.')[0] * 10
+            length = data.activePage.toString().split('.')[0] * 12
         } else  {
-            length = (data.activePage === 1 || data.activePage === undefined ? 0 : data.activePage - 1) * 10
+            length = (data.activePage === 1 || data.activePage === undefined ? 0 : data.activePage - 1) * 12
         }
         if (length >= productsFilter().length) return
 
-        console.log(length)
         setCurrentPage(length)
         productsToShow(length)
     }
@@ -25,7 +24,7 @@ const Pagination = ({productsFilter, productsToShow, setCurrentPage}) => {
                 lastItem={null}
                 pointing
                 secondary
-                totalPages={itemsLength / 10}
+                totalPages={itemsLength / 12}
                 onPageChange={onPageChange}
             />
     )

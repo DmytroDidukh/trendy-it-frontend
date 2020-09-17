@@ -56,3 +56,35 @@
   margin: 20px;
   font-size: 1.1em;
 }
+
+.search-bar {
+  display: inline-block;
+  position: relative;
+  top: initial;
+  @media screen and (max-width: 772px) {
+    display: none !important;
+    position: absolute !important;
+    z-index: 101;
+  }
+}
+
+.search-bar.visible-bar {
+  display: inline-block !important;
+
+  @media screen and (max-width: 772px) {
+    top: 60px;
+    right: 0;
+  }
+}
+
+.not-wide-search-icon {
+  display: none !important;
+  cursor: pointer;
+
+  &:hover {
+
+  }
+  @media screen and (max-width: 772px) {
+    display: inline-block !important;
+  }
+}

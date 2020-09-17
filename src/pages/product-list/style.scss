@@ -8,23 +8,17 @@
   &__container {
     min-height: calc(100vh - 60px);
     width: 1280px;
-    margin: 0 auto;
-    margin-bottom: 50px;
+    margin: 0 auto 50px;
   }
-}
-
-.subcategories-filter__container {
-  display: flex;
-  justify-content: center;
-  // padding-bottom: 40px;
-  // // border-bottom: 2px solid rgb(235, 235, 235);
-  margin-bottom: 20px;
-  margin-top: 40px;
 }
 
 .product-cards__container {
   display: flex;
   justify-content: center;
+
+  .empty-product-list {
+    margin: 50px auto !important;
+  }
 }
 
 .product-cards__list {
