@@ -1,0 +1,42 @@
+.phone {
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield !important;
+  }
+}
+
+.checkout-error {
+  color: crimson;
+  font-size: .8em;
+}
+
+.checkbox {
+  > span {
+    margin-left: 5px;
+  }
+}
+
+.modal {
+  .order-header {
+    text-align: center;
+  }
+
+  .order-info {
+    p span {
+      font-weight: bold;
+      margin-left: 5px;
+    }
+  }
+
+  .actions {
+    p {
+      text-align: left;
+    }
+  }
+}
+
+

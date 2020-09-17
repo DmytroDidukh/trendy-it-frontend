@@ -1,0 +1,98 @@
+.footer-container {
+  padding: 30px 30px 20px;
+  background: #ffffff;
+  box-shadow: -13px -13px 26px #e3e3e3, 13px 13px 26px #ffffff;
+  border-top: 1px solid #f7f7f7;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-list {
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: baseline;
+
+  @media screen and (max-width: 550px){
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    &__item {
+      margin: 5px 0;
+    }
+  }
+
+  &__item {
+    flex-basis: 20%;
+    text-align: center;
+
+    &-content {
+      display: block;
+      color: black !important;
+      font-size: 18px;
+      font-weight: 400;
+      transition: all 0.4s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &-social {
+      display: flex;
+      justify-content: center;
+    }
+
+
+  }
+
+  &__item:nth-child(3) {
+    @media screen and (max-width: 550px){
+        grid-area: 1/1/2/2;
+    }
+  }
+}
+
+.footer-company {
+  width: 100%;
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-size: .8em;
+  color: #6b6b6b;
+}
+
+.telegram {
+  color: black !important;
+  display: block !important;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.2s;
+}
+
+.viber {
+  color: black !important;
+  display: block !important;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.2s;
+}
+
+.instagram {
+  color: black !important;
+  display: block !important;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.2s;
+}
+
+.telegram:hover {
+  color: #0088cc !important;
+}
+
+.viber:hover {
+  color: #815df5 !important;
+}
+
+.instagram:hover {
+  color: #d5005d !important;
+}
+

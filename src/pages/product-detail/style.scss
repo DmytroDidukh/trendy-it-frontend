@@ -1,0 +1,125 @@
+.breadcrumb {
+  a {
+    color: #4183c4 !important;
+  }
+}
+
+.product-detail {
+  margin: 100px auto;
+  max-width: 1280px;
+  background: #ffffff;
+  box-shadow: 13px 13px 26px #e3e3e3,
+  -13px -13px 26px #ffffff;
+  padding: 50px;
+  min-height: calc(100vh - (60px + 89px + 200px));
+  position: relative;
+
+  &__labels {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  &__item {
+    display: flex;
+
+    &__images {
+      height: 600px;
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-template-rows: 1fr 1fr 1fr 1fr 110px;
+      grid-gap: 10px;
+      margin-top: 10px;
+
+      div {
+        display: block;
+        width: 100%;
+        border: 1px solid #d0d0d0;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      div:first-child {
+        grid-area: 1/1/5/5;
+      }
+
+      div:not(:first-child) {
+        grid-area: auto;
+      }
+    }
+
+    &__description {
+      padding: 0 50px;
+
+      h1 {
+        text-transform: uppercase;
+        text-decoration: underline;
+      }
+      pre {
+        font-family: inherit;
+        white-space: pre-line;
+        margin: 20px 0 20px;
+      }
+
+      .to-order {
+        margin: 20px 0 5px;
+        display: flex;
+        align-items: center;
+        button {
+          width: 200px;
+          margin: 0 30px 0 0;
+        }
+
+        i {
+          font-size: 2.1em;
+          height: initial;
+          cursor: pointer;
+          transition: all .2s ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        i.selected {
+          color: crimson;
+        }
+      }
+    }
+
+    &__price {
+        font-size: 1.1em;
+        color: rgb(41, 41, 41);
+
+        strike {
+          font-size: .8em;
+        }
+
+        span {
+          font-weight: bold;
+        }
+      }
+  }
+
+  .spinner {
+    z-index: 1 !important;
+  }
+}
+
+@media screen and (max-width: 991px){
+  .product-detail {
+    &__item {
+      flex-direction: column;
+      &__images {
+        justify-content: center;
+      }
+
+      .sizes {
+        .ui.buttons {
+          display: block;
+          flex-flow: wrap;
+        }
+      }
+    }
+  }
+}

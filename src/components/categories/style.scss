@@ -1,0 +1,31 @@
+.categories-container {
+
+        display:  flex;
+       height: calc(100vh - 60px);
+
+        &__main {
+                flex-basis: 66%;
+                display: flex;
+                justify-content: center;
+        }
+
+        &__main > div {
+                flex-grow: 1;
+        }
+
+        &__sub {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+        }
+
+        &__sub > div {
+                flex-grow: 1;
+                width: 100%;
+        }
+}
+
+.link {
+        height: 100%;
+        width: 100%;
+}

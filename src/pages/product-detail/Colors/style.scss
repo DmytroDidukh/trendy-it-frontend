@@ -1,0 +1,38 @@
+.colors {
+  position: relative;
+
+  &__item {
+    width: 30px;
+    height: 30px;
+    margin-right: 2px;
+    transition: all .1s ease;
+    border-radius: 50px;
+    display: inline-flex;
+    cursor: pointer;
+    border: 1px solid #e7e7e7;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__selected {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+    &:after {
+      content: '\2713';
+      color: #09f62f;
+      font-size: 35px;
+      position: absolute;
+    }
+  }
+
+  &__error {
+    color: crimson;
+    font-size: .8em;
+    position: absolute;
+    bottom: -20px;
+  }
+}

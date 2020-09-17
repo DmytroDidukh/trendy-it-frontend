@@ -1,0 +1,13 @@
+.thanks-page {
+  height: calc(100vh - (60px + 89px));
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ .title {
+   font-family: "MarcellusSC", sans-serif;
+    font-size: 10em;
+    color: #000000;
+  }
+}
