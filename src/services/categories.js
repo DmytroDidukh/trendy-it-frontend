@@ -9,11 +9,7 @@ export const getCategories = () =>
                 getCategories {
                     id
                     name
-                    image
-                    subcategories {
-                        id
-                        name               
-                    }             
+                    image                            
                 }
             }
         `

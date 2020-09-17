@@ -35,7 +35,7 @@ const App = () => {
         dispatch(getCart())
         dispatch(getCategories())
         //dispatch(getProducts())
-        dispatch(getSubcategories())
+        //dispatch(getSubcategories())
     }, [dispatch])
 
     useEffect(() => {
