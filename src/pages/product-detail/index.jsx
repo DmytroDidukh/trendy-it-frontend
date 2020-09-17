@@ -6,7 +6,7 @@ import {addItemToWishlist, removeItemFromWishlist} from "../../redux/wishlist/wi
 import {addItemToCart} from "../../redux/cart/cart.actions";
 import Breadcrumb from './breadcrumb'
 import ImageViewer from './image-viewer'
-import Colors from './Colors'
+import Colors from './colors'
 import {Spinner} from "../../components";
 import {LABELS_DATA} from "../../constants";
 
