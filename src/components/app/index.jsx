@@ -33,7 +33,7 @@ const App = () => {
         dispatch(getCart())
         dispatch(getCategories())
         //dispatch(getProducts())
-        //dispatch(getBanners())
+        dispatch(getBanners())
     }, [dispatch])
 
     useEffect(() => {
