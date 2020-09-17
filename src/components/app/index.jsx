@@ -34,7 +34,7 @@ const App = () => {
         dispatch(getWishlist())
         dispatch(getCart())
         dispatch(getCategories())
-        dispatch(getProducts())
+        //dispatch(getProducts())
         dispatch(getSubcategories())
     }, [dispatch])
 
