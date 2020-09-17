@@ -5,7 +5,6 @@ import Banners from './banners/banners.reducer'
 import Products from './products/products.reducer'
 import Wishlist from './wishlist/wishlist.reducer'
 import Cart from './cart/cart.reducer'
-import Categories from './categories/categories.reducer'
 
 const rootReducer = (history) =>
     combineReducers({
@@ -13,7 +12,6 @@ const rootReducer = (history) =>
         Products,
         Wishlist,
         Cart,
-        Categories,
         router: connectRouter(history)
     });
 

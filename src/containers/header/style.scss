@@ -8,74 +8,46 @@
   box-shadow: 13px 13px 26px #e3e3e3, -13px -13px 26px #ffffff;
   border-bottom: 1px solid rgb(247, 247, 247);
 
-  &__logo {
-    font-size: 3rem;
-    color: #000000;
-    font-family: "Great Vibes", cursive;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0;
+  @media screen and (max-width: 450px) {
+    padding: 5px;
   }
 
-  &__categories-list {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    height: 100%;
-    align-items: center;
-
-    > li {
-      font-size: 1.3rem;
-      margin: 0 10px;
-      height: 100%;
+  &__logo {
+    a {
       display: flex;
       align-items: center;
-      position: relative;
 
-      > a {
-        padding: 20px;
-        width: 100%;
-        height: 100%;
+      img {
+        height: 30px;
       }
 
-      &:hover {
-        border-radius: 0px;
-        background: #ffffff;
-        box-shadow: 11px 11px 22px #e3e3e3, -11px -11px 22px #ffffff;
-
-        #{$self}__subcategories-list {
-          display: block;
-        }
+      h1 {
+        font-size: 1.5rem;
+        color: #000000;
+        font-family: "MarcellusSC", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        margin: 0;
       }
     }
   }
 
-  &__subcategories-list {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: rgba(234, 234, 234, 0.9);
-    z-index: 2;
-    position: absolute;
-    top: 58px;
-    left: 0;
-    min-width: 100%;
+  &__catalog {
+    margin-left: 30px;
 
-    a {
+    > a {
+      padding: 20px;
       width: 100%;
       height: 100%;
-      padding: 15px;
       display: block;
-    }
-
-    > li {
-      font-size: 1.1rem;
+      transition: all .2s ease;
 
       &:hover {
-        background: darken(rgba(234, 234, 234, 0.9), 10%);
+        transform: scale(1.1);
       }
     }
+
+
   }
 
   &__right-bar {
@@ -103,6 +75,11 @@
       &:hover {
         color: darken(rgb(179, 179, 179), 30%);
         transform: scale(1.1);
+      }
+
+      @media screen and (max-width: 550px) {
+        margin: 2px 0 !important;
+        font-size: 1rem;
       }
     }
 
