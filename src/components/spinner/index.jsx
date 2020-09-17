@@ -1,18 +1,13 @@
 import React from 'react';
+import { Dimmer, Loader, Segment } from 'semantic-ui-react'
 
 import './style.scss';
 
 const Spinner = () => {
-    return (
-        <div className='spinner-it'>
-            <div className='spinner-it__flag'>
-                <span/>
-                <span/>
-                <span/>
-            </div>
-            <p>Завантаження...</p>
-        </div>
-    )
+        return (
+            <Loader className='spinner' active inline='centered' content='Завантаження...' />
+
+        )
 }
 
 export default Spinner

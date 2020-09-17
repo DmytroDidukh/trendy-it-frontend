@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import {App} from './components';
 import configureStore from './store/store';
 
-import './index.scss';
+import './index.css';
 
 const store = configureStore();
 

@@ -1,24 +1,21 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
+import CategoriesList from "./categories-list";
 import RightBar from "./right-bar";
 import './style.scss'
 
 const Header = () => {
+    const categories = useSelector(({ Categories }) => Categories.list);
+
     return (
         <div className='main-header'>
-            <div className='main-header__logo'>
-                <Link to='/'>
-                    <img src={'./images/logo.png'} alt={'Shop logo'}/>
-                    <h1>Trendy IT</h1>
-                </Link>
-            </div>
-            <div className='main-header__catalog'>
-                <Link to='/catalog'>
-                    <h3>Каталог</h3>
-                </Link>
-            </div>
-            <RightBar/>
+            <Link to='/'>
+                <h1 className='main-header__logo'>Shkaff</h1>
+            </Link>
+            <CategoriesList list={categories} />
+            <RightBar />
         </div>
     )
 }

@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {Icon, Popup, Label, Card} from 'semantic-ui-react'
+import {Icon, Popup} from 'semantic-ui-react'
 import {useDispatch, useSelector} from "react-redux";
 
 import {addItemToWishlist, removeItemFromWishlist} from "../../redux/wishlist/wishlist.actions";
 import {addItemToCart} from "../../redux/cart/cart.actions";
 import Breadcrumb from './breadcrumb'
 import ImageViewer from './image-viewer'
-import Colors from './Colors'
+import Sizes from './sizes'
 import {Spinner} from "../../components";
-import {LABELS_DATA} from "../../constants";
 
 import './style.scss'
-
 
 const ProductDetailPage = ({productId}) => {
     const dispatch = useDispatch();
@@ -21,9 +19,10 @@ const ProductDetailPage = ({productId}) => {
     }))
 
     const [product, setProduct] = useState(null)
+    const [productAvailable, setProductAvailable] = useState(true)
     const [isItemInWishlist, setIsItemInWishlist] = useState(false)
-    const [selectedColor, setSelectedColor] = useState(null)
-    const [isColorErrorVisible, setIsColorErrorVisible] = useState(false)
+    const [selectedSize, setSelectedSize] = useState(null)
+    const [isSizeErrorVisible, setIsSizeErrorVisible] = useState(false)
 
     useEffect(() => {
         if (productsList.length) {
@@ -35,8 +34,12 @@ const ProductDetailPage = ({productId}) => {
         if (product) {
             const checkedWishlistItem = wishlistItems.find(item => item.id === product.id)
             checkedWishlistItem && setIsItemInWishlist(true)
+
+            const sizes = Object.values(product.sizes);
+            sizes.pop()
+            setProductAvailable(sizes.some(item => item))
         }
-    }, [wishlistItems, isItemInWishlist, product])
+    }, [wishlistItems, isItemInWishlist, product, productAvailable])
 
 
     const onAddToWishlist = () => {
@@ -50,56 +53,39 @@ const ProductDetailPage = ({productId}) => {
     }
 
     const onAddToCart = () => {
-        if (!selectedColor) {
-            setIsColorErrorVisible(true)
+        if (!selectedSize) {
+            setIsSizeErrorVisible(true)
             return
         }
 
-        dispatch(addItemToCart({...product, selectedColor, quantity: 1}))
+        dispatch(addItemToCart({...product, selectedSize, quantity: 1}))
     }
-
-    const labelGenerator = ({color, inner}) => (
-        <Label color={color} horizontal>
-            {inner}
-        </Label>
-    )
-
-    const salePercentage = () => Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
 
     return (
         <div className='product-detail'>
             {
                 product ? (
                     <>
-                        <Breadcrumb itemName={product.name}/>
-                        <div className='product-detail__labels'>
-                            {product.newItem && labelGenerator(LABELS_DATA.newItem)}
-                            {product.hot && labelGenerator(LABELS_DATA.hot)}
-                            {product.sale && labelGenerator(LABELS_DATA.sale)}
-                        </div>
+                        <Breadcrumb item={product}/>
                         <div className='product-detail__item'>
-                            <ImageViewer images={product.images.product}/>
+                            <ImageViewer images={product.images}/>
                             <div className='product-detail__item__description'>
                                 <h1>{product.name}</h1>
-                                <div className="product-detail__item__price">
-                                    {product.sale && <strike>{product.oldPrice} </strike>}
-                                    <span> {product.price}</span> UAH
-                                    {product.sale && <Label color='red'>-{salePercentage()} %</Label>}
-                                </div>
+                                <div className={'price'}>{product.price} UAH</div>
                                 <pre dangerouslySetInnerHTML={{__html: product.description}}/>
-                                <Colors colors={product.colors}
-                                        selectedColor={selectedColor}
-                                        setSelectedColor={setSelectedColor}
-                                        isColorErrorVisible={isColorErrorVisible}
-                                        setIsColorErrorVisible={setIsColorErrorVisible}/>
+                                <Sizes sizes={product.sizes}
+                                       selectedSize={selectedSize}
+                                       setSelectedSize={setSelectedSize}
+                                       isSizeErrorVisible={isSizeErrorVisible}
+                                       setIsSizeErrorVisible={setIsSizeErrorVisible}/>
                                 <div className='to-order'>
                                     <Popup
-                                        trigger={<button disabled={!product.available}
+                                        trigger={<button disabled={!productAvailable}
                                                          className='basic-button'
                                                          onClick={onAddToCart}>
                                             Купити
                                         </button>}
-                                        disabled={!selectedColor}
+                                        disabled={!selectedSize}
                                         content='Додано в корзину'
                                         on={['click']}
                                     />
@@ -107,7 +93,7 @@ const ProductDetailPage = ({productId}) => {
                                           name={isItemInWishlist ? 'heart' : 'heart outline'}
                                           onClick={onAddToWishlist}/>
                                 </div>
-                                {!product.available && <div>Немає в наявності</div>}
+                                {!productAvailable && <div>Немає в наявності</div>}
                             </div>
                         </div>
                     </>

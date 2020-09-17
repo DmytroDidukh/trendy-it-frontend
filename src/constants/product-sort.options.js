@@ -3,7 +3,7 @@ const productSortObject = {
         sortOptions: [
                 { key: 'priceLow', text: 'Спочатку дешевші', value: 'priceLow' },
                 { key: 'priceHigh', text: 'Спочатку дорожчі', value: 'priceHigh' },
-                { key: 'hot', text: 'Популярні', value: 'hot' },
+                { key: 'rating', text: 'Рейтингом', value: 'rating' },
                 { key: 'new', text: 'Новинки', value: 'new' },
         ],
         sortName: 'Сортувати за'

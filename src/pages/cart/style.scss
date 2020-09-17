@@ -3,10 +3,6 @@
   max-width: 1400px;
   margin: 50px auto;
 
-  @media screen and (max-width: 992px){
-    flex-direction: column;
-  }
-
   > * {
     flex: 50%;
     margin: 0 30px;

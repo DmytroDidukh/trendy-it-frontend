@@ -8,14 +8,15 @@ import {toLowerCase} from '../../utils'
 import './style.scss'
 
 const SearchBar = () => {
-    const {products} = useSelector(({Products}) => ({
+    const {categories, subcategories, products} = useSelector(({Categories, Products, Subcategories}) => ({
+        categories: Categories.list,
+        subcategories: Subcategories.list,
         products: Products.list,
     }))
 
     const [filteredList, setFilteredList] = useState([])
     const [listVisibility, setListVisibility] = useState(false);
     const [searchValue, setSearchValue] = useState('');
-    const [searchBarVisibility, setSearchBarVisibility] = useState(window.innerWidth >= 772);
 
     const onSearch = (e) => {
         const {value} = e.target
@@ -28,24 +29,22 @@ const SearchBar = () => {
         setSearchValue(value)
         setListVisibility(true)
 
+        const inCategories = categories.filter(({name}) => toLowerCase(name).includes(toLowerCase(value)))
+        const inSubcategories = subcategories.filter(({name}) => toLowerCase(name).includes(toLowerCase(value)))
         const inProducts = products.filter(({name}) => toLowerCase(name).includes(toLowerCase(value)))
 
-        result.push(...inProducts)
+        result.push(...inCategories, ...inSubcategories, ...inProducts)
         setFilteredList(result)
     }
 
     return (
         <div>
             <Input icon='search'
-                   className={`search-bar ${searchBarVisibility && 'visible-bar'}`}
                    placeholder='Пошук...'
                    onChange={onSearch}
                    onFocus={onSearch}
                    onBlur={() => setTimeout(() => setListVisibility(false), 100)}
             />
-            <Icon name='search'
-                  onClick={() => setSearchBarVisibility(!searchBarVisibility)}
-                  className='not-wide-search-icon header-icons'/>
             <ul className={`search-list ${listVisibility && 'visible'}`}>
                 {filteredList.length && searchValue ? (
                     filteredList.map(item => (

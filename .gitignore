@@ -24,8 +24,3 @@ yarn-debug.log*
 yarn-error.log*
 *.css
 *.map
-.idea
-.idea/inspectionProfiles/Project_Default.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/trendy-it-frontend.iml
