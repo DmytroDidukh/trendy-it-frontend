@@ -5,11 +5,16 @@
 
   @media screen and (max-width: 1200px) {
     flex-direction: row;
-    height: 300px;
+    height: 250px;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 180px;
   }
 
   @media screen and (max-width: 500px) {
-    flex-direction: column;
+    /*flex-direction: column;*/
+    height: 100px;
   }
 
   &__item {
@@ -39,5 +44,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgba(255, 255, 255, 0.56);
+    border-radius: 20px 0 20px 0;
+    border: 1px solid #cbcbcb;
+    padding: 10px;
   }
 }

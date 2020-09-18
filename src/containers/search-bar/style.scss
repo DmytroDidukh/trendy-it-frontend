@@ -9,6 +9,12 @@
   display: none;
   color: black;
 
+  @media screen and (max-width: 768px) {
+    top: 96px;
+    right: 5px;
+    min-width: fit-content;
+  }
+
   &.visible {
     display: block;
   }
@@ -61,7 +67,7 @@
   display: inline-block;
   position: relative;
   top: initial;
-  @media screen and (max-width: 772px) {
+  @media screen and (max-width: 768px) {
     display: none !important;
     position: absolute !important;
     z-index: 101;
@@ -71,7 +77,7 @@
 .search-bar.visible-bar {
   display: inline-block !important;
 
-  @media screen and (max-width: 772px) {
+  @media screen and (max-width: 768px) {
     top: 60px;
     right: 0;
   }
@@ -81,10 +87,7 @@
   display: none !important;
   cursor: pointer;
 
-  &:hover {
-
-  }
-  @media screen and (max-width: 772px) {
+  @media screen and (max-width: 768px) {
     display: inline-block !important;
   }
 }

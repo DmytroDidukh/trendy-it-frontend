@@ -1,16 +1,13 @@
 .main-header {
   $self: &;
-  display: flex;
+  display: grid;
+  grid-template-columns: 150px 100px 1fr;
   height: 60px;
   align-items: center;
   padding: 0 20px;
   background: #ffffff;
   box-shadow: 13px 13px 26px #e3e3e3, -13px -13px 26px #ffffff;
   border-bottom: 1px solid rgb(247, 247, 247);
-
-  @media screen and (max-width: 450px) {
-    padding: 5px;
-  }
 
   &__logo {
     a {
@@ -36,7 +33,6 @@
     margin-left: 30px;
 
     > a {
-      padding: 20px;
       width: 100%;
       height: 100%;
       display: block;
@@ -99,6 +95,34 @@
       min-width: 1.7em;
       padding: 0.5em !important;
       font-size: 0.7em;
+    }
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .main-header {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 10px;
+
+    &__logo {
+      grid-area: 1/2/2/3;
+
+      a {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 1rem !important;
+      }
+
+      img {
+        height: 15px !important;
+      }
+    }
+
+    &__catalog {
+      margin-left: 5px;
     }
   }
 }

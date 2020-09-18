@@ -28,6 +28,7 @@ const ProductList = () => {
             .sort((a, b) => productSort === 'priceLow' && a.price - b.price)
             .sort((a, b) => productSort === 'priceHigh' && b.price - a.price)
             .sort((a, b) => productSort === 'hot' && b.hot - a.hot)
+            .sort((a, b) => productSort === 'sale' && b.sale - a.sale)
             .map(product => <ProductCard key={product.id} product={product}/>)
     }
 
@@ -39,6 +40,11 @@ const ProductList = () => {
                     <Message.Header>За вибраними критеріями нічого не знайдено</Message.Header>
                 </Message>
             )
+    }
+
+    const setListResponsive = () => {
+        const width = window.innerWidth;
+        return width <= 350 ? 1 : width <= 500 ? 2 : width <= 768 ? 3 : 4
     }
 
     return (
@@ -69,7 +75,7 @@ const ProductList = () => {
             <div className="product-cards__container">
                 {products.length ? (
                     <div className="product-cards__list">
-                        <Card.Group itemsPerRow={4}>
+                        <Card.Group itemsPerRow={setListResponsive()}>
                             {productsToShow(currentPage)}
                         </Card.Group>
                         {productsToShow(currentPage).length && <Pagination
