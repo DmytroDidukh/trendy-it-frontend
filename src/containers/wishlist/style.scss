@@ -1,6 +1,7 @@
 .wishlist {
   position: relative;
   display: flex;
+
   &__header {
     color: white;
     position: relative;
@@ -36,11 +37,13 @@
 
       .content {
         margin-left: 10px !important;
+
         .header {
           color: black !important;
           background: inherit;
           height: fit-content;
           padding: 0;
+
           &:hover {
             color: #0088cc !important;
           }
@@ -70,5 +73,24 @@
       cursor: pointer;
       font-size: 16px;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wishlist {
+    position: static;
+
+    &__popup {
+      right: 10px;
+      .item {
+        flex-direction: row !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .wishlist__popup {
+    width: 300px;
   }
 }

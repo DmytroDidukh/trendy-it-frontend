@@ -19,10 +19,10 @@ const Banners = () => {
                          key={banner.id}
                          className='banners__item'
                     >
-                        <div className='banners__content'>
+                       {/* <div className='banners__content'>
                             <h2>{banner.title}</h2>
                             <p>{banner.description}</p>
-                        </div>
+                        </div>*/}
                     </div>
                 ))
             }

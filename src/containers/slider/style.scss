@@ -13,3 +13,13 @@
     font-size: 2.5rem;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .slider {
+    min-height: calc(100vh - 160px);
+    &__image {
+      height: calc(100vh - 160px);
+      min-height: 400px;
+    }
+  };
+}
