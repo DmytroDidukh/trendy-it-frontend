@@ -80,7 +80,7 @@ const ProductDetailPage = ({productId}) => {
                         <div className='product-detail__item'>
                             <ImageViewer images={product.images.product}/>
                             <div className='product-detail__item__description'>
-                                <h1>{product.name}</h1>
+                                <h1 className='product-main-title'>{product.name}</h1>
                                 <div className="product-detail__item__price">
                                     {product.sale && <strike>{product.oldPrice} </strike>}
                                     <span> {product.price}</span> UAH

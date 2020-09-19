@@ -13,11 +13,15 @@
   &__name {
     color: black !important;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 1.5rem;
+
+    @media screen and (max-width: 450px) {
+      font-size: 1rem;
+    }
   }
 
   &__price {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     color: rgb(122, 122, 122);
 
     strike {
@@ -42,3 +46,26 @@
 }
 
 
+@media screen and (max-width: 450px) {
+  .product-card {
+
+    &__price {
+      font-size: .7rem;
+
+      strike {
+        font-size: .6rem;
+      }
+
+      .ui.label {
+        font-size: .6rem;
+      }
+    }
+
+    &__label-container {
+      .ui.label {
+        font-size: .5rem;
+        padding-left: 10px;
+      }
+    }
+  }
+}

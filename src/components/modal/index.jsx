@@ -18,6 +18,7 @@ const ModalBasic = ({msg, item, setAction}) => {
             size='small'
             trigger={<Icon name='trash alternate outline'/>}
             className='remove-modal'
+            id='my-modal'
         >
             <Header icon>
                 <Icon name='trash' />

@@ -1,17 +1,28 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import {useSelector} from "react-redux";
 
 import {Banners, HotItems, Slider} from "../../containers";
+import {Spinner} from "../../components";
 import './style.scss'
 
 const Home = () => {
+    const products = useSelector(({Products}) => Products.list)
+
     return (
         <div className='home'>
-            <div className='home__hero'>
-                <Slider/>
-                <Banners/>
-            </div>
-            <HotItems/>
+            {
+                products.length ? (
+                    <>
+                        <div className='home__hero'>
+                            <Slider/>
+                            <Banners/>
+                        </div>
+                        <HotItems/>
+                    </>
+                ) : (
+                    <Spinner/>
+                )
+            }
         </div>
     )
 }

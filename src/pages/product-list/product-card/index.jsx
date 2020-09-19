@@ -25,7 +25,7 @@ const ProductCard = ({product}) => {
             </div>
             <Image src={product.images.product[0].link} wrapped ui={false}/>
             <Card.Content>
-                <div className="product-card__name">
+                <div className="product-card__name product-main-title">
                     {product.name}
                 </div>
             </Card.Content>

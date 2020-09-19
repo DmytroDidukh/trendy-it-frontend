@@ -7,7 +7,7 @@
   padding: 0 20px;
   background: #ffffff;
   box-shadow: 13px 13px 26px #e3e3e3, -13px -13px 26px #ffffff;
-  border-bottom: 1px solid rgb(247, 247, 247);
+  border-bottom: 1px solid #dedede;
 
   &__logo {
     a {
@@ -123,6 +123,9 @@
 
     &__catalog {
       margin-left: 5px;
+      h4 {
+        font-size: 1rem;
+      }
     }
   }
 }
