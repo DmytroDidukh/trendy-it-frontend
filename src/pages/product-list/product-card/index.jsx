@@ -35,7 +35,7 @@ const ProductCard = ({product}) => {
                     <span> {product.price}</span> UAH
                     {product.sale && <Label color='red'>-{salePercentage} %</Label>}
                 </div>
-                {!product.available && <div>Немає в наявності</div>}
+                {!product.available && <div className='not-available'>Немає в наявності</div>}
             </Card.Content>
         </Link>
     )

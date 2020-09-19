@@ -127,6 +127,12 @@
       h1 {
         margin-top: 10px !important;
       }
+
+      &__description {
+        .to-order {
+          justify-content: center;
+        }
+      }
     }
   }
 }
