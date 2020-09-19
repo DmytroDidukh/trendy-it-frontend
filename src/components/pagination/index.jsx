@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Pagination as BasePagination } from 'semantic-ui-react'
 
 const Pagination = ({productsFilter, productsToShow, setCurrentPage}) => {

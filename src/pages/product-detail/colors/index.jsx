@@ -4,15 +4,12 @@ import {COLORS_DATA} from '../../../constants'
 import './style.scss'
 
 const Colors = ({colors, selectedColor, setSelectedColor, isColorErrorVisible, setIsColorErrorVisible}) => {
-    const colorsArray = Object.keys(colors);
-    colorsArray.pop()
+    const colorsArray = Object.keys(colors).filter( item => item !== '__typename');
 
     const handleClick = (value) => {
         setSelectedColor(value)
         setIsColorErrorVisible(false)
     }
-
-    console.log(selectedColor)
 
     return (
         <div className={'colors'}>

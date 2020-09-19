@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useSelector} from "react-redux";
 
 import {Banners, HotItems, Slider} from "../../containers";
@@ -7,6 +7,10 @@ import './style.scss'
 
 const Home = () => {
     const products = useSelector(({Products}) => Products.list)
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     return (
         <div className='home'>

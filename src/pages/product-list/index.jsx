@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
+import {Card, Message} from 'semantic-ui-react';
 
 import ProductCard from './product-card';
-import {Card, Message} from 'semantic-ui-react';
 import {DropDown, Spinner, Pagination} from '../../components';
 import {productFilterObject, productSortObject} from '../../constants';
 
@@ -15,6 +15,10 @@ const ProductList = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [productFilter, setProductFilter] = useState('all');
     const [productSort, setProductSort] = useState('new');
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     const handleDropDown = (e, options) => {
         const id = e.target.closest('.dropdown').id;

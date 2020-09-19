@@ -27,6 +27,10 @@ const ProductDetailPage = ({productId}) => {
     const [isColorErrorVisible, setIsColorErrorVisible] = useState(false)
 
     useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
+    useEffect(() => {
         if (productsList.length) {
             setProduct(productsList.find(item => item.id === productId))
         }
