@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
+import {Card, Message} from 'semantic-ui-react';
 
 import ProductCard from './product-card';
-import {Card, Message} from 'semantic-ui-react';
 import {DropDown, Spinner, Pagination} from '../../components';
 import {productFilterObject, productSortObject} from '../../constants';
 
@@ -16,6 +16,10 @@ const ProductList = () => {
     const [productFilter, setProductFilter] = useState('all');
     const [productSort, setProductSort] = useState('new');
 
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
     const handleDropDown = (e, options) => {
         const id = e.target.closest('.dropdown').id;
         id === 'Кольори' ? setProductFilter(options.value) : setProductSort(options.value);
@@ -24,7 +28,8 @@ const ProductList = () => {
     const productsFilter = () => {
         return products
             .filter(prod => productFilter === 'all' ? prod : prod.colors[productFilter])
-            .sort((a, b) => productSort === 'new' && b.newItem - a.newItem)
+            .sort((a, b) => productSort === 'new' && b.newItem  - a.newItem)
+            .sort((a, b) => productSort === 'new' && b.newItem  - b.newItem)
             .sort((a, b) => productSort === 'priceLow' && a.price - b.price)
             .sort((a, b) => productSort === 'priceHigh' && b.price - a.price)
             .sort((a, b) => productSort === 'hot' && b.hot - a.hot)

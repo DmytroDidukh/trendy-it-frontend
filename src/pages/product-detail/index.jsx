@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Icon, Popup, Label, Card} from 'semantic-ui-react'
+import {Icon, Popup, Label} from 'semantic-ui-react'
 import {useDispatch, useSelector} from "react-redux";
 
 import {addItemToWishlist, removeItemFromWishlist} from "../../redux/wishlist/wishlist.actions";
@@ -9,6 +9,7 @@ import ImageViewer from './image-viewer'
 import Colors from './colors'
 import {Spinner} from "../../components";
 import {LABELS_DATA} from "../../constants";
+import {salePercentage} from '../../utils'
 
 import './style.scss'
 
@@ -24,6 +25,10 @@ const ProductDetailPage = ({productId}) => {
     const [isItemInWishlist, setIsItemInWishlist] = useState(false)
     const [selectedColor, setSelectedColor] = useState(null)
     const [isColorErrorVisible, setIsColorErrorVisible] = useState(false)
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     useEffect(() => {
         if (productsList.length) {
@@ -64,8 +69,6 @@ const ProductDetailPage = ({productId}) => {
         </Label>
     )
 
-    const salePercentage = () => Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-
     return (
         <div className='product-detail'>
             {
@@ -84,7 +87,7 @@ const ProductDetailPage = ({productId}) => {
                                 <div className="product-detail__item__price">
                                     {product.sale && <strike>{product.oldPrice} </strike>}
                                     <span> {product.price}</span> UAH
-                                    {product.sale && <Label color='red'>-{salePercentage()} %</Label>}
+                                    {product.sale && <Label color='red'>-{salePercentage(product)} %</Label>}
                                 </div>
                                 <pre dangerouslySetInnerHTML={{__html: product.description}}/>
                                 <Colors colors={product.colors}

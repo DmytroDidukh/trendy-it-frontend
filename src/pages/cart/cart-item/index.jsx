@@ -1,21 +1,22 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {Link} from 'react-router-dom'
-import {Accordion, Icon} from 'semantic-ui-react'
+import {Accordion, Icon, Label} from 'semantic-ui-react'
 
 import {ModalBasic, NumberInput} from '../../../components'
 import {removeItemFromCart, setCartItemQuantity} from '../../../redux/cart/cart.actions'
 import {COLORS_DATA} from "../../../constants";
 import './style.scss'
+import {salePercentage} from "../../../utils";
 
 
-const CartItem = ({item}) => {
+const CartItem = ({product}) => {
     const dispatch = useDispatch()
 
     const [descriptionVisibility, setDescriptionVisibility] = useState(false)
 
     const onChangeQuantity = (value, key) => {
-        dispatch(setCartItemQuantity(item, +value, key));
+        dispatch(setCartItemQuantity(product, +value, key));
     };
 
     const onModalAction = (item) => {
@@ -27,17 +28,21 @@ const CartItem = ({item}) => {
             <ModalBasic
                 msg='Кошика'
                 setAction={onModalAction}
-                item={item}/>
+                item={product}/>
             <div className='cart-item__image'>
-                <Link to={`/catalog/${item.id}`}>
-                    <img src={item.images.product[0].link} alt={item.name}/>
+                <Link to={`/catalog/${product.id}`}>
+                    <img src={product.images.product[0].link} alt={product.name}/>
                 </Link>
             </div>
             <div className='cart-item__details'>
-                <Link to={`/catalog/${item.id}`}>
-                    <h4>{item.name}</h4>
+                <Link to={`/catalog/${product.id}`}>
+                    <h4>{product.name}</h4>
                 </Link>
-                <div className='cart-item__price'>{item.price} UAH</div>
+                <div className='cart-item__price'>
+                    {product.sale && <strike>{product.oldPrice} </strike>}
+                    { product.price} UAH
+                    {product.sale && <Label color='red'>-{salePercentage(product)} %</Label>}
+                </div>
 
                 <Accordion>
                     <Accordion.Title
@@ -49,22 +54,22 @@ const CartItem = ({item}) => {
                         Опис:
                     </Accordion.Title>
                     <Accordion.Content active={descriptionVisibility}>
-                        <pre dangerouslySetInnerHTML={{__html: item.description}}/>
+                        <pre dangerouslySetInnerHTML={{__html: product.description}}/>
                     </Accordion.Content>
                 </Accordion>
 
                 <div className='cart-item__additions'>
                     <div>
                         <div className='cart-item__color-label'>Колір:
-                            <span style={{backgroundColor: COLORS_DATA[item.selectedColor].hex}}/>
+                            <span style={{backgroundColor: COLORS_DATA[product.selectedColor].hex}}/>
 
                         </div>
                         <NumberInput
-                            quantity={item.quantity}
+                            quantity={product.quantity}
                             onChangeQuantity={onChangeQuantity}/>
                     </div>
                     <div>
-                        {item.quantity * item.price} UAH
+                        {product.quantity * product.price} UAH
                     </div>
                 </div>
             </div>
