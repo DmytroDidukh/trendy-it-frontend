@@ -13,7 +13,7 @@ const Slider = () => {
     return (
         <Carousel className='slider'>
             {
-                sliderProducts.map(product => (
+                sliderProducts.reverse().map(product => (
                     <Carousel.Item key={product.id}>
                         <div style={{
                             background: `url(${product.images.slider}) no-repeat center center`,
