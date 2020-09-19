@@ -57,7 +57,7 @@
       }
 
       pre {
-        font-family: inherit;
+        font-family: 'Roboto-Slab-Regular', -apple-system, sans-serif;
         white-space: pre-line;
         margin: 20px 0 20px;
       }
@@ -134,12 +134,14 @@
 @media screen and (max-width: 768px) {
   .product-detail {
     padding: 20px;
+    margin: 30px 0;
   }
 }
 
 @media screen and (max-width: 450px) {
   .product-detail {
     padding: 10px;
+    margin: 20px 0;
 
     &__labels {
       position: relative;
@@ -149,8 +151,9 @@
 
     &__item {
       &__images {
-        grid-template-columns: repeat(4, 60px);
-        grid-template-rows: 1fr 1fr 1fr 1fr 80px;
+        grid-template-columns: repeat(4, 80px);
+        grid-template-rows: 1fr 1fr 1fr 1fr 100px;
+        height: 530px;
       }
 
       &__description {
@@ -158,4 +161,14 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 350px) {
+    .product-detail__item {
+      &__images {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: 1fr 1fr 1fr 1fr 80px;
+        height: 530px;
+      }
+    }
 }

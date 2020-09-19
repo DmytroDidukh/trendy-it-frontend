@@ -24,7 +24,7 @@ const HotItems = () => {
             }}
                  className='hot__item-image'/>
             <div className='hot__content'>
-                <h2>{item.name}</h2>
+                <h2 className='product-main-title'>{item.name}</h2>
                 <Link to={`/catalog/${item.id}`}>
                     <Button variant='outline-dark'>
                         КУПИТИ {item.price} UAH

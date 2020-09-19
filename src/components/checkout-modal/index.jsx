@@ -21,7 +21,7 @@ const ModalCheckout = ({order, cartItems, setAction, onSubmit, modalVisibility, 
                 type='submit'
                 disabled={!cartItems.length}
             >Готово</button>}
-            className='remove-modal'
+            id='my-modal'
         >
             {order &&
             <>

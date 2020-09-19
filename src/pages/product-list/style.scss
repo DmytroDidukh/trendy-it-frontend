@@ -1,6 +1,6 @@
 .product-list {
   &__title {
-    font-size: 36px;
+    font-size: 2.5rem;
     margin: 30px 0;
     text-align: center;
   }
@@ -62,4 +62,19 @@
 
 .product-list__dropdown-section > div {
   min-width: 8em !important;
+}
+
+@media screen and (max-width: 450px) {
+  .ui.selection.dropdown {
+    min-height: .7rem !important;
+    line-height: .6rem !important;
+    padding: 10px 15px !important;
+    .dropdown.icon {
+      padding-top: 8px !important;
+    }
+  }
+
+  .product-list__title {
+    font-size: 1.5rem;
+  }
 }

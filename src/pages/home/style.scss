@@ -1,5 +1,11 @@
 .home {
-  //min-height: calc(100vh - 178px);
+  min-height: calc(100vh - 178px);
+  margin-top: 10px;
+
+  .spinner-it {
+    margin-top: 100px;
+  }
+
   &__hero {
     display: grid;
     grid-template-columns: 1fr 450px;
@@ -7,14 +13,6 @@
 
     @media screen and (max-width: 1200px) {
       grid-template-columns: 1fr;
-    }
-
-    .slider {
-
-    }
-
-    .banners {
-
     }
   }
 }

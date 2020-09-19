@@ -18,15 +18,15 @@
   &__popup {
     position: absolute;
     right: 0;
-    top: 30px;
+    top: 40px;
     z-index: 10;
-    border: 1px solid #fafafa;
+    border: 1px solid #f3f3f3;
     border-radius: 5px;
     padding: 0 10px 10px;
     width: 400px;
     background: #ffffff;
-    box-shadow: 13px 13px 26px #e3e3e3,
-    -13px -13px 26px #ffffff;
+ /*   box-shadow: 13px 13px 26px #e3e3e3,
+    -13px -13px 26px #ffffff;*/
 
     > .item {
       padding: 0 10px 10px 0;

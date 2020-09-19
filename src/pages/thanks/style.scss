@@ -7,7 +7,24 @@
   align-items: center;
  .title {
    font-family: "MarcellusSC", sans-serif;
-    font-size: 10em;
+    font-size: 10rem;
     color: #000000;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .thanks-page {
+    .title {
+      font-size: 5rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    .basic-button {
+      width: 180px;
+      font-size: 1.3rem;
+    }
   }
 }
