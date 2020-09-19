@@ -70,6 +70,10 @@
       font-size: 1em;
       color: #7a7a7a;
       font-weight: 600;
+
+      strike {
+        margin-right: 5px;
+      }
     }
 
     #{$self}__additions {
@@ -91,4 +95,15 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 500px){
+.cart-item__price {
+  .ui.red.label {
+    padding: 5px;
+    margin-left: 10px;
+  }
+}
+
+
 }

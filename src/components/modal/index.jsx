@@ -22,7 +22,7 @@ const ModalBasic = ({msg, item, setAction}) => {
         >
             <Header icon>
                 <Icon name='trash' />
-                Дісйно видалити "{item.name}" з {msg}
+                Видалити "{item.name}" з {msg}
             </Header>
 
             <Modal.Actions>

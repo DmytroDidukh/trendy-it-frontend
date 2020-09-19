@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 
 import ProductCard from './product-card';
@@ -24,7 +24,8 @@ const ProductList = () => {
     const productsFilter = () => {
         return products
             .filter(prod => productFilter === 'all' ? prod : prod.colors[productFilter])
-            .sort((a, b) => productSort === 'new' && b.newItem - a.newItem)
+            .sort((a, b) => productSort === 'new' && b.newItem  - a.newItem)
+            .sort((a, b) => productSort === 'new' && b.newItem  - b.newItem)
             .sort((a, b) => productSort === 'priceLow' && a.price - b.price)
             .sort((a, b) => productSort === 'priceHigh' && b.price - a.price)
             .sort((a, b) => productSort === 'hot' && b.hot - a.hot)

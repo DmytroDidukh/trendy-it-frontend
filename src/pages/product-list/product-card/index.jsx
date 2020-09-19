@@ -3,6 +3,7 @@ import {Card, Image, Label} from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
 
 import {LABELS_DATA} from "../../../constants";
+import {salePercentage} from '../../../utils'
 import './style.scss';
 
 const ProductCard = ({product}) => {
@@ -13,8 +14,6 @@ const ProductCard = ({product}) => {
             {inner}
         </Label>
     )
-
-    const salePercentage = Math.round(((product.oldPrice-product.price)/product.oldPrice)*100)
 
     return (
         <Link className="ui card product-card" to={`/catalog/${product.id}`}>
@@ -33,7 +32,7 @@ const ProductCard = ({product}) => {
                 <div className="product-card__price">
                     Ціна: {product.sale && <strike>{product.oldPrice} </strike>}
                     <span> {product.price}</span> UAH
-                    {product.sale && <Label color='red'>-{salePercentage} %</Label>}
+                    {product.sale && <Label color='red'>-{salePercentage(product)} %</Label>}
                 </div>
                 {!product.available && <div className='not-available'>Немає в наявності</div>}
             </Card.Content>

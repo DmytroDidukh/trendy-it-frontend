@@ -12,14 +12,14 @@ const Cart = () => {
     return (
         <div className='cart'>
             <div className='cart__table'>
-                <h2 className='cart__table__title'>Мій кошик
+                <h2 className='cart__table__title'>Кошик
                     ({cartItems.reduce((sum, item) => sum + item.quantity, 0)})</h2>
                 {cartItems.length ? (
                     <>
                         <div className='cart__table__items'>
                             {
                                 cartItems.map(item => (
-                                    <CartItem key={Math.random()} item={item}/>
+                                    <CartItem key={Math.random()} product={item}/>
                                 ))
                             }
                         </div>
