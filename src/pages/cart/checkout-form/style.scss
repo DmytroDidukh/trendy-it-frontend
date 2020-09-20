@@ -38,13 +38,16 @@
     }
   }
 
+  td:not(:nth-child(2)) {
+    text-align: center;
+  }
+
   .order-color {
-    display: block;
+    display: inline-block;
     width: 20px;
     height: 20px;
     border: 1px solid #f1f1f1;
     border-radius: 50%;
-    margin: 0 auto;
   }
 }
 
