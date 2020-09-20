@@ -28,7 +28,7 @@ const ProductList = () => {
     const productsFilter = () => {
         return products
             .filter(prod => productFilter === 'all' ? prod : prod.colors[productFilter])
-            .sort((a, b) => productSort === 'new' && (b.newItem  - a.newItem || 
+            .sort((a, b) => productSort === 'new' && (b.newItem  - a.newItem ||
                 new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
             .sort((a, b) => productSort === 'priceLow' && a.price - b.price)
             .sort((a, b) => productSort === 'priceHigh' && b.price - a.price)
