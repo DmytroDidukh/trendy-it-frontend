@@ -37,10 +37,14 @@ const ProductList = () => {
             .map(product => <ProductCard key={product.id} product={product}/>)
     }
 
-    const productsToShow = (length) => {
-        const products = productsFilter().slice(length, length + 12)
+    const setProductsToShow = (lengthIndex) => {
+        const products = productsFilter()
+        const isEnoughProducts = products.length>= 12
+
+        const productsToShow = isEnoughProducts ? products.slice(lengthIndex, lengthIndex + 12) : products.slice(0, 12)
+
         return products.length ?
-            products : (
+            productsToShow : (
                 <Message className='empty-product-list'>
                     <Message.Header>За вибраними критеріями нічого не знайдено</Message.Header>
                 </Message>
@@ -81,11 +85,11 @@ const ProductList = () => {
                 {products.length ? (
                     <div className="product-cards__list">
                         <Card.Group itemsPerRow={setListResponsive()}>
-                            {productsToShow(currentPage)}
+                            {setProductsToShow(currentPage)}
                         </Card.Group>
-                        {productsToShow(currentPage).length && <Pagination
+                        {setProductsToShow(currentPage).length && <Pagination
                             productsFilter={productsFilter}
-                            productsToShow={productsToShow}
+                            setProductsToShow={setProductsToShow}
                             setCurrentPage={setCurrentPage}
                         />}
                     </div>
