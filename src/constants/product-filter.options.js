@@ -16,17 +16,3 @@ const productFilterObject = {
 }
 
 export default productFilterObject
-/*
-export const COLORS_DATA = [
-        {hex: '#000000', name: 'Чорний', type: 'black'},
-        {hex: '#949494', name: 'Сірий', type: 'silver'},
-        {hex: '#ffffff', name: 'Білий', type: 'white'},
-        {hex: '#00308c', name: 'Синій', type: 'blue'},
-        {hex: '#eeca07', name: 'Жовтий', type: 'yellow'},
-        {hex: '#ee4807', name: 'Оранджевий', type: 'orange'},
-        {hex: '#ff0000', name: 'Червоний', type: 'red'},
-        {hex: '#2eae1c', name: 'Зелений', type: 'green'},
-        {hex: '#e607ee', name: 'Рожейвий', type: 'pink'},
-        {hex: '#5800fc', name: 'Фіолетовий', type: 'purple'},
-        {hex: '#692e19', name: 'Коричневий', type: 'brown'},
-];*/

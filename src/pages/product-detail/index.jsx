@@ -96,21 +96,23 @@ const ProductDetailPage = ({productId}) => {
                                         isColorErrorVisible={isColorErrorVisible}
                                         setIsColorErrorVisible={setIsColorErrorVisible}/>
                                 <div className='to-order'>
-                                    <Popup
-                                        trigger={<button disabled={!product.available}
-                                                         className='basic-button'
-                                                         onClick={onAddToCart}>
-                                            Купити
-                                        </button>}
-                                        disabled={!selectedColor}
-                                        content='Додано в корзину'
-                                        on={['click']}
-                                    />
+                                    <div className='to-order-buy'>
+                                        <Popup
+                                            trigger={<button disabled={!product.available}
+                                                             className='basic-button'
+                                                             onClick={onAddToCart}>
+                                                Купити
+                                            </button>}
+                                            disabled={!selectedColor}
+                                            content='Додано в корзину'
+                                            on={['click']}
+                                        />
+                                        {!product.available && <div>Немає в наявності</div>}
+                                    </div>
                                     <Icon className={isItemInWishlist ? 'selected' : ''}
                                           name={isItemInWishlist ? 'heart' : 'heart outline'}
                                           onClick={onAddToWishlist}/>
                                 </div>
-                                {!product.available && <div>Немає в наявності</div>}
                             </div>
                         </div>
                     </>

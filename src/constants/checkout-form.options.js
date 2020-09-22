@@ -69,7 +69,7 @@ export const CURRIER_DELIVERY_INPUTS_DATA = [
     {
         name: 'apartment',
         error: 'Будь ласка, введіть назву квартири для доставки (від 2 до 5 символів)',
-        label: 'Вулиця',
+        label: 'Квартира',
         placeholder: 'Введіть номер квартири...'
     },
 ]

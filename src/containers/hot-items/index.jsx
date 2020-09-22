@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {useSelector} from "react-redux";
 import Carousel from 'react-multi-carousel';
 import {Link} from "react-router-dom";
@@ -11,9 +11,7 @@ import './style.scss'
 
 
 const HotItems = () => {
-    const {products} = useSelector(({Products}) => ({
-        products: Products.list.filter(item => item.hot),
-    }))
+    const products = useSelector(({Products}) => Products.list.filter(item => item.hot && item.available)).sort( () => Math.random() - 0.5)
 
     const productList = products.map(item => (
         <div key={item.id}

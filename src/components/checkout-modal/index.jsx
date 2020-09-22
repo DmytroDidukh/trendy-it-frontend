@@ -1,5 +1,8 @@
 import React from 'react'
 import {Button, Modal} from 'semantic-ui-react'
+import {Table} from 'react-bootstrap';
+
+import {COLORS_DATA} from "../../constants";
 
 const ModalCheckout = ({order, cartItems, setAction, onSubmit, modalVisibility, setModalVisibility}) => {
 
@@ -53,6 +56,33 @@ const ModalCheckout = ({order, cartItems, setAction, onSubmit, modalVisibility, 
                             }
                         </p>
                     }
+                    <hr/>
+                    <Table striped bordered size="sm">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Товар</th>
+                            <th>Колір</th>
+                            <th>Кількість</th>
+                            <th>Ціна за шт.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            order.products.map((product, i) => (
+                                <tr key={product.name}>
+                                    <td>{i + 1}</td>
+                                    <td>{product.name}</td>
+                                    <td><span className={'order-color'}
+                                              style={{backgroundColor: COLORS_DATA[product.color].hex}}/>
+                                    </td>
+                                    <td>{product.quantity}</td>
+                                    <td>{product.price}</td>
+                                </tr>
+                            ))
+                        }
+                        </tbody>
+                    </Table>
                     <p>Сума: <span>{order.products.reduce((sum, item) => sum + item.quantity * item.price, 0)} UAH</span></p>
                 </Modal.Content>
                 <Modal.Actions>
