@@ -49,6 +49,10 @@
     border: 1px solid #f1f1f1;
     border-radius: 50%;
   }
+
+  table + p {
+    text-align: right;
+  }
 }
 
 

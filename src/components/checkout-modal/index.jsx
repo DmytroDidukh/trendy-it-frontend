@@ -11,8 +11,6 @@ const ModalCheckout = ({order, cartItems, setAction, onSubmit, modalVisibility, 
         e.target.name === 'confirm' ? setAction(true) : setAction(false)
     }
 
-    console.log(order && order.products)
-
     return (
         <Modal
             closeOnEscape={false}

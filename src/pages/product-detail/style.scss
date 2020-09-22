@@ -66,10 +66,19 @@
         margin: 20px 0 5px;
         display: flex;
         align-items: center;
+        padding-bottom: 30px;
 
-        button {
-          width: 200px;
-          margin: 0 30px 0 0;
+        .to-order-buy {
+          position: relative;
+          button {
+            margin: 0 30px 0 0;
+          }
+          div:last-child {
+            font-size: .8rem;
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+          }
         }
 
         i {
@@ -131,6 +140,10 @@
       &__description {
         .to-order {
           justify-content: center;
+        }
+
+        .to-order + div {
+          text-align: center;
         }
       }
     }

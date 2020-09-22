@@ -11,7 +11,7 @@ import './style.scss'
 
 
 const HotItems = () => {
-    const products = useSelector(({Products}) => Products.list.filter(item => item.hot)).sort( () => Math.random() - 0.5)
+    const products = useSelector(({Products}) => Products.list.filter(item => item.hot && item.available)).sort( () => Math.random() - 0.5)
 
     const productList = products.map(item => (
         <div key={item.id}
