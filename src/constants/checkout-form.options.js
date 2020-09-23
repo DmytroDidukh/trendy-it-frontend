@@ -33,19 +33,30 @@ export const CONNECTION_CHECKBOX_DATA = [
 ]
 
 export const POST_DELIVERY_INPUTS_DATA = [
-    {
-        name: 'city',
-        error: 'Будь ласка, введіть назуву міста доставки (від 2 до 50 символів)',
-        label: 'Місто',
-        placeholder: 'Введіть місто доставки...'
-    },
-    {
-        name: 'postOffice',
-        error: 'Будь ласка, введіть номер відділення Нової Пошти (від 1 до 5 цифр)',
-        label: 'Номер відділення',
-        placeholder: 'Введіть номер відділення...'
-    },
-]
+        {
+            name: 'city',
+            error: 'Будь ласка, виберіть місто зі списку',
+            label: {
+                children: 'Місто',
+                htmlFor: 'form-select-control-city'
+            },
+            placeholder: 'Виберіть місто...',
+            searchInput: 'form-select-control-city',
+            noResultsMessage: 'Місто не знайдено'
+        },
+        {
+            name: 'postOffice',
+            error: 'Будь ласка, виберіть відділення зі списку',
+            label: {
+                children: 'Відділення',
+                htmlFor: 'form-select-control-warehouse'
+            },
+            placeholder: 'Виберіть відділення...',
+            searchInput: 'form-select-control-warehouse',
+            noResultsMessage: 'Відділення не знайдено'
+        },
+    ]
+
 
 export const CURRIER_DELIVERY_INPUTS_DATA = [
     {

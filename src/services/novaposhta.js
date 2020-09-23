@@ -2,7 +2,7 @@ import {gql} from 'apollo-boost'
 
 import client from "./index";
 
-const getNovaPoshtaCities = async (city) => {
+const getNovaPoshtaCities = async (city) => (
     await client.query({
         variables: {
             city
@@ -16,9 +16,9 @@ const getNovaPoshtaCities = async (city) => {
             }
         `
     })
-}
+)
 
-const getNovaPoshtaStreets = async ({cityRef, street}) => {
+const getNovaPoshtaStreets = async ({cityRef, street}) => (
     await client.query({
         variables: {
             cityRef,
@@ -35,16 +35,17 @@ const getNovaPoshtaStreets = async ({cityRef, street}) => {
             }
         `
     })
-}
+)
 
-const getNovaPoshtaWarehouses = async (city) => {
+const getNovaPoshtaWarehouses = async ({city, cityRef}) => (
     await client.query({
         variables: {
-            city
+            city,
+            cityRef
         },
         query: gql`
-            query($city: String) {
-                getNovaPoshtaWarehouses(city: $city) {
+            query($city: String, $cityRef: String) {
+                getNovaPoshtaWarehouses(city: $city, cityRef: $cityRef) {
                     description
                     ref
                     shortAddress
@@ -52,9 +53,9 @@ const getNovaPoshtaWarehouses = async (city) => {
             }
         `
     })
-}
+)
 
-const getNovaPoshtaPrices = async (data) => {
+const getNovaPoshtaPrices = async (data) => (
     await client.query({
         variables: {
             data
@@ -70,7 +71,7 @@ const getNovaPoshtaPrices = async (data) => {
             }
         `
     })
-}
+)
 
 export {
     getNovaPoshtaCities,

@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import {Checkbox, Form, Dropdown} from 'semantic-ui-react'
+import React, {useEffect, useMemo, useState} from "react";
+import {Checkbox, Form, Dropdown, Select} from 'semantic-ui-react'
 import {useSelector, useDispatch} from "react-redux";
 
 import {
@@ -13,13 +13,19 @@ import {
     ADDRESS_DEFAULT
 } from "../../../constants/checkout-form.options";
 import {checkoutFieldValidate, orderIdGenerator} from '../../../utils'
-import { ModalCheckout} from "../../../components";
+import {ModalCheckout} from "../../../components";
 import {addOrder} from "../../../redux/order/order.actions";
 import './style.scss'
+import {getNovaPoshtaCities, getNovaPoshtaWarehouses} from "../../../redux/novaposhta/novaposhta.actions";
 
 
 const CheckoutForm = () => {
-    const cartItems = useSelector(({Cart}) => Cart.list)
+    const {cartItems, cities, warehouses} = useSelector(({Cart, Novaposhta}) => ({
+        cartItems: Cart.list,
+        cities: Novaposhta.cities,
+        warehouses: Novaposhta.warehouses,
+        loading: Novaposhta.loading,
+    }))
     const dispatch = useDispatch()
 
     const [error, setError] = useState(false)
@@ -33,6 +39,10 @@ const CheckoutForm = () => {
     const [address, setAddress] = useState(ADDRESS_DEFAULT)
 
     const [order, setOrder] = useState(null)
+
+    useEffect(() => {
+        dispatch(getNovaPoshtaCities('а'))
+    }, [dispatch])
 
     const handleConnectionChange = ({target}) => setConnectionMethod(target.innerText)
     const handleDeliveryChange = (e, {value}) => {
@@ -76,7 +86,7 @@ const CheckoutForm = () => {
                 }
             },
             products: [
-                ...cartItems.map( item => ({
+                ...cartItems.map(item => ({
                         name: item.name,
                         price: item.price,
                         quantity: item.quantity,
@@ -93,7 +103,14 @@ const CheckoutForm = () => {
         setModalVisibility(true)
     }
 
-    const handleChange = ({target: {id, name, value}}) => {
+    const handleChange = (_, el) => {
+        let {id, name, value} = el
+
+        if (name === 'city') {
+            dispatch(getNovaPoshtaWarehouses({city: value.split('_')[0], cityRef: value.split('_')[1]}))
+            value = value.split('_')[0]
+        }
+
         switch (id) {
             case 'customer': {
                 setCustomer({
@@ -125,6 +142,47 @@ const CheckoutForm = () => {
             }
         }
     }
+
+    const onGetValueFromDeliveryInput = ({target}) => {
+        // this al ninja code is for reset input and fail validation
+        // valid === true only if user select option from suggested list
+        if (target.id === POST_DELIVERY_INPUTS_DATA[0].searchInput) {
+            dispatch(getNovaPoshtaCities(target.value))
+            setDelivery({
+                ...delivery,
+                city: {
+                    value: '', isValid: false
+                },
+                postOffice: {
+                    value: '', isValid: false
+                }
+            })
+        } else {
+            setDelivery({
+                ...delivery,
+                postOffice: {
+                    value: '', isValid: false
+                }
+            })
+        }
+    }
+
+    const citiesOptions = useMemo(() => {
+        return cities.map(city => ({
+            key: city.ref,
+            text: city.description,
+            value: `${city.description}_${city.ref}`
+        }))
+    }, [cities])
+
+    const warehousesOptions = useMemo(() => {
+        return warehouses.map(warehouse => ({
+            key: warehouse.ref,
+            text: !delivery.city.value ? '' : warehouse.description,
+            value: warehouse.description
+        }))
+    }, [warehouses, delivery])
+
 
     return (
         <Form>
@@ -184,17 +242,22 @@ const CheckoutForm = () => {
                     <>
                         {
                             POST_DELIVERY_INPUTS_DATA.map((data, i) => (
-                                <Form.Input
+                                <Form.Field
                                     key={i}
+                                    control={Select}
+                                    options={i === 0 ? citiesOptions : warehousesOptions}
+                                    label={{children: data.label.children, htmlFor: data.label.htmlFor}}
+                                    placeholder={data.placeholder}
+                                    search
+                                    required
+                                    searchInput={{id: data.searchInput, onChange: onGetValueFromDeliveryInput }}
                                     error={error && !delivery[data.name].isValid ? {
                                         content: data.error,
                                         pointing: 'below'
                                     } : null}
-                                    fluid
-                                    label={data.label}
-                                    placeholder={data.placeholder}
-                                    name={data.name}
                                     onChange={handleChange}
+                                    noResultsMessage={data.noResultsMessage}
+                                    name={data.name}
                                     id='post'
                                 />
                             ))
@@ -234,7 +297,7 @@ const CheckoutForm = () => {
                 cartItems={cartItems}
                 modalVisibility={modalVisibility}
                 setModalVisibility={setModalVisibility}
-                />
+            />
         </Form>
     )
 }

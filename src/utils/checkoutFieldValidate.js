@@ -13,10 +13,12 @@ export default (key, value) => {
             return /^\+?\d{10,12}$/.test(value)
         }
         case 'city': {
-            return /^[А-Я\w\d\sі]{2,50}$/i.test(value)
+            return true
+            //return /^[А-Я'().,\d\sі-]{2,50}$/i.test(value.split('_')[0])
         }
         case 'postOffice': {
-            return /^\d{1,5}$/.test(value)
+            return true
+            //return /^[А-Я'"():№,.\d\sі-]{2,50}$/i.test(value)
         }
         case 'street': {
             return /^[\d\w\s]{2,50}$/i.test(value)

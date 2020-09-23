@@ -25,9 +25,9 @@ const setNovaPoshtaWarehouse = (warehouses) => ({
   payload: warehouses
 });
 
-const getNovaPoshtaWarehouse = (inputValue) => ({
+const getNovaPoshtaWarehouses = (data) => ({
   type: GET_NOVAPOSHTA_WAREHOUSES,
-  payload: inputValue
+  payload: data
 });
 
 const setNovaPoshtaStreets = (streets) => ({
@@ -58,7 +58,7 @@ const setLoading = (loading) => ({
 export {
   getNovaPoshtaCities,
   setNovaPoshtaCities,
-  getNovaPoshtaWarehouse,
+  getNovaPoshtaWarehouses,
   setNovaPoshtaWarehouse,
   setNovaPoshtaStreets,
   getNovaPoshtaStreets,
