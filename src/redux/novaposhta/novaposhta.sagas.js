@@ -66,7 +66,7 @@ export function* handleDeliveryPrice({ payload }) {
     yield put(setLoading(true));
 
     const deliveryPrice = yield call(getNovaPoshtaPrices, payload);
-    yield put(setNovaPoshtaDeliveryPrice(deliveryPrice.data.getNovaPoshtaPrices));
+    yield put(setNovaPoshtaDeliveryPrice(deliveryPrice.data.getNovaPoshtaPrices[0]));
 
     yield put(setLoading(false));
   } catch (e) {

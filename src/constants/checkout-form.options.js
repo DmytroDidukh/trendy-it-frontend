@@ -32,16 +32,16 @@ export const CONNECTION_CHECKBOX_DATA = [
     {label: 'Viber'},
 ]
 
-export const POST_DELIVERY_INPUTS_DATA = [
+export const POST_DELIVERY_SELECT_DATA = [
         {
             name: 'city',
             error: 'Будь ласка, виберіть місто зі списку',
             label: {
                 children: 'Місто',
-                htmlFor: 'form-select-control-city'
+                htmlFor: 'control-post-city'
             },
             placeholder: 'Виберіть місто...',
-            searchInput: 'form-select-control-city',
+            searchInput: 'control-post-city',
             noResultsMessage: 'Місто не знайдено'
         },
         {
@@ -49,28 +49,40 @@ export const POST_DELIVERY_INPUTS_DATA = [
             error: 'Будь ласка, виберіть відділення зі списку',
             label: {
                 children: 'Відділення',
-                htmlFor: 'form-select-control-warehouse'
+                htmlFor: 'control-post-warehouse'
             },
             placeholder: 'Виберіть відділення...',
-            searchInput: 'form-select-control-warehouse',
+            searchInput: 'control-post-warehouse',
             noResultsMessage: 'Відділення не знайдено'
         },
     ]
 
-
-export const CURRIER_DELIVERY_INPUTS_DATA = [
+export const CURRIER_DELIVERY_SELECT_DATA = [
     {
         name: 'city',
-        error: 'Будь ласка, введіть назуву міста для доставки (від 2 до 50 символів)',
-        label: 'Місто',
-        placeholder: 'Введіть місто доставки...'
+        error: 'Будь ласка, виберіть місто зі списку',
+        label: {
+            children: 'Місто',
+            htmlFor: 'control-address-city'
+        },
+        placeholder: 'Виберіть місто...',
+        searchInput: 'control-address-city',
+        noResultsMessage: 'Місто не знайдено'
     },
     {
         name: 'street',
-        error: 'Будь ласка, введіть назву вулиці для доставки (від 2 до 50 літер)',
-        label: 'Вулиця',
-        placeholder: 'Введіть назву вулиці...'
+        error: 'Будь ласка, виберіть вулицю зі списку',
+        label: {
+            children: 'Вулиця',
+            htmlFor: 'control-address-street'
+        },
+        placeholder: 'Виберіть вулицю...',
+        searchInput: 'control-address-street',
+        noResultsMessage: 'Вулицю не знайдено'
     },
+]
+
+export const CURRIER_DELIVERY_INPUTS_DATA = [
     {
         name: 'built',
         error: 'Будь ласка, введіть номер будинку для доставки (від 1 до 10 символів)',
