@@ -1,5 +1,5 @@
 const random = () => {
-    return Math.round(1 + Math.random() * (36 - 1));
+    return Math.round(1 + Math.random() * (35 - 1));
 };
 
 export default () => {

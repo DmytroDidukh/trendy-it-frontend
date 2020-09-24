@@ -155,8 +155,9 @@ const CheckoutForm = () => {
                 ))
             ],
             orderId: orderIdGenerator(),
-            connectionMethod,
-            paymentMethod
+            paymentMethod: paymentMethod.text,
+            deliveryPrice,
+            connectionMethod
         }
 
         setOrder(orderToSend)
