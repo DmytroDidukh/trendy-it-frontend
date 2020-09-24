@@ -40,9 +40,9 @@ const getNovaPoshtaStreets = (inputValue) => ({
   payload: inputValue
 });
 
-const setNovaPoshtaDeliveryPrice = (priceObj) => ({
+const setNovaPoshtaDeliveryPrice = (cost) => ({
   type: SET_NOVAPOSHTA_DELIVERY_PRICE,
-  payload: priceObj
+  payload: cost
 });
 
 const getNovaPoshtaDeliveryPrice = (data) => ({

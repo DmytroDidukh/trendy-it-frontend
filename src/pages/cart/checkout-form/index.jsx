@@ -34,7 +34,7 @@ const CheckoutForm = () => {
         cities: Novaposhta.cities,
         warehouses: Novaposhta.warehouses,
         streets: Novaposhta.streets,
-        deliveryPrice: Novaposhta.deliveryPrice.cost || 0,
+        deliveryPrice: Novaposhta.deliveryPrice || 0,
         loading: Novaposhta.loading,
     }))
     const dispatch = useDispatch()
@@ -59,6 +59,7 @@ const CheckoutForm = () => {
     useEffect(() => {
         const {city, postOffice} = delivery;
         const {city: cityAddress} = address;
+        const {value: payment} = paymentMethod;
 
         let serviceType = '';
         let cityRefToSend = ''
@@ -86,10 +87,11 @@ const CheckoutForm = () => {
         const data = {
             cityRecipient: cityRefToSend.split('_')[1],
             cost: cartTotal,
+            redeliveryAmount: payment === 1 ? cartTotal : 0,
             serviceType
         }
         dispatch(getNovaPoshtaDeliveryPrice(data))
-    }, [dispatch, delivery, address, cartItems, deliveryMethod])
+    }, [dispatch, delivery, address, cartItems, deliveryMethod, paymentMethod.value])
 
 
     // HANDLERS
@@ -102,8 +104,6 @@ const CheckoutForm = () => {
             setDelivery({...delivery, method: {value: target.innerText, isValid: true}})
         }
     }
-
-    console.log('payment', paymentMethod)
 
     const onModalAction = (key) => {
         key && dispatch(addOrder(order))

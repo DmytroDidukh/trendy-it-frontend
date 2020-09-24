@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   loading: false,
-  deliveryPrice: {},
+  deliveryPrice: 0,
   cities: [],
   warehouses: [],
   streets: []
