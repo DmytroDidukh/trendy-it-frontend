@@ -9,14 +9,25 @@
   }
 }
 
-.checkout-error {
-  color: crimson;
-  font-size: .8em;
-}
-
 .checkbox {
   > span {
     margin-left: 5px;
+  }
+}
+
+.checkout-dropdown {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  width: 250px;
+  position: relative;
+
+  .checkout-error {
+    color: crimson;
+    font-size: .8em;
+    position: absolute;
+    left: 0;
+    bottom: 0;
   }
 }
 

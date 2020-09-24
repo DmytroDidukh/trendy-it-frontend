@@ -33,29 +33,29 @@ export const CONNECTION_CHECKBOX_DATA = [
 ]
 
 export const POST_DELIVERY_SELECT_DATA = [
-        {
-            name: 'city',
-            error: 'Будь ласка, виберіть місто зі списку',
-            label: {
-                children: 'Місто',
-                htmlFor: 'control-post-city'
-            },
-            placeholder: 'Виберіть місто...',
-            searchInput: 'control-post-city',
-            noResultsMessage: 'Місто не знайдено'
+    {
+        name: 'city',
+        error: 'Будь ласка, виберіть місто зі списку',
+        label: {
+            children: 'Місто',
+            htmlFor: 'control-post-city'
         },
-        {
-            name: 'postOffice',
-            error: 'Будь ласка, виберіть відділення зі списку',
-            label: {
-                children: 'Відділення',
-                htmlFor: 'control-post-warehouse'
-            },
-            placeholder: 'Виберіть відділення...',
-            searchInput: 'control-post-warehouse',
-            noResultsMessage: 'Відділення не знайдено'
+        placeholder: 'Виберіть місто...',
+        searchInput: 'control-post-city',
+        noResultsMessage: 'Місто не знайдено'
+    },
+    {
+        name: 'postOffice',
+        error: 'Будь ласка, виберіть відділення зі списку',
+        label: {
+            children: 'Відділення',
+            htmlFor: 'control-post-warehouse'
         },
-    ]
+        placeholder: 'Виберіть відділення...',
+        searchInput: 'control-post-warehouse',
+        noResultsMessage: 'Відділення не знайдено'
+    },
+]
 
 export const CURRIER_DELIVERY_SELECT_DATA = [
     {
@@ -103,6 +103,11 @@ export const DELIVERY_OPTIONS = [
     {key: 3, text: 'кур‘єром', value: 3},
 ]
 
+export const PAYMENT_OPTIONS = [
+    {key: 1, text: 'готівкою', value: 1},
+    {key: 2, text: 'на банківську картку', value: 2},
+]
+
 export const CUSTOMER_DEFAULT = {
     name: {value: null, isValid: null},
     surname: {value: null, isValid: null},
@@ -114,6 +119,11 @@ export const DELIVERY_DEFAULT = {
     method: {value: null, isValid: null},
     city: {value: null, isValid: null},
     postOffice: {value: null, isValid: null}
+}
+
+export const PAYMENT_DEFAULT = {
+    value: null,
+    text: '',
 }
 
 export const ADDRESS_DEFAULT = {

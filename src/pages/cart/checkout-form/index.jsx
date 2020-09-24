@@ -9,8 +9,10 @@ import {
     CURRIER_DELIVERY_SELECT_DATA,
     POST_DELIVERY_SELECT_DATA,
     DELIVERY_OPTIONS,
+    PAYMENT_OPTIONS,
     CUSTOMER_DEFAULT,
     DELIVERY_DEFAULT,
+    PAYMENT_DEFAULT,
     ADDRESS_DEFAULT
 } from "../../../constants/checkout-form.options";
 import {checkoutFieldValidate, orderIdGenerator} from '../../../utils'
@@ -42,6 +44,7 @@ const CheckoutForm = () => {
 
     const [connectionMethod, setConnectionMethod] = useState('')
     const [deliveryMethod, setDeliveryMethod] = useState(null)
+    const [paymentMethod, setPaymentMethod] = useState(PAYMENT_DEFAULT)
 
     const [customer, setCustomer] = useState(CUSTOMER_DEFAULT)
     const [delivery, setDelivery] = useState(DELIVERY_DEFAULT)
@@ -91,10 +94,16 @@ const CheckoutForm = () => {
 
     // HANDLERS
     const handleConnectionChange = ({target}) => setConnectionMethod(target.innerText)
-    const handleDeliveryChange = (e, {value}) => {
-        setDeliveryMethod(value)
-        setDelivery({...delivery, method: {value: e.target.innerText, isValid: true}})
+    const handleDropdownChange = ({target}, {dataid, value}) => {
+        if (dataid === 'payment') {
+            setPaymentMethod({value, text: target.innerText})
+        } else if (dataid === 'delivery') {
+            setDeliveryMethod(value)
+            setDelivery({...delivery, method: {value: target.innerText, isValid: true}})
+        }
     }
+
+    console.log('payment', paymentMethod)
 
     const onModalAction = (key) => {
         key && dispatch(addOrder(order))
@@ -109,7 +118,8 @@ const CheckoutForm = () => {
             !isValidateDelivery ||
             !isValidateAddress ||
             !connectionMethod ||
-            !deliveryMethod) {
+            !deliveryMethod ||
+            !paymentMethod.value) {
             setError(true)
             return
         }
@@ -145,7 +155,8 @@ const CheckoutForm = () => {
                 ))
             ],
             orderId: orderIdGenerator(),
-            connectionMethod
+            connectionMethod,
+            paymentMethod
         }
 
         setOrder(orderToSend)
@@ -324,16 +335,31 @@ const CheckoutForm = () => {
                 ))
             }
 
-            <Dropdown
-                data-id='delivery'
-                onChange={handleDeliveryChange}
-                options={DELIVERY_OPTIONS}
-                placeholder='Виберіть спосіб доставки'
-                selection
-                value={deliveryMethod}
-            />
-            {error && !deliveryMethod &&
-            <div className={'checkout-error'}>Виберіть спосіб доставки</div>}
+            <div className={'checkout-dropdown'}>
+                <Dropdown
+                    dataid='payment'
+                    onChange={handleDropdownChange}
+                    options={PAYMENT_OPTIONS}
+                    placeholder='Виберіть спосіб оплати'
+                    selection
+                    value={paymentMethod.value}
+                />
+                {error && !paymentMethod.value &&
+                <div className={'checkout-error'}>Виберіть спосіб оплати</div>}
+            </div>
+
+            <div className={'checkout-dropdown'}>
+                <Dropdown
+                    dataid='delivery'
+                    onChange={handleDropdownChange}
+                    options={DELIVERY_OPTIONS}
+                    placeholder='Виберіть спосіб доставки'
+                    selection
+                    value={deliveryMethod}
+                />
+                {error && !deliveryMethod &&
+                <div className={'checkout-error'}>Виберіть спосіб доставки</div>}
+            </div>
 
             {
                 deliveryMethod === 2 && (
