@@ -26,12 +26,13 @@ import {
 import './style.scss'
 
 const CheckoutForm = () => {
-    const {cartItems, cities, warehouses, streets, deliveryPrice} = useSelector(({Cart, Novaposhta}) => ({
+    const {cartItems, cartTotal, cities, warehouses, streets, deliveryPrice} = useSelector(({Cart, Novaposhta}) => ({
         cartItems: Cart.list,
+        cartTotal: Cart.cartTotal,
         cities: Novaposhta.cities,
         warehouses: Novaposhta.warehouses,
         streets: Novaposhta.streets,
-        deliveryPrice: Novaposhta.deliveryPrice.cost,
+        deliveryPrice: Novaposhta.deliveryPrice.cost || 0,
         loading: Novaposhta.loading,
     }))
     const dispatch = useDispatch()
@@ -53,25 +54,38 @@ const CheckoutForm = () => {
     }, [dispatch])
 
     useEffect(() => {
-        const {city, postOffice} = delivery
-        const {city: cityAddress} = address
-        const cartTotal = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0)
+        const {city, postOffice} = delivery;
+        const {city: cityAddress} = address;
 
-        if (deliveryMethod === 2 && city.value && postOffice.value) {
-            const data = {
-                cityRecipient: city.value.split('_')[1],
-                cost: cartTotal,
-                serviceType: 'WarehouseWarehouse'
+        let serviceType = '';
+        let cityRefToSend = ''
+
+        switch (deliveryMethod) {
+            case 2: {
+                if (city.value && postOffice.value) {
+                    cityRefToSend = city.value
+                    serviceType = 'WarehouseWarehouse'
+                } else return;
+                break
             }
-            dispatch(getNovaPoshtaDeliveryPrice(data))
-        } else if (deliveryMethod === 3 && cityAddress.value) {
-            const data = {
-                cityRecipient: cityAddress.value.split('_')[1],
-                cost: cartTotal,
-                serviceType: 'WarehouseDoors'
+            case 3: {
+                if (cityAddress.value) {
+                    cityRefToSend = cityAddress.value
+                    serviceType = 'WarehouseDoors'
+                } else return;
+                break
             }
-            dispatch(getNovaPoshtaDeliveryPrice(data))
+            default: {
+                return
+            }
         }
+
+        const data = {
+            cityRecipient: cityRefToSend.split('_')[1],
+            cost: cartTotal,
+            serviceType
+        }
+        dispatch(getNovaPoshtaDeliveryPrice(data))
     }, [dispatch, delivery, address, cartItems, deliveryMethod])
 
 
@@ -176,15 +190,17 @@ const CheckoutForm = () => {
                 })
                 return;
             }
+            default: {
+                return;
+            }
         }
     }
-
 
     const onTypeValueToDeliveryInput = ({target}) => {
         const [cityPostData, warehouseData] = POST_DELIVERY_SELECT_DATA
         const [cityAddressData, streetData] = CURRIER_DELIVERY_SELECT_DATA
 
-        // this al ninja code is for reset input and fail validation
+        // this all ninja code is for reset input and fail validation
         // valid === true only if user select option from suggested list
 
         switch (target.id) {
@@ -287,12 +303,12 @@ const CheckoutForm = () => {
                 ))
             }
 
-
             <Form.Field required className={'checkbox'}>
                 Спосіб зв‘язку: <b>{connectionMethod}</b>
                 {error && !connectionMethod &&
                 <span className={'checkout-error'}>Виберіть спосіб зв‘язку нижче</span>}
             </Form.Field>
+
             {
                 CONNECTION_CHECKBOX_DATA.map((data, i) => (
                     <Form.Field key={i}>
@@ -307,7 +323,6 @@ const CheckoutForm = () => {
                     </Form.Field>
                 ))
             }
-
 
             <Dropdown
                 data-id='delivery'
@@ -396,7 +411,7 @@ const CheckoutForm = () => {
                 )
             }
 
-            {deliveryPrice && <div className='delivery-price'>Ціна доставки: {deliveryPrice} UAH</div>}
+            {!!deliveryPrice && <div className='delivery-price'>Ціна доставки: {deliveryPrice} UAH</div>}
 
             <br/>
             <ModalCheckout
@@ -404,6 +419,8 @@ const CheckoutForm = () => {
                 onSubmit={handleOnSubmit}
                 order={order}
                 cartItems={cartItems}
+                cartTotal={cartTotal}
+                deliveryPrice={deliveryPrice}
                 modalVisibility={modalVisibility}
                 setModalVisibility={setModalVisibility}
             />

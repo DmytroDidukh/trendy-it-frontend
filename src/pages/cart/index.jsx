@@ -7,7 +7,7 @@ import CheckoutForm from "./checkout-form";
 import './style.scss'
 
 const Cart = () => {
-    const cartItems = useSelector(({Cart}) => Cart.list);
+    const {list: cartItems, cartTotal } = useSelector(({Cart}) => Cart);
 
     return (
         <div className='cart'>
@@ -24,7 +24,7 @@ const Cart = () => {
                             }
                         </div>
                         <div className='cart__table__total'>
-                            СУМА: {cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0)} UAH
+                            СУМА: {cartTotal} UAH
                         </div>
                     </>
                     ) : (
