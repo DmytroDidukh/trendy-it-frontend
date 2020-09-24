@@ -3,6 +3,7 @@ import {gql} from 'apollo-boost'
 import client from "./index";
 
 export const addOrder = async (order) => {
+    console.log(order)
     await client.mutate({
         variables: {
             order

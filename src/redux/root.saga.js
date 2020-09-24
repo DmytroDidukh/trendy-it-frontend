@@ -5,7 +5,8 @@ import Products from './products/products.saga'
 import Wishlist from './wishlist/wishlist.saga'
 import Cart from './cart/cart.sagas'
 import Order from './order/order.sagas'
+import Novaposhta from './novaposhta/novaposhta.sagas'
 
 export default function* rootSaga() {
-    yield all([Banners(), Products(), Wishlist(), Cart(), Order()]);
+    yield all([Banners(), Products(), Wishlist(), Cart(), Order(), Novaposhta()]);
 }

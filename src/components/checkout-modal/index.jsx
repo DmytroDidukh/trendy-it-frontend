@@ -4,7 +4,7 @@ import {Table} from 'react-bootstrap';
 
 import {COLORS_DATA} from "../../constants";
 
-const ModalCheckout = ({order, cartItems, setAction, onSubmit, modalVisibility, setModalVisibility}) => {
+const ModalCheckout = ({order, cartItems, cartTotal, deliveryPrice, setAction, onSubmit, modalVisibility, setModalVisibility}) => {
 
     const handleButtonClick = (e) => {
         setModalVisibility(false)
@@ -83,7 +83,11 @@ const ModalCheckout = ({order, cartItems, setAction, onSubmit, modalVisibility, 
                         }
                         </tbody>
                     </Table>
-                    <p>Сума: <span>{order.products.reduce((sum, item) => sum + item.quantity * item.price, 0)} UAH</span></p>
+                    <div className='order-summary'>
+                        <p>Сума товару: <span>{cartTotal} UAH</span></p>
+                        {!!deliveryPrice && <p>Ціна доставки: <span>{deliveryPrice} UAH</span></p>}
+                        <p>Загалом: <span>{cartTotal + deliveryPrice} UAH</span></p>
+                    </div>
                 </Modal.Content>
                 <Modal.Actions>
                     <p>Наш менеджер зв‘яжеться з Вами найближчим часом.</p>

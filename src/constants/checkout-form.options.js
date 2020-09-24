@@ -32,34 +32,57 @@ export const CONNECTION_CHECKBOX_DATA = [
     {label: 'Viber'},
 ]
 
-export const POST_DELIVERY_INPUTS_DATA = [
+export const POST_DELIVERY_SELECT_DATA = [
     {
         name: 'city',
-        error: 'Будь ласка, введіть назуву міста доставки (від 2 до 50 символів)',
-        label: 'Місто',
-        placeholder: 'Введіть місто доставки...'
+        error: 'Будь ласка, виберіть місто зі списку',
+        label: {
+            children: 'Місто',
+            htmlFor: 'control-post-city'
+        },
+        placeholder: 'Виберіть місто...',
+        searchInput: 'control-post-city',
+        noResultsMessage: 'Місто не знайдено'
     },
     {
         name: 'postOffice',
-        error: 'Будь ласка, введіть номер відділення Нової Пошти (від 1 до 5 цифр)',
-        label: 'Номер відділення',
-        placeholder: 'Введіть номер відділення...'
+        error: 'Будь ласка, виберіть відділення зі списку',
+        label: {
+            children: 'Відділення',
+            htmlFor: 'control-post-warehouse'
+        },
+        placeholder: 'Виберіть відділення...',
+        searchInput: 'control-post-warehouse',
+        noResultsMessage: 'Відділення не знайдено'
+    },
+]
+
+export const CURRIER_DELIVERY_SELECT_DATA = [
+    {
+        name: 'city',
+        error: 'Будь ласка, виберіть місто зі списку',
+        label: {
+            children: 'Місто',
+            htmlFor: 'control-address-city'
+        },
+        placeholder: 'Виберіть місто...',
+        searchInput: 'control-address-city',
+        noResultsMessage: 'Місто не знайдено'
+    },
+    {
+        name: 'street',
+        error: 'Будь ласка, виберіть вулицю зі списку',
+        label: {
+            children: 'Вулиця',
+            htmlFor: 'control-address-street'
+        },
+        placeholder: 'Виберіть вулицю...',
+        searchInput: 'control-address-street',
+        noResultsMessage: 'Вулицю не знайдено'
     },
 ]
 
 export const CURRIER_DELIVERY_INPUTS_DATA = [
-    {
-        name: 'city',
-        error: 'Будь ласка, введіть назуву міста для доставки (від 2 до 50 символів)',
-        label: 'Місто',
-        placeholder: 'Введіть місто доставки...'
-    },
-    {
-        name: 'street',
-        error: 'Будь ласка, введіть назву вулиці для доставки (від 2 до 50 літер)',
-        label: 'Вулиця',
-        placeholder: 'Введіть назву вулиці...'
-    },
     {
         name: 'built',
         error: 'Будь ласка, введіть номер будинку для доставки (від 1 до 10 символів)',
@@ -80,6 +103,11 @@ export const DELIVERY_OPTIONS = [
     {key: 3, text: 'кур‘єром', value: 3},
 ]
 
+export const PAYMENT_OPTIONS = [
+    {key: 1, text: 'готівкою', value: 1},
+    {key: 2, text: 'на банківську картку', value: 2},
+]
+
 export const CUSTOMER_DEFAULT = {
     name: {value: null, isValid: null},
     surname: {value: null, isValid: null},
@@ -91,6 +119,11 @@ export const DELIVERY_DEFAULT = {
     method: {value: null, isValid: null},
     city: {value: null, isValid: null},
     postOffice: {value: null, isValid: null}
+}
+
+export const PAYMENT_DEFAULT = {
+    value: null,
+    text: '',
 }
 
 export const ADDRESS_DEFAULT = {
