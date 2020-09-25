@@ -36,7 +36,6 @@ export function* handleCities({ payload }) {
 }
 
 export function* handleWarehouse({ payload }) {
-  console.log(payload)
   try {
     yield put(setLoading(true));
     const warehouses = yield call(getNovaPoshtaWarehouses, payload);

@@ -15,20 +15,15 @@
   }
 }
 
-.checkout-dropdown {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 20px;
-  width: 250px;
-  position: relative;
+.checkout-error {
+  color: #9f3a38;
+  font-size: .8em;
+}
 
-  .checkout-error {
-    color: crimson;
-    font-size: .8em;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
+.checkout-dropdown {
+  display: block !important;
+  width: 250px;
+  margin-bottom: 20px;
 }
 
 .checkout-selection-dropdown {
