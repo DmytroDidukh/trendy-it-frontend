@@ -206,8 +206,9 @@ const Delivery = ({
                 )
             }
 
-            {!!deliveryPrice && paymentMethod &&
+            {!!deliveryPrice && paymentMethod && deliveryMethod !== 1 && deliveryMethod &&
             <div className='delivery-price'>Ціна доставки: {deliveryPrice} UAH</div>}
+
         </div>
     )
 }

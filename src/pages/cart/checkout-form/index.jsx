@@ -89,7 +89,16 @@ const CheckoutForm = () => {
 
     // HANDLERS
     const onModalAction = (key) => {
-        key && dispatch(addOrder(order))
+        if (key) {
+            dispatch(addOrder(order))
+
+            setConnectionMethod(CONNECTION_DEFAULT)
+            setPaymentMethod(PAYMENT_DEFAULT)
+            setAddress(ADDRESS_DEFAULT)
+            setDelivery(DELIVERY_DEFAULT)
+            setDeliveryMethod(null)
+        }
+
     }
 
     const handleOnSubmit = () => {
@@ -140,7 +149,7 @@ const CheckoutForm = () => {
             orderId: orderIdGenerator(),
             paymentMethod: paymentMethod.text,
             connectionMethod: connectionMethod.text,
-            deliveryPrice,
+            deliveryPrice: deliveryMethod !== 1 ? deliveryPrice : 0,
         }
 
         setOrder(orderToSend)
