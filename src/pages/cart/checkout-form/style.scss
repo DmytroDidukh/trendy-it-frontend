@@ -28,11 +28,19 @@
 
 .checkout-selection-dropdown {
   position: relative;
+  margin-bottom: 1rem !important;
 
   .search.selection.dropdown {
     height: fit-content;
 
     .divider.text {
+      line-height: 18px !important;
+    }
+  }
+
+  .visible.menu {
+    min-height: 300px !important;
+    .text {
       line-height: 18px !important;
     }
   }
