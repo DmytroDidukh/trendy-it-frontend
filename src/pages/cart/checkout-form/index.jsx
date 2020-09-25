@@ -369,6 +369,7 @@ const CheckoutForm = () => {
                             POST_DELIVERY_SELECT_DATA.map((data, i) => (
                                 <Form.Field
                                     key={i}
+                                    className={'checkout-selection-dropdown'}
                                     control={Select}
                                     options={i === 0 ? citiesOptions : warehousesOptions}
                                     label={{children: data.label.children, htmlFor: data.label.htmlFor}}
@@ -398,6 +399,7 @@ const CheckoutForm = () => {
                             CURRIER_DELIVERY_SELECT_DATA.map((data, i) => (
                                 <Form.Field
                                     key={i}
+                                    className={'checkout-selection-dropdown'}
                                     control={Select}
                                     options={i === 0 ? citiesOptions : streetsOptions}
                                     label={{children: data.label.children, htmlFor: data.label.htmlFor}}

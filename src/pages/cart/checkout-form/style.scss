@@ -31,6 +31,16 @@
   }
 }
 
+.checkout-selection-dropdown {
+  .search.selection.dropdown {
+    height: fit-content;
+    .divider.text {
+      line-height: 18px !important;
+    }
+  }
+
+}
+
 .modal {
   .order-header {
     text-align: center;
