@@ -1,6 +1,6 @@
 import React, {useMemo} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Form, Select} from "semantic-ui-react";
+import {Form, Select, Loader} from "semantic-ui-react";
 
 import {
     CURRIER_DELIVERY_INPUTS_DATA,
@@ -23,7 +23,7 @@ const Delivery = ({
                       error
                   }) => {
 
-    const {cities, warehouses, streets, deliveryPrice} = useSelector(({Novaposhta}) => ({
+    const {cities, warehouses, streets, deliveryPrice, loading} = useSelector(({Novaposhta}) => ({
         cities: Novaposhta.cities,
         warehouses: Novaposhta.warehouses,
         streets: Novaposhta.streets,
@@ -127,25 +127,28 @@ const Delivery = ({
                     <>
                         {
                             POST_DELIVERY_SELECT_DATA.map((data, i) => (
-                                <Form.Field
-                                    key={i}
-                                    className={'checkout-selection-dropdown'}
-                                    control={Select}
-                                    options={i === 0 ? citiesOptions : warehousesOptions}
-                                    label={{children: data.label.children, htmlFor: data.label.htmlFor}}
-                                    placeholder={data.placeholder}
-                                    search
-                                    searchInput={{id: data.searchInput, onChange: onTypeValueToDeliveryInput}}
-                                    error={error && !delivery[data.name].isValid ? {
-                                        content: data.error,
-                                        pointing: 'below'
-                                    } : null}
-                                    onChange={handleChange}
-                                    noResultsMessage={data.noResultsMessage}
-                                    name={data.name}
-                                    id='post'
-                                    disabled={!delivery.city.value && !!i}
-                                />
+                                <div key={i}
+                                     className={'checkout-selection-dropdown'}
+                                >
+                                    <Form.Field
+                                        control={Select}
+                                        options={i === 0 ? citiesOptions : warehousesOptions}
+                                        label={{children: data.label.children, htmlFor: data.label.htmlFor}}
+                                        placeholder={data.placeholder}
+                                        search
+                                        searchInput={{id: data.searchInput, onChange: onTypeValueToDeliveryInput}}
+                                        error={error && !delivery[data.name].isValid ? {
+                                            content: data.error,
+                                            pointing: 'below'
+                                        } : null}
+                                        onChange={handleChange}
+                                        noResultsMessage={data.noResultsMessage}
+                                        name={data.name}
+                                        id='post'
+                                        disabled={!delivery.city.value && !!i}
+                                    />
+                                    {!!i && loading && <Loader className='dropdown-loader' active inline/>}
+                                </div>
                             ))
                         }
                     </>
@@ -157,25 +160,28 @@ const Delivery = ({
                     <>
                         {
                             CURRIER_DELIVERY_SELECT_DATA.map((data, i) => (
-                                <Form.Field
-                                    key={i}
-                                    className={'checkout-selection-dropdown'}
-                                    control={Select}
-                                    options={i === 0 ? citiesOptions : streetsOptions}
-                                    label={{children: data.label.children, htmlFor: data.label.htmlFor}}
-                                    placeholder={data.placeholder}
-                                    search
-                                    searchInput={{id: data.searchInput, onChange: onTypeValueToDeliveryInput}}
-                                    error={error && !address[data.name].isValid ? {
-                                        content: data.error,
-                                        pointing: 'below'
-                                    } : null}
-                                    onChange={handleChange}
-                                    noResultsMessage={data.noResultsMessage}
-                                    name={data.name}
-                                    id='currier'
-                                    disabled={!address.city.value && !!i}
-                                />
+                                <div key={i}
+                                     className={'checkout-selection-dropdown'}
+                                >
+                                    <Form.Field
+                                        control={Select}
+                                        options={i === 0 ? citiesOptions : streetsOptions}
+                                        label={{children: data.label.children, htmlFor: data.label.htmlFor}}
+                                        placeholder={data.placeholder}
+                                        search
+                                        searchInput={{id: data.searchInput, onChange: onTypeValueToDeliveryInput}}
+                                        error={error && !address[data.name].isValid ? {
+                                            content: data.error,
+                                            pointing: 'below'
+                                        } : null}
+                                        onChange={handleChange}
+                                        noResultsMessage={data.noResultsMessage}
+                                        name={data.name}
+                                        id='currier'
+                                        disabled={!address.city.value && !!i}
+                                    />
+                                    {!!i && loading && <Loader className='dropdown-loader' active inline/>}
+                                </div>
                             ))
                         }
 

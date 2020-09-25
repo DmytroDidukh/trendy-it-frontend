@@ -27,14 +27,29 @@
 }
 
 .checkout-selection-dropdown {
+  position: relative;
+
   .search.selection.dropdown {
     height: fit-content;
+
     .divider.text {
       line-height: 18px !important;
     }
   }
 
+  .dropdown-loader {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    left: initial !important;
+
+    &:after, &:before {
+      height: 1.2rem !important;
+      width: 1.2rem !important;
+    }
+  }
 }
+
 
 .modal {
   .order-header {

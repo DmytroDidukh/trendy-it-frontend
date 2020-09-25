@@ -24,12 +24,9 @@ import {
 
 export function* handleCities({ payload }) {
   try {
-    yield put(setLoading(true));
 
     const cities = yield call(getNovaPoshtaCities, payload);
     yield put(setNovaPoshtaCities(cities.data.getNovaPoshtaCities));
-
-    yield put(setLoading(false));
   } catch (e) {
     console.log(e)
   }
@@ -62,13 +59,11 @@ export function* handleStreets({ payload }) {
 
 export function* handleDeliveryPrice({ payload }) {
   try {
-    yield put(setLoading(true));
 
     const deliveryPrice = yield call(getNovaPoshtaPrices, payload);
     const actualPrice = deliveryPrice.data.getNovaPoshtaPrices[0]
     yield put(setNovaPoshtaDeliveryPrice(actualPrice.cost + actualPrice.costRedelivery))
 
-    yield put(setLoading(false));
   } catch (e) {
     console.log(e)
   }
