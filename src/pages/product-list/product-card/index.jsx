@@ -30,11 +30,11 @@ const ProductCard = ({product}) => {
             </Card.Content>
             <Card.Content extra>
                 <div className="product-card__price">
-                    Ціна: {product.sale && <strike>{product.oldPrice} </strike>}
-                    <span> {product.price}</span> UAH
+                    {product.sale && <strike>{product.oldPrice} </strike>}
+                    <span> {product.price} </span> UAH
                     {product.sale && <Label color='red'>-{salePercentage(product)} %</Label>}
+                    {!product.available && <div className='not-available'>Немає в наявності</div>}
                 </div>
-                {!product.available && <div className='not-available'>Немає в наявності</div>}
             </Card.Content>
         </Link>
     )
