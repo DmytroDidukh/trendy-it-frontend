@@ -19,7 +19,6 @@ function* handleCartLoad() {
 
 function* handleAddCartItem({ payload }) {
   const cart = getFromLocalStorage('cart');
-  console.log(cart)
   const possibleItemInCart = cart.find(
     (item) =>
       item.id === payload.id && item.selectedColor === payload.selectedColor
