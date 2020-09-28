@@ -17,7 +17,7 @@ const HotItems = () => {
         <div key={item.id}
              className='hot__item'>
             <div style={{
-                background: `url(${item.images.product[0].link}) no-repeat center center`,
+                background: `url(${item.images.product[0].url}) no-repeat center center`,
                 backgroundSize: 'cover'
             }}
                  className='hot__item-image'/>

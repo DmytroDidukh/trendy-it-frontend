@@ -1,17 +1,22 @@
-import { gql } from 'apollo-boost'
+import {gql} from 'apollo-boost'
 
 import client from "./index";
 
-export const getBannersByUsability = async () =>
-    await client.query({
+export const getBannersByUsability = async () => {
+    return await client.query({
         query: gql`
             {
                 getBannerByUsability {
                     id
                     title
-                    image
-                    description            
+                    image {
+                        url
+                    }
+                    description
+                    toSlider
                 }
             }
         `
-});
+    });
+}
+

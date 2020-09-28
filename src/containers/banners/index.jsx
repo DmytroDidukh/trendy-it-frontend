@@ -13,7 +13,7 @@ const Banners = () => {
             {
                 banners.map(banner => (
                     <div style={{
-                        background: `url(${banner.image}) no-repeat center center`,
+                        background: `url(${banner.image.url}) no-repeat center center`,
                         backgroundSize: 'cover'
                     }}
                          key={banner.id}

@@ -5,7 +5,7 @@ const ImageViewer = ({images}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [currImg, setCurrImg] = useState(0);
 
-    const imagesSet = images.map( img => ({src: img.link}))
+    const imagesSet = images.map( img => ({src: img.url}))
 
     const openImage = (idx) => {
         setIsOpen(true);
@@ -13,13 +13,13 @@ const ImageViewer = ({images}) => {
     };
 
     const primaryImage = (
-        <div style={{background: `url(${images[0].link}) no-repeat center center`, backgroundSize: "cover"}} onClick={() => openImage(0)}/>
+        <div style={{background: `url(${images[0].url}) no-repeat center center`, backgroundSize: "cover"}} onClick={() => openImage(0)}/>
     )
 
     const sideImages = (
         images.slice(1).map((img, idx) => (
             <div
-                style={{background: `url(${img.link}) no-repeat center center`, backgroundSize: "cover"}}
+                style={{background: `url(${img.url}) no-repeat center center`, backgroundSize: "cover"}}
                 key={idx}
                 onClick={() => openImage(idx + 1)}
             />

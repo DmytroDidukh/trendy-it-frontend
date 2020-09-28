@@ -22,7 +22,7 @@ const ProductCard = ({product}) => {
                 {product.hot && labelGenerator(LABELS_DATA.hot)}
                 {product.sale && labelGenerator(LABELS_DATA.sale)}
             </div>
-            <Image src={product.images.product[0].link} wrapped ui={false}/>
+            <Image src={product.images.product[0].url} wrapped ui={false}/>
             <Card.Content>
                 <div className="product-card__name product-main-title">
                     {product.name}
