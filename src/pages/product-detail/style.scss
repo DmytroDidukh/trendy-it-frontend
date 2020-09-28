@@ -11,7 +11,7 @@
   box-shadow: 13px 13px 26px #e3e3e3,
   -13px -13px 26px #ffffff;
   padding: 50px;
-  min-height: calc(100vh - (60px + 89px + 200px));
+  min-height: calc(80vh - (60px + 89px + 200px));
   position: relative;
 
   &__labels {
@@ -26,8 +26,8 @@
     &__images {
       height: 600px;
       display: grid;
-      grid-template-columns: repeat(4, 85px);
-      grid-template-rows: 1fr 1fr 1fr 1fr 110px;
+      grid-template-columns: repeat(5, 104px);
+      grid-template-rows: repeat(4, 1fr);
       grid-gap: 10px;
       margin-top: 10px;
 
@@ -40,7 +40,7 @@
       }
 
       div:first-child {
-        grid-area: 1/1/5/5;
+        grid-area: 1/2/6/6;
       }
 
       div:not(:first-child) {
@@ -173,6 +173,10 @@
         grid-template-columns: repeat(4, 80px);
         grid-template-rows: 1fr 1fr 1fr 1fr 100px;
         height: 530px;
+
+        div:first-child {
+          grid-area: 1/1/5/5;
+        }
       }
 
       &__description {
