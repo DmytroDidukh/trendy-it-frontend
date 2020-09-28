@@ -16,7 +16,7 @@ const Slider = () => {
                 sliderProducts.reverse().map(product => (
                     <Carousel.Item key={product.id}>
                         <div style={{
-                            background: `url(${product.images.slider}) no-repeat center center`,
+                            background: `url(${product.images.slider.url}) no-repeat center center`,
                             backgroundSize: 'cover'
                         }}
                              className="slider__image"/>

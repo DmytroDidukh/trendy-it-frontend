@@ -108,6 +108,13 @@ export const PAYMENT_OPTIONS = [
     {key: 2, text: 'на банківську картку', value: 2},
 ]
 
+export const CONNECTION_OPTIONS = [
+    {key: 1, text: 'телефон', value: 1},
+    {key: 2, text: 'ел. пошта', value: 2},
+    {key: 3, text: 'telegram', value: 3},
+    {key: 4, text: 'viber', value: 4},
+]
+
 export const CUSTOMER_DEFAULT = {
     name: {value: null, isValid: null},
     surname: {value: null, isValid: null},
@@ -122,6 +129,11 @@ export const DELIVERY_DEFAULT = {
 }
 
 export const PAYMENT_DEFAULT = {
+    value: null,
+    text: '',
+}
+
+export const CONNECTION_DEFAULT = {
     value: null,
     text: '',
 }

@@ -15,21 +15,48 @@
   }
 }
 
-.checkout-dropdown {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 20px;
-  width: 250px;
-  position: relative;
+.checkout-error {
+  color: #9f3a38;
+  font-size: .8em;
+}
 
-  .checkout-error {
-    color: crimson;
-    font-size: .8em;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+.checkout-dropdown {
+  display: block !important;
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.checkout-selection-dropdown {
+  position: relative;
+  margin-bottom: 1rem !important;
+
+  .search.selection.dropdown {
+    height: fit-content;
+
+    .divider.text {
+      line-height: 18px !important;
+    }
+  }
+
+  .visible.menu {
+    .text {
+      line-height: 18px !important;
+    }
+  }
+
+  .dropdown-loader {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    left: initial !important;
+
+    &:after, &:before {
+      height: 1.2rem !important;
+      width: 1.2rem !important;
+    }
   }
 }
+
 
 .modal {
   .order-header {

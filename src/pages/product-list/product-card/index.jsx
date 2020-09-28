@@ -22,7 +22,7 @@ const ProductCard = ({product}) => {
                 {product.hot && labelGenerator(LABELS_DATA.hot)}
                 {product.sale && labelGenerator(LABELS_DATA.sale)}
             </div>
-            <Image src={product.images.product[0].link} wrapped ui={false}/>
+            <Image src={product.images.product[0].url} wrapped ui={false}/>
             <Card.Content>
                 <div className="product-card__name product-main-title">
                     {product.name}
@@ -30,11 +30,11 @@ const ProductCard = ({product}) => {
             </Card.Content>
             <Card.Content extra>
                 <div className="product-card__price">
-                    Ціна: {product.sale && <strike>{product.oldPrice} </strike>}
-                    <span> {product.price}</span> UAH
+                    {product.sale && <strike>{product.oldPrice} </strike>}
+                    <span> {product.price} </span> UAH
                     {product.sale && <Label color='red'>-{salePercentage(product)} %</Label>}
+                    {!product.available && <div className='not-available'>Немає в наявності</div>}
                 </div>
-                {!product.available && <div className='not-available'>Немає в наявності</div>}
             </Card.Content>
         </Link>
     )
