@@ -75,7 +75,7 @@
 
       @media screen and (max-width: 550px) {
         margin: 2px 0 !important;
-        font-size: 1rem;
+        font-size: 1.1rem !important;
       }
     }
 
@@ -95,6 +95,10 @@
       min-width: 1.7em;
       padding: 0.5em !important;
       font-size: 0.7em;
+
+      @media screen and (max-width: 550px) {
+        font-size: .5rem !important;
+      }
     }
   }
 }
@@ -124,7 +128,7 @@
     &__catalog {
       margin-left: 5px;
       h3 {
-        font-size: .8rem;
+        font-size: .9rem;
       }
     }
   }
