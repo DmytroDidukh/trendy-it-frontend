@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Message } from 'semantic-ui-react';
 
-import CartItem from "./cart-item";
-import CheckoutForm from './checkout-form';
+import CartItem from './cart-item';
+import CheckoutForm from "./checkout-form";
 import './style.scss';
 
 const Cart = () => {

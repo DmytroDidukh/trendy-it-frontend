@@ -22,18 +22,16 @@ const ImageViewer = ({ images }) => {
     />
   );
 
-  const sideImages = images
-    .slice(1)
-    .map((img, idx) => (
-      <div
-        style={{
-          background: `url(${img.url}) no-repeat center center`,
-          backgroundSize: 'cover'
-        }}
-        key={idx}
-        onClick={() => openImage(idx + 1)}
-      />
-    ));
+  const sideImages = images.slice(1).map((img, idx) => (
+    <div
+      style={{
+        background: `url(${img.url}) no-repeat center center`,
+        backgroundSize: 'cover'
+      }}
+      key={idx}
+      onClick={() => openImage(idx + 1)}
+    />
+  ));
 
   return (
     <>
