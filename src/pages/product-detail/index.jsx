@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Icon, Popup, Label } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
+import parse from 'html-react-parser';
 
 import {
   addItemToWishlist,
@@ -74,6 +75,9 @@ const ProductDetailPage = ({ productId }) => {
     </Label>
   );
 
+  const productDescription =
+    product && product.description && parse(product.description);
+
   return (
     <div className='product-detail'>
       {product ? (
@@ -95,7 +99,9 @@ const ProductDetailPage = ({ productId }) => {
                   <Label color='red'>-{salePercentage(product)} %</Label>
                 )}
               </div>
-              <pre dangerouslySetInnerHTML={{ __html: product.description }} />
+              <div className='product-detail__item__description-about'>
+                {productDescription}
+              </div>
               <Colors
                 colors={product.colors}
                 selectedColor={selectedColor}

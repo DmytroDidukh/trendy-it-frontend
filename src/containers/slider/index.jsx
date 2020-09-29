@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 
 const Slider = () => {
   const sliderProducts = useSelector(({ Products }) =>
-    Products.list.filter(
-      (item) => item.available && item.toSlider && item.newItem
-    )
+    Products.list.filter((item) => item.available && item.toSlider)
   );
+
+  console.log(sliderProducts);
 
   return (
     <Carousel className='slider'>

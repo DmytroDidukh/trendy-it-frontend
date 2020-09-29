@@ -54,10 +54,8 @@
         text-decoration: underline;
       }
 
-      pre {
-        font-family: 'Roboto-Slab-Regular', -apple-system, sans-serif;
-        white-space: pre-line;
-        margin: 20px 0 20px;
+      &-about {
+        margin: 25px 0;
       }
 
       .to-order {
