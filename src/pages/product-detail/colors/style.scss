@@ -5,7 +5,7 @@
     width: 30px;
     height: 30px;
     margin-right: 2px;
-    transition: all .1s ease;
+    transition: all 0.1s ease;
     border-radius: 50px;
     display: inline-flex;
     cursor: pointer;
@@ -31,7 +31,7 @@
 
   &__error {
     color: crimson;
-    font-size: .8em;
+    font-size: 0.8em;
     position: absolute;
     bottom: -20px;
   }

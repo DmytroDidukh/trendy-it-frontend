@@ -39,7 +39,7 @@
   }
 
   .pagination {
-    margin: 50px 0 0 0!important;
+    margin: 50px 0 0 0 !important;
     width: 100%;
     justify-content: center;
   }
@@ -66,9 +66,9 @@
 
 @media screen and (max-width: 450px) {
   .ui.selection.dropdown {
-    min-height: .7rem !important;
-    line-height: .6rem !important;
-    padding: 10px 25px 10px 10px  !important;
+    min-height: 0.7rem !important;
+    line-height: 0.6rem !important;
+    padding: 10px 25px 10px 10px !important;
     .dropdown.icon {
       padding-top: 8px !important;
     }

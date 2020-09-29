@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import './style.scss'
+import './style.scss';
 
 const PaymentAndShipping = () => {
-    return (
-        <div className='payment-and-shipping'>
-            <p>Ця сторінка в процесі розробки...</p>
-        </div>
-    )
-}
+  return (
+    <div className='payment-and-shipping'>
+      <p>Ця сторінка в процесі розробки...</p>
+    </div>
+  );
+};
 
-export default PaymentAndShipping
+export default PaymentAndShipping;

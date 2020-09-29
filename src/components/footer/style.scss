@@ -1,29 +1,29 @@
 .footer-container {
-  padding       : 30px 30px 20px;
+  padding: 30px 30px 20px;
   background: #ececec;
   box-shadow: 0px -8px 26px #d4d4d4, 0px 17px 26px #909090;
-  border-bottom    : 1px solid darken(#ececec, 2%);
-  display       : flex;
+  border-bottom: 1px solid darken(#ececec, 2%);
+  display: flex;
   flex-direction: column;
 
   @media screen and (max-width: 450px) {
-    padding       : 5px;
+    padding: 5px;
   }
 }
 
 .footer-list {
-  display              : inline-grid;
+  display: inline-grid;
   grid-template-columns: repeat(5, 1fr);
-  align-items          : center;
+  align-items: center;
 
   @media screen and (max-width: 450px) {
-    display              : grid;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows   : 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
     &__item {
       margin: 5px 0;
-      font-size: .8em;
+      font-size: 0.8em;
     }
   }
 
@@ -32,12 +32,12 @@
     text-align: center;
 
     &-content {
-      display    : block;
-      color      : black !important;
-      font-size  : 1.2em;
+      display: block;
+      color: black !important;
+      font-size: 1.2em;
       font-weight: 400;
-      transition : all 0.4s;
-      cursor     : pointer;
+      transition: all 0.4s;
+      cursor: pointer;
 
       @media screen and (max-width: 450px) {
         font-size: 1em;
@@ -49,11 +49,9 @@
     }
 
     &-social {
-      display        : flex;
+      display: flex;
       justify-content: center;
     }
-
-
   }
 
   &__item:nth-child(3) {
@@ -68,40 +66,40 @@
 }
 
 .footer-company {
-  width     : 100%;
-  margin    : 10px 0 0 0;
+  width: 100%;
+  margin: 10px 0 0 0;
   text-align: center;
-  font-size : .8em;
-  color     : #6b6b6b;
+  font-size: 0.8em;
+  color: #6b6b6b;
 
   @media screen and (max-width: 450px) {
-    font-size: .45em;
+    font-size: 0.45em;
     margin-top: 3px;
   }
 }
 
 .telegram {
-  color      : black !important;
-  display    : block !important;
-  cursor     : pointer;
+  color: black !important;
+  display: block !important;
+  cursor: pointer;
   margin-left: 10px;
-  transition : all 0.2s;
+  transition: all 0.2s;
 }
 
 .viber {
-  color      : black !important;
-  display    : block !important;
-  cursor     : pointer;
+  color: black !important;
+  display: block !important;
+  cursor: pointer;
   margin-left: 10px;
-  transition : all 0.2s;
+  transition: all 0.2s;
 }
 
 .instagram {
-  color      : black !important;
-  display    : block !important;
-  cursor     : pointer;
+  color: black !important;
+  display: block !important;
+  cursor: pointer;
   margin-left: 10px;
-  transition : all 0.2s;
+  transition: all 0.2s;
 }
 
 .telegram:hover {

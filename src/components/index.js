@@ -1,4 +1,4 @@
-export { default as App } from './app'
+export { default as App } from './app';
 export { default as Footer } from './footer';
 export { default as Spinner } from './spinner';
 export { default as ModalBasic } from './modal';

@@ -1,1 +1,2 @@
-export default (product) =>  Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+export default (product) =>
+  Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);

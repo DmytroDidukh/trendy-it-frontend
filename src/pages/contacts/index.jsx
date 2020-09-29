@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import './style.scss'
+import './style.scss';
 
 const Contacts = () => {
-    return (
-        <div className='contacts'>
-            <p>Ця сторінка в процесі розробки...</p>
-        </div>
-    )
-}
+  return (
+    <div className='contacts'>
+      <p>Ця сторінка в процесі розробки...</p>
+    </div>
+  );
+};
 
-export default Contacts
+export default Contacts;
