@@ -8,8 +8,6 @@
   margin: 100px auto;
   max-width: 1280px;
   background: #ffffff;
-  box-shadow: 13px 13px 26px #e3e3e3,
-  -13px -13px 26px #ffffff;
   padding: 50px;
   min-height: calc(80vh - (60px + 89px + 200px));
   position: relative;
@@ -166,6 +164,7 @@
       position: relative;
       right: auto;
       top: auto;
+      margin-top: 3px;
     }
 
     &__item {

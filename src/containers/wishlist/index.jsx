@@ -34,7 +34,7 @@ const Wishlist = () => {
                         (wishlistItems.map((item) => (
                                 <Item key={item.id}>
                                     <a href={`/catalog/${item.id}`}>
-                                        <Item.Image size='tiny' src={item.images.product[0].link}/>
+                                        <Item.Image size='tiny' src={item.images.product[0].url}/>
                                     </a>
                                     <Item.Content>
                                         <Item.Header as='a' href={`/catalog/${item.id}`}>{item.name}</Item.Header>

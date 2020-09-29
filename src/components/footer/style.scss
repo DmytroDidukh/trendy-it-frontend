@@ -1,8 +1,8 @@
 .footer-container {
   padding       : 30px 30px 20px;
-  background    : #ffffff;
-  box-shadow    : -13px -13px 26px #e3e3e3, 13px 13px 26px #ffffff;
-  border-top    : 1px solid #f7f7f7;
+  background: #ececec;
+  box-shadow: 0px -8px 26px #d4d4d4, 0px 17px 26px #909090;
+  border-bottom    : 1px solid darken(#ececec, 2%);
   display       : flex;
   flex-direction: column;
 
@@ -19,7 +19,7 @@
   @media screen and (max-width: 450px) {
     display              : grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows   : fit-content, 1fr;
+    grid-template-rows   : 1fr 1fr;
 
     &__item {
       margin: 5px 0;
@@ -69,7 +69,7 @@
 
 .footer-company {
   width     : 100%;
-  margin    : 20px 0 0 0;
+  margin    : 10px 0 0 0;
   text-align: center;
   font-size : .8em;
   color     : #6b6b6b;
