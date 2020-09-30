@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
   );
 
   return (
-    <Link className='ui card product-card' to={`/catalog/${product.id}`}>
+    <Link className='ui card product-card' to={`/product/${product.id}`}>
       <div className={'product-card__label-container'}>
         {product.newItem && labelGenerator(LABELS_DATA.newItem)}
         {product.hot && labelGenerator(LABELS_DATA.hot)}

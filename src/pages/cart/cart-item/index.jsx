@@ -29,12 +29,12 @@ const CartItem = ({ product }) => {
     <div className='cart-item'>
       <ModalBasic msg='Кошика' setAction={onModalAction} item={product} />
       <div className='cart-item__image'>
-        <Link to={`/catalog/${product.id}`}>
+        <Link to={`/product/${product.id}`}>
           <img src={product.images.product[0].url} alt={product.name} />
         </Link>
       </div>
       <div className='cart-item__details'>
-        <Link to={`/catalog/${product.id}`}>
+        <Link to={`/product/${product.id}`}>
           <h4>{product.name}</h4>
         </Link>
         <div className='cart-item__price'>

@@ -8,7 +8,7 @@ import { productFilterObject, productSortObject } from '../../constants';
 
 import './style.scss';
 
-const ProductList = () => {
+const ProductList = ({ page }) => {
   const products = useSelector(({ Products }) => Products.list);
 
   const [currentPage, setCurrentPage] = useState(0);

@@ -25,7 +25,7 @@ const Slider = () => {
           />
           <Carousel.Caption>
             <h2 className='product-main-title'>{product.name}</h2>
-            <Link to={`/catalog/${product.id}`}>
+            <Link to={`/product/${product.id}`}>
               <Button variant='dark'>КУПИТИ {product.price} UAH</Button>
             </Link>
           </Carousel.Caption>

@@ -7,7 +7,7 @@ const Breadcrumb = ({ itemName }) => {
     <MaterialBreadcrumb className='breadcrumb'>
       <Link to={'/'}>Головна</Link>
       <MaterialBreadcrumb.Divider />
-      <Link to='/catalog'>Каталог</Link>
+      <Link to={`/catalog/page/${'1'}`}>Каталог</Link>
       <MaterialBreadcrumb.Divider />
       <MaterialBreadcrumb.Section active>{itemName}</MaterialBreadcrumb.Section>
     </MaterialBreadcrumb>

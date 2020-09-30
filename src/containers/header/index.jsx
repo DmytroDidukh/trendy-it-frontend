@@ -14,7 +14,7 @@ const Header = () => {
         </Link>
       </div>
       <div className='main-header__catalog'>
-        <Link to='/catalog'>
+        <Link to={`/catalog/page/${'1'}`}>
           <h3>Каталог</h3>
         </Link>
       </div>
