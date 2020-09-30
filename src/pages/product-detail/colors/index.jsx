@@ -10,10 +10,6 @@ const Colors = ({
   isColorErrorVisible,
   setIsColorErrorVisible
 }) => {
-  const colorsArray = Object.keys(colors).filter(
-    (item) => item !== '__typename'
-  );
-
   const handleClick = (value) => {
     setSelectedColor(value);
     setIsColorErrorVisible(false);
@@ -21,19 +17,16 @@ const Colors = ({
 
   return (
     <div className={'colors'}>
-      {colorsArray.map(
-        (value) =>
-          colors[value] && (
-            <span
-              onClick={() => handleClick(value)}
-              style={{ backgroundColor: COLORS_DATA[value].hex }}
-              key={value}
-              className={`colors__item ${
-                selectedColor === value ? 'colors__selected' : ''
-              }`}
-            />
-          )
-      )}
+      {colors.map((value) => (
+        <span
+          onClick={() => handleClick(value)}
+          style={{ backgroundColor: COLORS_DATA[value].hex }}
+          key={value}
+          className={`colors__item ${
+            selectedColor === value ? 'colors__selected' : ''
+          }`}
+        />
+      ))}
       {isColorErrorVisible && (
         <div className='colors__error'>Виберіть колір</div>
       )}

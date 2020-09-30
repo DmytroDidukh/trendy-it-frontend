@@ -19,19 +19,7 @@ export const getProducts = async () => {
               publicId
             }
           }
-          colors {
-            black
-            silver
-            white
-            yellow
-            orange
-            red
-            blue
-            green
-            brown
-            purple
-            pink
-          }
+          colors
           price
           oldPrice
           description
@@ -67,19 +55,7 @@ export const getProductById = async (id) => {
               url
             }
           }
-          colors {
-            black
-            silver
-            white
-            yellow
-            orange
-            red
-            blue
-            green
-            brown
-            purple
-            pink
-          }
+          colors
           price
           oldPrice
           description
