@@ -32,8 +32,6 @@ const App = () => {
   useEffect(() => {
     dispatch(getWishlist());
     dispatch(getCart());
-    dispatch(getProducts());
-    dispatch(getBanners());
   }, [dispatch]);
 
   useEffect(() => {

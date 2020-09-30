@@ -1,9 +1,19 @@
-import { SET_PRODUCT, SET_PRODUCTS, SET_LOADING } from './products.types';
+import {
+  SET_PRODUCT,
+  SET_PRODUCTS,
+  SET_PRODUCTS_PAGINATION,
+  SET_SEARCHED_PRODUCTS,
+  SET_LOADING,
+  SET_SEARCH_LOADING
+} from './products.types';
 
 const initialState = {
   list: [],
+  searchedList: [],
+  pagination: null,
   product: {},
-  loading: false
+  loading: false,
+  searchLoading: true
 };
 
 const productsReducer = (state = initialState, { type, payload }) => {
@@ -20,10 +30,28 @@ const productsReducer = (state = initialState, { type, payload }) => {
         list: payload
       };
     }
+    case SET_PRODUCTS_PAGINATION: {
+      return {
+        ...state,
+        pagination: payload
+      };
+    }
+    case SET_SEARCHED_PRODUCTS: {
+      return {
+        ...state,
+        searchedList: payload
+      };
+    }
     case SET_LOADING: {
       return {
         ...state,
         loading: payload
+      };
+    }
+    case SET_SEARCH_LOADING: {
+      return {
+        ...state,
+        searchLoading: payload
       };
     }
     default:

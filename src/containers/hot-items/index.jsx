@@ -11,7 +11,7 @@ import './style.scss';
 
 const HotItems = () => {
   const products = useSelector(({ Products }) =>
-    Products.list.filter((item) => item.hot && item.available)
+    Products.list.filter((item) => item.hot)
   ).sort(() => Math.random() - 0.5);
 
   const productList = products.map((item) => (
@@ -34,7 +34,7 @@ const HotItems = () => {
 
   return (
     <div className='hot'>
-      <h2>HOT</h2>
+      <h2>ХІТИ</h2>
       <Carousel
         className='hot__carousel'
         responsive={RESPONSIVE}

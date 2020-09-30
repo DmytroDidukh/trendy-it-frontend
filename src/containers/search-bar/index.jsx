@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Icon, Input } from 'semantic-ui-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Icon, Input, Loader } from 'semantic-ui-react';
 
 import SearchBarListItem from './search-list-bar-item';
-import { toLowerCase } from '../../utils';
 
 import './style.scss';
+import { getSearchedProducts } from '../../redux/products/products.actions';
 
 const SearchBar = () => {
-  const { products } = useSelector(({ Products }) => ({
-    products: Products.list
+  const { products, loading } = useSelector(({ Products }) => ({
+    products: Products.searchedList,
+    loading: Products.searchLoading
   }));
+  const dispatch = useDispatch();
 
-  const [filteredList, setFilteredList] = useState([]);
   const [listVisibility, setListVisibility] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [searchBarVisibility, setSearchBarVisibility] = useState(
@@ -21,22 +22,19 @@ const SearchBar = () => {
 
   const onSearch = (e) => {
     const { value } = e.target;
-    const result = [];
 
     if (!value) {
       setListVisibility(false);
       return;
     }
+
     setSearchValue(value);
     setListVisibility(true);
 
-    const inProducts = products.filter(({ name }) =>
-      toLowerCase(name).includes(toLowerCase(value))
-    );
-
-    result.push(...inProducts);
-    setFilteredList(result);
+    dispatch(getSearchedProducts({ filter: { search: value } }));
   };
+
+  console.log(products);
 
   return (
     <div>
@@ -53,19 +51,25 @@ const SearchBar = () => {
         onClick={() => setSearchBarVisibility(!searchBarVisibility)}
         className='not-wide-search-icon header-icons'
       />
-      <ul className={`search-list ${listVisibility && 'visible'}`}>
-        {filteredList.length && searchValue ? (
-          filteredList.map((item) => (
-            <SearchBarListItem
-              key={item.id}
-              item={item}
-              setListVisibility={setListVisibility}
-            />
-          ))
+      <div className={`search-list ${listVisibility && 'visible'}`}>
+        {!loading ? (
+          <ul>
+            {products.length && searchValue ? (
+              products.map((item) => (
+                <SearchBarListItem
+                  key={item.id}
+                  item={item}
+                  setListVisibility={setListVisibility}
+                />
+              ))
+            ) : (
+              <h6 className='empty-list'>Пошук не дав результатів</h6>
+            )}
+          </ul>
         ) : (
-          <h6 className='empty-list'>Пошук не дав результатів</h6>
+          <Loader className={'search-loader'} />
         )}
-      </ul>
+      </div>
     </div>
   );
 };
