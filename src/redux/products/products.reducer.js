@@ -11,9 +11,9 @@ const initialState = {
   list: [],
   searchedList: [],
   pagination: null,
-  product: {},
+  product: null,
   loading: false,
-  searchLoading: true
+  searchLoading: false
 };
 
 const productsReducer = (state = initialState, { type, payload }) => {

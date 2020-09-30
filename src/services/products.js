@@ -52,7 +52,7 @@ export const getProducts = async ({ filter, sort, page, limit = 0 }) => {
 };
 
 export const getProductById = async (id) => {
-  return await client.query({
+  const response = await client.query({
     variables: {
       id
     },
@@ -85,4 +85,6 @@ export const getProductById = async (id) => {
       }
     `
   });
+
+  return response.data.getProductById;
 };
