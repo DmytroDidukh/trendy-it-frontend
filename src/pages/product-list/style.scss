@@ -6,7 +6,7 @@
   }
 
   &__container {
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - (60px + 108px + 80px));
     max-width: 1580px;
     margin: 0 auto 50px;
   }
@@ -58,13 +58,16 @@
 
   .small-wide-filter-btn {
     i {
-      min-width: auto;
-      margin-left: 10px !important;
+      margin: 0 !important;
     }
 
     @media screen and (min-width: 769px) {
       display: none !important;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
   }
 }
 

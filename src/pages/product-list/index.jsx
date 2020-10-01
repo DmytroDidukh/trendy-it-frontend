@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Card, Message, Icon } from 'semantic-ui-react';
 
 import ProductCard from './product-card';
 import { DropDown, Spinner, Pagination } from '../../components';
-import { productFilterObject, productSortObject } from '../../constants';
+import { productFilterObject, SORT_OPTIONS } from '../../constants';
 import { getProducts } from '../../redux/products/products.actions';
 import Filter from '../../containers/filter';
 
@@ -20,24 +20,37 @@ const ProductList = ({ page }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [productFilter, setProductFilter] = useState('all');
   const [productSort, setProductSort] = useState('new');
-  const [query, setQuery] = useState({
-    sort: { createdAt: -1 },
-    page: +page,
-    limit: 12
-  });
+
+  const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState('-createdAt');
+  // const [query, setQuery] = useState({
+  //   filter,
+  //   sort,
+  //   page: +page,
+  //   limit: 12
+  // });
 
   const [filterVisibility, setFilterVisibility] = useState(false);
 
+  const query = useMemo(
+    () => ({
+      filter,
+      sort,
+      page: +page,
+      limit: 12
+    }),
+    [sort, filter, page]
+  );
+  //console.log(query)
+
   useEffect(() => {
+    console.log(query);
     dispatch(getProducts(query));
     window.scroll(0, 0);
-  }, [query, dispatch]);
+  }, [query, dispatch, sort, filter]);
 
-  const handleDropDown = (e, options) => {
-    const id = e.target.closest('.dropdown').id;
-    id === 'Кольори'
-      ? setProductFilter(options.value)
-      : setProductSort(options.value);
+  const handleSortChange = (e, { value }) => {
+    setSort(value);
   };
 
   const productsFilter = () => {
@@ -55,7 +68,7 @@ const ProductList = ({ page }) => {
       .sort((a, b) => productSort === 'priceHigh' && b.price - a.price)
       .sort((a, b) => productSort === 'hot' && b.hot - a.hot)
       .sort((a, b) => productSort === 'sale' && b.sale - a.sale)
-      .map((product) => <ProductCard key={product.id} product={product} />);
+      .map((product) => <div>g</div>);
   };
 
   const setProductsToShow = (lengthIndex) => {
@@ -86,36 +99,36 @@ const ProductList = ({ page }) => {
     <div className='product-list__container'>
       <div className='product-list__title'>КАТАЛОГ</div>
 
-      <div className='product-list__dropdown-section__flex'>
-        <div className='product-list__dropdown-section'>
-          <Button
-            className={'small-wide-filter-btn'}
-            onClick={() => setFilterVisibility(!filterVisibility)}
-            secondary
-          >
-            Фільтри
-            <Icon name='filter' />
-          </Button>
-          <DropDown
-            id={productSortObject.sortName}
-            name={productSort}
-            options={productSortObject.sortOptions}
-            handleDropDown={handleDropDown}
-          />
-        </div>
+      <div className='product-list__dropdown-section'>
+        <Button
+          className={'small-wide-filter-btn'}
+          onClick={() => setFilterVisibility(!filterVisibility)}
+          secondary
+        >
+          <Icon name='filter' />
+        </Button>
+        <DropDown
+          value={sort}
+          options={SORT_OPTIONS.options}
+          handleDropDown={handleSortChange}
+        />
       </div>
 
-      {products.length ? (
+      {!loading ? (
         <div className='product-cards__container'>
           <Filter
             loading={loading}
+            filter={filter}
+            setFilter={setFilter}
             filterVisibility={filterVisibility}
             setFilterVisibility={setFilterVisibility}
           />
-          {!loading && (
+          {products.length && !loading ? (
             <div className='product-cards__list'>
               <Card.Group itemsPerRow={setListResponsive()}>
-                {setProductsToShow(currentPage)}
+                {products.map((item) => (
+                  <ProductCard key={item.id} product={item} />
+                ))}
               </Card.Group>
               {!!setProductsToShow(currentPage).length && (
                 <Pagination
@@ -125,6 +138,12 @@ const ProductList = ({ page }) => {
                 />
               )}
             </div>
+          ) : (
+            <Message className='empty-product-list'>
+              <Message.Header>
+                За вибраними критеріями нічого не знайдено
+              </Message.Header>
+            </Message>
           )}
         </div>
       ) : (

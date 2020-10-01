@@ -11,7 +11,7 @@ export const getProducts = async ({ filter, sort, page, limit = 0 }) => {
       limit
     },
     query: gql`
-      query($filter: FilterInput, $sort: SortInput, $page: Int, $limit: Int) {
+      query($filter: FilterInput, $sort: String, $page: Int, $limit: Int) {
         getProducts(filter: $filter, sort: $sort, page: $page, limit: $limit) {
           products {
             id

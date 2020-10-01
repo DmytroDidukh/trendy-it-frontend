@@ -1,15 +1,13 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 
-const DropDown = ({ id, options, handleDropDown, name }) => {
+const DropDown = ({ options, handleDropDown, value }) => {
   return (
     <Dropdown
-      id={id}
       onChange={handleDropDown}
       options={options}
-      placeholder='Виберіть розмір'
       selection
-      value={name}
+      value={value}
     />
   );
 };

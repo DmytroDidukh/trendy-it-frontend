@@ -5,8 +5,49 @@ import { COLORS_DATA } from '../../constants';
 import './style.scss';
 import { Ranger } from '../../components';
 
-const Filter = ({ loading, filterVisibility, setFilterVisibility }) => {
-  const [priceRange, setPriceRange] = useState([100, 2000]);
+const Filter = ({
+  filter,
+  setFilter,
+  loading,
+  filterVisibility,
+  setFilterVisibility
+}) => {
+  const [isFilterTouched, setIsFilterTouched] = useState(false);
+  const [priceRange, setPriceRange] = useState(filter.priceRange || [0, 1000]);
+  const [colors, setColors] = useState(filter.colors || []);
+
+  const onColorSelect = (type) => {
+    const index = colors.findIndex((color) => color === type);
+
+    if (index === -1) {
+      setColors([...colors, type]);
+    } else {
+      const newColors = [...colors];
+      newColors.splice(index, 1);
+      setColors(newColors);
+    }
+    setIsFilterTouched(true);
+  };
+
+  const onPriceRangeChange = (value) => {
+    setPriceRange(value);
+    setIsFilterTouched(true);
+  };
+
+  const onApplyFilter = () => {
+    const filterToApply = {
+      colors: colors,
+      priceRange: priceRange
+    };
+
+    setFilter(filterToApply);
+  };
+
+  const onClearFilter = () => {
+    setColors([]);
+    setPriceRange([0, 1000]);
+    setIsFilterTouched(false);
+  };
 
   return (
     <div
@@ -22,14 +63,21 @@ const Filter = ({ loading, filterVisibility, setFilterVisibility }) => {
         />
       )}
       <div className={'filter-block__control'}>
-        <Button loading={loading} disabled={true} secondary>
+        <Button
+          loading={loading}
+          disabled={!isFilterTouched}
+          secondary
+          onClick={onApplyFilter}
+        >
           Застосувати
         </Button>
-        <Button basic>Очистити</Button>
+        <Button basic onClick={onClearFilter}>
+          Очистити
+        </Button>
       </div>
       <div className={'filter-block__price'}>
         <h4>Ціна:</h4>
-        <Ranger values={priceRange} setValues={setPriceRange} />
+        <Ranger values={priceRange} setValues={onPriceRangeChange} />
       </div>
       <div className={'filter-block__colors'}>
         <h4>Кольори:</h4>
@@ -37,9 +85,12 @@ const Filter = ({ loading, filterVisibility, setFilterVisibility }) => {
           {Object.values(COLORS_DATA).map((color) => (
             <div
               key={color.hex}
-              className={'filter-block__colors-container__color'}
+              className={`filter-block__colors-container__color ${
+                colors.includes(color.type) && 'active-color'
+              }`}
               style={{ backgroundColor: color.hex }}
               data-id={color.type}
+              onClick={() => onColorSelect(color.type)}
             />
           ))}
         </div>
