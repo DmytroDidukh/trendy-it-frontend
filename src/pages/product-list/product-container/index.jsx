@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 
 import ProductCard from './product-card';
 import { Pagination } from '../../../components';
 
-const ProductContainer = ({ page }) => {
-  const { products, loading } = useSelector(({ Products }) => ({
+const ProductContainer = ({ setQuery }) => {
+  const { products, pagination, loading } = useSelector(({ Products }) => ({
     products: Products.list,
+    pagination: Products.pagination,
     loading: Products.loading
   }));
-
-  const [currentPage, setCurrentPage] = useState(page);
 
   const setListResponsive = () => {
     const width = window.innerWidth;
@@ -27,13 +26,9 @@ const ProductContainer = ({ page }) => {
               <ProductCard key={item.id} product={item} />
             ))}
           </Card.Group>
-          {/*       {!!products.length && (
-                      <Pagination
-                          productsFilter={() => 2}
-                          setProductsToShow={() => {}}
-                          setCurrentPage={setCurrentPage}
-                      />
-                  )}*/}
+          {!!products.length && (
+            <Pagination setQuery={setQuery} pagination={pagination} />
+          )}
         </div>
       ) : (
         <div className='empty-product-list'>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
+import { push } from 'connected-react-router';
 
 import { DropDown, Spinner } from '../../components';
 import { SORT_OPTIONS } from '../../constants';
@@ -25,26 +26,46 @@ const ProductList = ({ page }) => {
   });
 
   useEffect(() => {
-    console.log(query);
     dispatch(getProducts(query));
     window.scroll(0, 0);
   }, [query, dispatch]);
 
-  const handleSortChange = (e, { value }) =>
-    setQuery({ ...query, sort: value });
+  const handleSortChange = (e, { value }) => {
+    setQuery({ ...query, sort: value, page: 1 });
+    dispatch(push(`/catalog/pages=${1}`));
+  };
+
+  const onClearFilter = () => {
+    setQuery({
+      filter: {},
+      sort: query.sort,
+      page: 1
+    });
+
+    dispatch(push(`/catalog/pages=${1}`));
+  };
 
   return (
     <div className='product-list__container'>
       <div className='product-list__title'>КАТАЛОГ</div>
 
       <div className='product-list__dropdown-section'>
-        <Button
-          className={'small-wide-filter-btn'}
-          onClick={() => setFilterVisibility(!filterVisibility)}
-          secondary
-        >
-          <Icon name='filter' />
-        </Button>
+        <div>
+          <Button
+            className={'small-wide-filter-btn'}
+            onClick={() => setFilterVisibility(!filterVisibility)}
+            secondary
+          >
+            <Icon name='filter' />
+          </Button>
+          <Button
+            className={'small-wide-clear-btn'}
+            onClick={onClearFilter}
+            basic
+          >
+            <Icon name='redo' />
+          </Button>
+        </div>
         <DropDown
           value={query.sort}
           options={SORT_OPTIONS.options}
@@ -59,7 +80,7 @@ const ProductList = ({ page }) => {
           filterVisibility={filterVisibility}
           setFilterVisibility={setFilterVisibility}
         />
-        {!loading ? <ProductContainer page={page} /> : <Spinner />}
+        {!loading ? <ProductContainer setQuery={setQuery} /> : <Spinner />}
       </div>
     </div>
   );

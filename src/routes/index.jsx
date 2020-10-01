@@ -30,7 +30,7 @@ const Routes = () => {
       <Route exact path='/catalog' component={ProductListPage} />
       <Route
         exact
-        path='/catalog/page/:page'
+        path='/catalog/pages=:page'
         render={({ match: { params } }) => (
           <ProductListPage page={params.page} />
         )}

@@ -18,7 +18,7 @@ const Header = () => {
       </div>
       <div className='main-header__catalog'>
         {!pathname.includes('/catalog') && (
-          <Link to={`/catalog/page/${'1'}`}>
+          <Link to={`/catalog/pages=${1}`}>
             <h3>Каталог</h3>
           </Link>
         )}

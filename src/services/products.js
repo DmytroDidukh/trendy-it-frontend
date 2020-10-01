@@ -39,6 +39,7 @@ export const getProducts = async ({ filter, sort, page, limit = 0 }) => {
           }
           pagination {
             totalDocs
+            currentPage
             totalPages
             hasNextPage
             hasPrevPage

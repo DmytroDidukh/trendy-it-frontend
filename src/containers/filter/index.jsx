@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 
 import { COLORS_DATA } from '../../constants';
 import './style.scss';
 import { Ranger } from '../../components';
+import { push } from 'connected-react-router';
+import { useDispatch } from 'react-redux';
 
 const Filter = ({
   query: { filter },
@@ -12,9 +14,16 @@ const Filter = ({
   filterVisibility,
   setFilterVisibility
 }) => {
+  const dispatch = useDispatch();
+
   const [isFilterTouched, setIsFilterTouched] = useState(false);
-  const [priceRange, setPriceRange] = useState(filter.priceRange || [0, 1000]);
-  const [colors, setColors] = useState(filter.colors || []);
+  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [colors, setColors] = useState([]);
+
+  useEffect(() => {
+    setPriceRange(filter.priceRange || [0, 5000]);
+    setColors(filter.colors || []);
+  }, [filter]);
 
   const onColorSelect = (type) => {
     const index = colors.findIndex((color) => color === type);
@@ -40,19 +49,26 @@ const Filter = ({
       filter: {
         colors,
         priceRange
-      }
+      },
+      page: 1
     }));
+
     setFilterVisibility(false);
+    setIsFilterTouched(false);
+    dispatch(push(`/catalog/pages=${1}`));
   };
 
   const onClearFilter = () => {
-    setQuery({
+    setQuery((prev) => ({
       filter: {},
-      sort: '-createdAt',
+      sort: prev.sort,
       page: 1
-    });
+    }));
 
+    dispatch(push(`/catalog/pages=${1}`));
     setIsFilterTouched(false);
+    //setColors([])
+    //setPriceRange([0, 5000])
   };
 
   return (
