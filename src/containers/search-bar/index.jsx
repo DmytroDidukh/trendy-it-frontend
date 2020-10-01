@@ -16,9 +16,7 @@ const SearchBar = () => {
 
   const [listVisibility, setListVisibility] = useState(false);
   const [searchValue, setSearchValue] = useState('');
-  const [searchBarVisibility, setSearchBarVisibility] = useState(
-    window.innerWidth >= 772
-  );
+  const [searchBarVisibility, setSearchBarVisibility] = useState(false);
 
   const onSearch = (e) => {
     const { value } = e.target;
@@ -33,8 +31,6 @@ const SearchBar = () => {
 
     dispatch(getSearchedProducts({ filter: { search: value } }));
   };
-
-  console.log(products);
 
   return (
     <div>

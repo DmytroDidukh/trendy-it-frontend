@@ -83,21 +83,20 @@
 .search-bar {
   display: inline-block;
   position: relative;
-  top: initial;
+  top: 0;
+
   @media screen and (max-width: 768px) {
-    display: none !important;
+    z-index: -100;
     position: absolute !important;
-    z-index: 101;
   }
 }
 
 .search-bar.visible-bar {
-  display: inline-block !important;
-
-  @media screen and (max-width: 768px) {
-    top: 60px;
-    right: 0;
-  }
+  transition: all 0.3s ease;
+  z-index: 101;
+  top: 60px;
+  right: 0;
+  position: absolute;
 }
 
 .not-wide-search-icon {

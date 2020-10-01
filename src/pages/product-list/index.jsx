@@ -1,23 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Card, Message } from 'semantic-ui-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Card, Message, Icon } from 'semantic-ui-react';
 
 import ProductCard from './product-card';
 import { DropDown, Spinner, Pagination } from '../../components';
 import { productFilterObject, productSortObject } from '../../constants';
+import { getProducts } from '../../redux/products/products.actions';
+import Filter from '../../containers/filter';
 
 import './style.scss';
 
 const ProductList = ({ page }) => {
-  const products = useSelector(({ Products }) => Products.list);
+  const { products, loading } = useSelector(({ Products }) => ({
+    products: Products.list,
+    loading: Products.loading
+  }));
+  const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
   const [productFilter, setProductFilter] = useState('all');
   const [productSort, setProductSort] = useState('new');
+  const [query, setQuery] = useState({
+    sort: { createdAt: -1 },
+    page: +page,
+    limit: 12
+  });
+
+  const [filterVisibility, setFilterVisibility] = useState(false);
 
   useEffect(() => {
+    dispatch(getProducts(query));
     window.scroll(0, 0);
-  }, []);
+  }, [query, dispatch]);
 
   const handleDropDown = (e, options) => {
     const id = e.target.closest('.dropdown').id;
@@ -74,13 +88,14 @@ const ProductList = ({ page }) => {
 
       <div className='product-list__dropdown-section__flex'>
         <div className='product-list__dropdown-section'>
-          <DropDown
-            id={productFilterObject.filterName}
-            name={productFilter}
-            options={productFilterObject.filterOptions}
-            handleDropDown={handleDropDown}
-          />
-
+          <Button
+            className={'small-wide-filter-btn'}
+            onClick={() => setFilterVisibility(!filterVisibility)}
+            secondary
+          >
+            Фільтри
+            <Icon name='filter' />
+          </Button>
           <DropDown
             id={productSortObject.sortName}
             name={productSort}
@@ -90,24 +105,31 @@ const ProductList = ({ page }) => {
         </div>
       </div>
 
-      <div className='product-cards__container'>
-        {products.length ? (
-          <div className='product-cards__list'>
-            <Card.Group itemsPerRow={setListResponsive()}>
-              {setProductsToShow(currentPage)}
-            </Card.Group>
-            {!!setProductsToShow(currentPage).length && (
-              <Pagination
-                productsFilter={productsFilter}
-                setProductsToShow={setProductsToShow}
-                setCurrentPage={setCurrentPage}
-              />
-            )}
-          </div>
-        ) : (
-          <Spinner />
-        )}
-      </div>
+      {products.length ? (
+        <div className='product-cards__container'>
+          <Filter
+            loading={loading}
+            filterVisibility={filterVisibility}
+            setFilterVisibility={setFilterVisibility}
+          />
+          {!loading && (
+            <div className='product-cards__list'>
+              <Card.Group itemsPerRow={setListResponsive()}>
+                {setProductsToShow(currentPage)}
+              </Card.Group>
+              {!!setProductsToShow(currentPage).length && (
+                <Pagination
+                  productsFilter={productsFilter}
+                  setProductsToShow={setProductsToShow}
+                  setCurrentPage={setCurrentPage}
+                />
+              )}
+            </div>
+          )}
+        </div>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

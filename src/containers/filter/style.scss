@@ -1,0 +1,98 @@
+@mixin box-shadow {
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: inset -24px 24px 46px #e4e4e4, inset 24px -24px 46px #f7f7f7;
+  /*  border-radius: 4px;
+  background: #1b1c1d;
+  box-shadow: inset -24px 24px 48px #131314,
+  inset 24px -24px 48px #232526;*/
+}
+
+@mixin flex($prop) {
+  display: flex;
+  flex-direction: $prop;
+}
+
+.filter-block {
+  margin-right: 50px;
+  border-radius: 8px;
+  width: 300px;
+  transition: all 0.4s ease;
+  position: relative;
+
+  &__control {
+    @include flex(row);
+    margin-bottom: 20px;
+
+    button:first-child {
+      flex-basis: 70%;
+    }
+  }
+
+  &__price {
+    @include box-shadow;
+    padding: 20px;
+  }
+
+  &__colors {
+    @include box-shadow;
+    @include flex(column);
+    padding: 20px;
+    margin: 10px 0;
+
+    &-container {
+      @include flex(row);
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      &__color {
+        width: 20px;
+        height: 20px;
+        border-radius: 20px 0 20px 20px;
+        border: 1px solid #dedede;
+        margin: 5px 1px 1px;
+        transform: rotate(-45deg);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .close-filter-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.9em;
+    color: #151515;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filter-block {
+    position: absolute;
+    top: 0;
+    left: -360px;
+    bottom: 0;
+
+    background: white;
+    padding: 30px;
+    width: 360px;
+    z-index: 1000;
+  }
+
+  .filter-block_active {
+    transform: translateX(0);
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .filter-block {
+    width: 100%;
+  }
+
+  .filter-block_active {
+    transform: translateX(0);
+    left: 0;
+  }
+}

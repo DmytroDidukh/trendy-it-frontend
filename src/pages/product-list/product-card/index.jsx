@@ -8,7 +8,7 @@ import './style.scss';
 
 const ProductCard = ({ product }) => {
   const labelGenerator = ({ color, inner }) => (
-    <Label color={color} ribbon>
+    <Label color={color} horizontal>
       {inner}
     </Label>
   );
