@@ -2,7 +2,6 @@
   position: absolute;
   top: 60px;
   z-index: 2;
-  background: rgba(234, 234, 234, 0.9);
   display: none;
   min-width: 200px;
   min-height: 63px;
@@ -11,17 +10,12 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    color: black;
 
     > li:not(:last-child) {
       border-bottom: 1px solid #7a7a7a;
     }
 
     > li {
-      &:hover {
-        background: darken(rgba(234, 234, 234, 0.9), 10%);
-      }
-
       a {
         width: 100%;
         height: 100%;
@@ -55,6 +49,66 @@
   }
 }
 
+.main-header_light {
+  .search-list {
+    background: rgba(234, 234, 234, 0.9);
+
+    ul {
+      color: #1b1c1d;
+
+      > li:not(:last-child) {
+        border-bottom: 1px solid #393939;
+      }
+
+      > li {
+        &:hover {
+          background: darken(rgba(234, 234, 234, 0.9), 10%);
+        }
+      }
+    }
+  }
+
+  .search-item {
+    .price {
+      color: crimson;
+    }
+
+    span {
+      color: #1b1c1d;
+    }
+  }
+}
+
+.main-header_dark {
+  .search-list {
+    background: rgba(91, 91, 91, 0.9);
+
+    ul {
+      color: #ececec;
+
+      > li:not(:last-child) {
+        border-bottom: 1px solid #b3b3b3;
+      }
+
+      > li {
+        &:hover {
+          background: darken(rgba(91, 91, 91, 0.9), 10%);
+        }
+      }
+    }
+  }
+
+  .search-item {
+    .price {
+      color: crimson;
+    }
+
+    span {
+      color: #ececec;
+    }
+  }
+}
+
 .search-item {
   display: flex;
   align-items: center;
@@ -64,12 +118,7 @@
     flex: 1;
   }
 
-  .price {
-    color: crimson;
-  }
-
   span {
-    color: #9b9b9b;
     font-size: 0.8em;
     margin: 0 0 0 5px;
   }

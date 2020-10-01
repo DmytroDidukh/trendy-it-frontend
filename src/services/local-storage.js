@@ -1,7 +1,8 @@
 export const clearLocalStorage = () => {
   const trendy = {
     wishlist: [],
-    cart: []
+    cart: [],
+    theme: 'dark'
   };
   localStorage.setItem('trendyIT', JSON.stringify(trendy));
 };
