@@ -5,11 +5,11 @@
 }
 
 .product-detail {
-  margin: 100px auto;
+  margin: 50px auto;
   max-width: 1280px;
   background: #ffffff;
   padding: 50px;
-  min-height: calc(100vh - (60px + 108px + 200px));
+  min-height: calc(100vh - (60px + 108px + 100px));
   position: relative;
 
   &__labels {

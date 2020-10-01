@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Image, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { LABELS_DATA } from '../../../constants';
-import { salePercentage } from '../../../utils';
+import { LABELS_DATA } from '../../../../constants';
+import { salePercentage } from '../../../../utils';
 import './style.scss';
 
 const ProductCard = ({ product }) => {

@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 
 import RightBar from './right-bar';
 import './style.scss';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const pathname = useSelector(({ router }) => router.location.pathname);
+
   return (
     <div className='main-header'>
       <div className='main-header__logo'>
@@ -14,9 +17,11 @@ const Header = () => {
         </Link>
       </div>
       <div className='main-header__catalog'>
-        <Link to={`/catalog/page/${'1'}`}>
-          <h3>Каталог</h3>
-        </Link>
+        {!pathname.includes('/catalog') && (
+          <Link to={`/catalog/page/${'1'}`}>
+            <h3>Каталог</h3>
+          </Link>
+        )}
       </div>
       <RightBar />
     </div>

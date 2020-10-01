@@ -6,8 +6,8 @@ import './style.scss';
 import { Ranger } from '../../components';
 
 const Filter = ({
-  filter,
-  setFilter,
+  query: { filter },
+  setQuery,
   loading,
   filterVisibility,
   setFilterVisibility
@@ -35,17 +35,23 @@ const Filter = ({
   };
 
   const onApplyFilter = () => {
-    const filterToApply = {
-      colors: colors,
-      priceRange: priceRange
-    };
-
-    setFilter(filterToApply);
+    setQuery((prev) => ({
+      ...prev,
+      filter: {
+        colors,
+        priceRange
+      }
+    }));
+    setFilterVisibility(false);
   };
 
   const onClearFilter = () => {
-    setColors([]);
-    setPriceRange([0, 1000]);
+    setQuery({
+      filter: {},
+      sort: '-createdAt',
+      page: 1
+    });
+
     setIsFilterTouched(false);
   };
 
