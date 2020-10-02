@@ -111,6 +111,11 @@
   text-align: center;
   font-size: 0.8em;
 
+  img {
+    width: 10px;
+    margin: 0;
+  }
+
   @media screen and (max-width: 450px) {
     font-size: 0.45em;
     margin-top: 3px;
