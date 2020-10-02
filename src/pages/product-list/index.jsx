@@ -18,7 +18,6 @@ const ProductList = ({ page }) => {
   const dispatch = useDispatch();
 
   const [filterVisibility, setFilterVisibility] = useState(false);
-
   const [query, setQuery] = useState({
     filter: {},
     sort: '-createdAt',
