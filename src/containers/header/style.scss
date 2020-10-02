@@ -5,9 +5,6 @@
   height: 60px;
   align-items: center;
   padding: 0 20px;
-  background: #ffffff;
-  box-shadow: 13px 13px 26px #e3e3e3, -13px -13px 26px #ffffff;
-  border-bottom: 1px solid #dedede;
 
   &__logo {
     a {
@@ -21,7 +18,7 @@
       h1 {
         font-size: 1.5rem;
         color: #000000;
-        font-family: "MarcellusSC", sans-serif;
+        font-family: 'MarcellusSC', sans-serif;
         font-weight: 400;
         font-style: normal;
         margin: 0;
@@ -36,14 +33,12 @@
       width: 100%;
       height: 100%;
       display: block;
-      transition: all .2s ease;
+      transition: all 0.2s ease;
 
       &:hover {
         transform: scale(1.1);
       }
     }
-
-
   }
 
   &__right-bar {
@@ -63,19 +58,19 @@
 
     i.header-icons {
       font-size: 1.6rem !important;
-      margin: 0 20px !important;
+      margin: 0 10px !important;
       cursor: pointer;
-      color: rgb(179, 179, 179);
       transition: all 0.1s ease;
+      color: #545454;
 
       &:hover {
-        color: darken(rgb(179, 179, 179), 30%);
+        color: darken(#545454, 20%);
         transform: scale(1.1);
       }
 
       @media screen and (max-width: 550px) {
         margin: 2px 0 !important;
-        font-size: 1rem;
+        font-size: 1.1rem !important;
       }
     }
 
@@ -94,16 +89,226 @@
     .ui.circular.label {
       min-width: 1.7em;
       padding: 0.5em !important;
-      font-size: 0.7em;
+      font-size: 0.6em;
+
+      @media screen and (max-width: 550px) {
+        font-size: 0.45rem !important;
+        right: -3px;
+        z-index: 10;
+      }
+    }
+
+    .theme-control {
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      position: relative;
+
+      i {
+        margin: 0 3px !important;
+        font-size: 1rem !important;
+        position: absolute;
+        top: 1px;
+        cursor: pointer;
+        z-index: 1;
+        @media screen and (max-width: 550px) {
+          font-size: 0.9rem !important;
+        }
+
+        @media screen and (max-width: 400px) {
+          font-size: 0.7rem !important;
+        }
+      }
+
+      i.sun {
+        right: 29px;
+
+        @media screen and (max-width: 400px) {
+          right: 25.5px;
+          top: 2.5px;
+        }
+      }
+
+      i.moon {
+        right: 0;
+
+        @media screen and (max-width: 400px) {
+          right: 5px;
+          top: 3px;
+        }
+      }
+
+      .ui.fitted.toggle.checkbox {
+        label {
+          margin: 0 !important;
+          z-index: 5 !important;
+        }
+
+        @media screen and (max-width: 400px) {
+          width: 2.9rem !important;
+        }
+      }
+
+      .ui.toggle.checkbox input:focus:checked ~ .box:before,
+      .ui.toggle.checkbox input:focus:checked ~ label:before {
+        background-color: #737373 !important;
+      }
+
+      .ui.toggle.checkbox input:checked ~ .box:before,
+      .ui.toggle.checkbox input:checked ~ label:before {
+        background-color: #737373 !important;
+        opacity: 0 !important;
+      }
+
+      .ui.checkbox input:indeterminate ~ .box:after,
+      .ui.checkbox input:indeterminate ~ label:after,
+      .ui.toggle.checkbox input:checked ~ .box:after {
+        z-index: 5 !important;
+      }
+
+      .ui.toggle.checkbox .box:after,
+      .ui.toggle.checkbox label:after {
+        @media screen and (max-width: 400px) {
+          width: 0.9rem !important;
+          height: 0.9rem !important;
+          top: 5px !important;
+        }
+      }
+
+      .ui.toggle.checkbox .box:before,
+      .ui.toggle.checkbox label:before {
+        @media screen and (max-width: 400px) {
+          width: 2.5rem !important;
+          height: 1rem !important;
+          top: 5px !important;
+        }
+      }
     }
   }
 }
 
+.main-header_light {
+  background: #ececec;
+  box-shadow: 0 8px 26px #d4d4d4, 0px -17px 26px #909090;
+  border-bottom: 1px solid darken(#ececec, 2%);
+
+  i.header-icons {
+    color: #1b1c1d;
+
+    &:hover {
+      color: darken(#1b1c1d, 20%);
+    }
+  }
+
+  .theme-control {
+    i {
+      color: #1b1c1d;
+    }
+
+    i.moon {
+      z-index: 3;
+    }
+  }
+
+  .ui.icon.input {
+    input {
+      border-radius: 12px;
+      background: #f0f0f0;
+      box-shadow: inset -33px 33px 66px #d6d6d6, inset 33px -33px 66px #ffffff;
+      border: none;
+      color: #696969;
+    }
+
+    i {
+      color: #1b1c1d;
+    }
+  }
+
+  p,
+  a,
+  h1,
+  h2,
+  h3 {
+    color: #1b1c1d !important;
+  }
+}
+
+.main-header_dark {
+  background: #1b1c1d;
+  box-shadow: 0 8px 26px #5a5a5a, 0px -17px 26px #737373;
+  border-bottom: 1px solid darken(#1b1c1d, 2%);
+
+  i.header-icons {
+    color: #ececec;
+
+    &:hover {
+      color: darken(#ececec, 20%);
+    }
+  }
+
+  .theme-control {
+    i {
+      color: #ececec !important;
+    }
+
+    i.sun {
+      z-index: 3;
+
+      &:after {
+        content: '';
+        background-color: #737373;
+        display: block;
+        border-radius: 500rem;
+        width: 46px;
+        height: 20px;
+        top: 0;
+        left: -1px;
+        position: absolute;
+        z-index: -1;
+
+        @media screen and (max-width: 400px) {
+          width: 33px;
+          height: 14px;
+          top: 2px;
+        }
+      }
+    }
+  }
+
+  .ui.icon.input {
+    input {
+      border-radius: 12px;
+      background: #282a2b;
+      box-shadow: inset -33px 33px 66px #242526, inset 33px -33px 66px #2c2f30;
+      border: none;
+      color: #696969;
+    }
+
+    i {
+      color: #ececec;
+    }
+  }
+
+  p,
+  a,
+  h1,
+  h2,
+  h3 {
+    color: #ececec !important;
+  }
+
+  .ui.toggle.checkbox input:checked ~ .box:after,
+  .ui.toggle.checkbox input:checked ~ label:after {
+    @media screen and (max-width: 400px) {
+      left: 1.45rem !important;
+    }
+  }
+}
 
 @media screen and (max-width: 400px) {
   .main-header {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 10px;
+    padding: 0 3px;
 
     &__logo {
       grid-area: 1/2/2/3;
@@ -123,8 +328,18 @@
 
     &__catalog {
       margin-left: 5px;
+
       h3 {
-        font-size: .8rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    &__right-bar {
+      position: relative;
+      right: -14px;
+
+      .theme-control {
+        transform: rotate(90deg);
       }
     }
   }

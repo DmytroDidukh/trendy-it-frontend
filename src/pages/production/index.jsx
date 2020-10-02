@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import './style.scss'
+import './style.scss';
 
 const Production = () => {
-    return (
-        <div className='production'>
-            <p>Ця сторінка в процесі розробки...</p>
-        </div>
-    )
-}
+  return (
+    <div className='production'>
+      <p>Ця сторінка в процесі розробки...</p>
+    </div>
+  );
+};
 
-export default Production
+export default Production;

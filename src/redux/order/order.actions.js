@@ -1,8 +1,6 @@
-import {
-    ADD_ORDER
-} from './order.types';
+import { ADD_ORDER } from './order.types';
 
 export const addOrder = (order) => ({
-    type: ADD_ORDER,
-    payload: order
+  type: ADD_ORDER,
+  payload: order
 });

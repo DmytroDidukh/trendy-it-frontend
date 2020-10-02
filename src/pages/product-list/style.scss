@@ -6,8 +6,8 @@
   }
 
   &__container {
-    min-height: calc(100vh - 60px);
-    max-width: 1280px;
+    min-height: calc(100vh - (60px + 108px + 80px));
+    max-width: 1580px;
     margin: 0 auto 50px;
   }
 }
@@ -17,8 +17,13 @@
   justify-content: center;
   padding: 0 15px;
 
+  > div:nth-child(2) {
+    flex: 1;
+  }
+
   .empty-product-list {
-    margin: 50px auto !important;
+    margin-top: 50px;
+    text-align: center;
   }
 }
 
@@ -39,25 +44,38 @@
   }
 
   .pagination {
-    margin: 50px 0 0 0!important;
+    margin: 50px 0 0 0 !important;
     width: 100%;
     justify-content: center;
   }
 }
 
 .product-list__dropdown-section {
-  &__flex {
-    display: flex;
-    justify-content: flex-end;
-  }
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 20px;
-  background: #ffffff;
-  box-shadow: 3px 3px 5px #e0e0e0, -3px -3px 5px #ffffff;
-  border: 1px solid rgb(252, 252, 252);
+
+  .ui.selection.dropdown {
+    width: 200px;
+  }
+
+  .small-wide-filter-btn,
+  .small-wide-clear-btn {
+    i {
+      margin: 0 !important;
+      font-size: 0.7em !important;
+    }
+
+    @media screen and (min-width: 769px) {
+      display: none !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+  }
 }
 
 .product-list__dropdown-section > div {
@@ -66,9 +84,9 @@
 
 @media screen and (max-width: 450px) {
   .ui.selection.dropdown {
-    min-height: .7rem !important;
-    line-height: .6rem !important;
-    padding: 10px 25px 10px 10px  !important;
+    min-height: 0.7rem !important;
+    line-height: 0.6rem !important;
+    padding: 10px 25px 10px 10px !important;
     .dropdown.icon {
       padding-top: 8px !important;
     }

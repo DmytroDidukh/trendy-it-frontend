@@ -18,19 +18,19 @@
   &__popup {
     position: absolute;
     right: 0;
-    top: 40px;
+    top: 30px;
     z-index: 10;
     border: 1px solid #f3f3f3;
     border-radius: 5px;
     padding: 0 10px 10px;
     width: 400px;
     background: #ffffff;
- /*   box-shadow: 13px 13px 26px #e3e3e3,
+    /*   box-shadow: 13px 13px 26px #e3e3e3,
     -13px -13px 26px #ffffff;*/
 
     > .item {
       padding: 0 10px 10px 0;
-      border-bottom: 1px solid rgba(34, 36, 38, .1) !important;
+      border-bottom: 1px solid rgba(34, 36, 38, 0.1) !important;
       position: relative;
       min-width: 150px;
       min-height: 80px !important;
@@ -54,11 +54,11 @@
           right: 5px;
           bottom: 5px;
           cursor: pointer;
-          transition: all .1s ease-in-out;
-          opacity: .3;
+          transition: all 0.1s ease-in-out;
+          opacity: 0.3;
 
           &:hover {
-            opacity: .8;
+            opacity: 0.8;
             color: #db2828;
           }
         }
@@ -92,5 +92,6 @@
 @media screen and (max-width: 450px) {
   .wishlist__popup {
     width: 300px;
+    top: 46px;
   }
 }

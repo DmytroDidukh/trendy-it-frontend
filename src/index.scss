@@ -33,19 +33,32 @@
   font-style: normal;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, h1, h2, h3, h4, h5, h6, label {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
   font-family: 'RobotoSlab-Medium', -apple-system, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-p, button, a {
+p,
+button,
+a {
   font-family: 'RobotoSlab-Regular', -apple-system, sans-serif;
 }
 
@@ -55,7 +68,7 @@ p, button, a {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+    monospace;
 }
 
 a {
@@ -83,7 +96,7 @@ a {
   border-radius: 5px;
   background: #272727;
   box-shadow: 1px 2px 5px #737373, -5px -5px 31px #cecece;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   outline: none;
 }
 
@@ -101,6 +114,6 @@ a {
 }
 
 .app.-mobile .btn[data-v-293bcf96] {
-  width: 45px !important;
-  height: 45px !important;
+  width: 40px !important;
+  height: 40px !important;
 }

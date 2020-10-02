@@ -1,104 +1,89 @@
-import React, {useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
-import {Card, Message} from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Icon } from 'semantic-ui-react';
+import { push } from 'connected-react-router';
 
-import ProductCard from './product-card';
-import {DropDown, Spinner, Pagination} from '../../components';
-import {productFilterObject, productSortObject} from '../../constants';
+import { DropDown, Spinner } from '../../components';
+import { SORT_OPTIONS } from '../../constants';
+import { getProducts } from '../../redux/products/products.actions';
+import Filter from '../../containers/filter';
+import ProductContainer from './product-container';
 
 import './style.scss';
 
-const ProductList = () => {
+const ProductList = ({ page }) => {
+  const { loading } = useSelector(({ Products }) => ({
+    loading: Products.loading
+  }));
+  const dispatch = useDispatch();
 
-    const products = useSelector(({Products}) => Products.list)
+  const [filterVisibility, setFilterVisibility] = useState(false);
 
-    const [currentPage, setCurrentPage] = useState(0);
-    const [productFilter, setProductFilter] = useState('all');
-    const [productSort, setProductSort] = useState('new');
+  const [query, setQuery] = useState({
+    filter: {},
+    sort: '-createdAt',
+    page: +page
+  });
 
-    useEffect(() => {
-        window.scroll(0, 0)
-    }, [])
+  useEffect(() => {
+    dispatch(getProducts(query));
+    window.scroll(0, 0);
+  }, [query, dispatch]);
 
-    const handleDropDown = (e, options) => {
-        const id = e.target.closest('.dropdown').id;
-        id === 'Кольори' ? setProductFilter(options.value) : setProductSort(options.value);
-    }
+  const handleSortChange = (e, { value }) => {
+    setQuery({ ...query, sort: value, page: 1 });
+    dispatch(push(`/catalog/pages=${1}`));
+  };
 
-    const productsFilter = () => {
-        return products
-            .filter(prod => productFilter === 'all' ? prod : prod.colors[productFilter])
-            .sort((a, b) => productSort === 'new' && (b.newItem  - a.newItem ||
-                new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
-            .sort((a, b) => productSort === 'priceLow' && a.price - b.price)
-            .sort((a, b) => productSort === 'priceHigh' && b.price - a.price)
-            .sort((a, b) => productSort === 'hot' && b.hot - a.hot)
-            .sort((a, b) => productSort === 'sale' && b.sale - a.sale)
-            .map(product => <ProductCard key={product.id} product={product}/>)
-    }
+  const onClearFilter = () => {
+    setQuery({
+      filter: {},
+      sort: query.sort,
+      page: 1
+    });
 
-    const setProductsToShow = (lengthIndex) => {
-        const products = productsFilter()
-        const isEnoughProducts = products.length>= 12
+    dispatch(push(`/catalog/pages=${1}`));
+  };
 
-        const productsToShow = isEnoughProducts ? products.slice(lengthIndex, lengthIndex + 12) : products.slice(0, 12)
+  return (
+    <div className='product-list__container'>
+      <div className='product-list__title'>КАТАЛОГ</div>
 
-        return products.length ?
-            productsToShow : (
-                <Message className='empty-product-list'>
-                    <Message.Header>За вибраними критеріями нічого не знайдено</Message.Header>
-                </Message>
-            )
-    }
-
-    const setListResponsive = () => {
-        const width = window.innerWidth;
-        return width <= 350 ? 1 : width <= 500 ? 2 : width <= 768 ? 3 : 4
-    }
-
-    return (
-        <div className="product-list__container">
-            <div className="product-list__title">КАТАЛОГ</div>
-
-            <div className="product-list__dropdown-section__flex">
-                <div className="product-list__dropdown-section">
-
-                    <DropDown
-                        id={productFilterObject.filterName}
-                        name={productFilter}
-                        options={productFilterObject.filterOptions}
-                        handleDropDown={handleDropDown}
-                    />
-
-                    <DropDown
-                        id={productSortObject.sortName}
-                        name={productSort}
-                        options={productSortObject.sortOptions}
-                        handleDropDown={handleDropDown}
-                    />
-
-                </div>
-            </div>
-
-
-            <div className="product-cards__container">
-                {products.length ? (
-                    <div className="product-cards__list">
-                        <Card.Group itemsPerRow={setListResponsive()}>
-                            {setProductsToShow(currentPage)}
-                        </Card.Group>
-                        {!!setProductsToShow(currentPage).length && <Pagination
-                            productsFilter={productsFilter}
-                            setProductsToShow={setProductsToShow}
-                            setCurrentPage={setCurrentPage}
-                        />}
-                    </div>
-                ) : (
-                    <Spinner/>
-                )}
-            </div>
+      <div className='product-list__dropdown-section'>
+        <div>
+          <Button
+            className={'small-wide-filter-btn'}
+            onClick={() => setFilterVisibility(!filterVisibility)}
+            secondary
+          >
+            <Icon name='filter' />
+          </Button>
+          <Button
+            className={'small-wide-clear-btn'}
+            onClick={onClearFilter}
+            basic
+          >
+            <Icon name='redo' />
+          </Button>
         </div>
-    )
-}
+        <DropDown
+          value={query.sort}
+          options={SORT_OPTIONS.options}
+          handleDropDown={handleSortChange}
+        />
+      </div>
+      <div className='product-cards__container'>
+        <Filter
+          loading={loading}
+          query={query}
+          setQuery={setQuery}
+          filterVisibility={filterVisibility}
+          setFilterVisibility={setFilterVisibility}
+        />
+        {!loading ? <ProductContainer setQuery={setQuery} /> : <Spinner />}
+      </div>
+    </div>
+  );
+};
 
-export default ProductList
+export default ProductList;

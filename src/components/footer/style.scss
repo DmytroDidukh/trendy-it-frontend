@@ -1,23 +1,70 @@
 .footer-container {
   padding: 30px 30px 20px;
-  background: #ffffff;
-  box-shadow: -13px -13px 26px #e3e3e3, 13px 13px 26px #ffffff;
-  border-top: 1px solid #f7f7f7;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 450px) {
+    padding: 5px;
+  }
+}
+
+.footer-container_dark {
+  background: #1b1c1d;
+  box-shadow: 0px -8px 26px #737373, 0px 15px 20px 0px #848484;
+  border-top: 1px solid #161718;
+
+  .footer-list {
+    &__item {
+      a {
+        color: #ececec !important;
+      }
+
+      &-social {
+        color: #ececec !important;
+      }
+    }
+  }
+
+  .footer-company {
+    color: rgb(107, 107, 109);
+  }
+}
+
+.footer-container_light {
+  background: #ececec;
+  box-shadow: 0 8px 26px #d4d4d4, 0px -17px 26px #909090;
+  border-bottom: 1px solid darken(#ececec, 2%);
+
+  .footer-list {
+    &__item {
+      a {
+        color: #1b1c1d !important;
+      }
+
+      &-social {
+        color: #1b1c1d !important;
+      }
+    }
+  }
+
+  .footer-company {
+    color: #646464;
+  }
 }
 
 .footer-list {
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr);
-  align-items: baseline;
+  align-items: center;
 
-  @media screen and (max-width: 550px){
+  @media screen and (max-width: 450px) {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
     &__item {
       margin: 5px 0;
+      font-size: 0.8em;
     }
   }
 
@@ -27,11 +74,15 @@
 
     &-content {
       display: block;
-      color: black !important;
-      font-size: 18px;
+      font-size: 1.2em;
       font-weight: 400;
       transition: all 0.4s;
       cursor: pointer;
+
+      @media screen and (max-width: 450px) {
+        font-size: 1em;
+      }
+
       &:hover {
         transform: scale(1.1);
       }
@@ -41,27 +92,32 @@
       display: flex;
       justify-content: center;
     }
-
-
   }
 
   &__item:nth-child(3) {
-    @media screen and (max-width: 550px){
-        grid-area: 1/1/2/2;
+    @media screen and (max-width: 450px) {
+      grid-area: 1/1/2/5;
+
+      * {
+        font-size: 1em;
+      }
     }
   }
 }
 
 .footer-company {
   width: 100%;
-  margin: 20px 0 0 0;
+  margin: 10px 0 0 0;
   text-align: center;
-  font-size: .8em;
-  color: #6b6b6b;
+  font-size: 0.8em;
+
+  @media screen and (max-width: 450px) {
+    font-size: 0.45em;
+    margin-top: 3px;
+  }
 }
 
 .telegram {
-  color: black !important;
   display: block !important;
   cursor: pointer;
   margin-left: 10px;
@@ -69,7 +125,6 @@
 }
 
 .viber {
-  color: black !important;
   display: block !important;
   cursor: pointer;
   margin-left: 10px;
@@ -77,7 +132,6 @@
 }
 
 .instagram {
-  color: black !important;
   display: block !important;
   cursor: pointer;
   margin-left: 10px;
@@ -95,4 +149,3 @@
 .instagram:hover {
   color: #d5005d !important;
 }
-

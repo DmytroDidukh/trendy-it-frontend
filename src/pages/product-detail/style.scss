@@ -1,17 +1,15 @@
 .breadcrumb {
   a {
-    color: #4183c4 !important;
+    color: #212529 !important;
   }
 }
 
 .product-detail {
-  margin: 100px auto;
+  margin: 50px auto;
   max-width: 1280px;
   background: #ffffff;
-  box-shadow: 13px 13px 26px #e3e3e3,
-  -13px -13px 26px #ffffff;
   padding: 50px;
-  min-height: calc(80vh - (60px + 89px + 200px));
+  min-height: calc(100vh - (60px + 108px + 100px));
   position: relative;
 
   &__labels {
@@ -56,10 +54,8 @@
         text-decoration: underline;
       }
 
-      pre {
-        font-family: 'Roboto-Slab-Regular', -apple-system, sans-serif;
-        white-space: pre-line;
-        margin: 20px 0 20px;
+      &-about {
+        margin: 25px 0;
       }
 
       .to-order {
@@ -74,7 +70,7 @@
             margin: 0 30px 0 0;
           }
           div:last-child {
-            font-size: .8rem;
+            font-size: 0.8rem;
             position: absolute;
             bottom: -25px;
             left: 0;
@@ -85,7 +81,7 @@
           font-size: 2.1em;
           height: initial;
           cursor: pointer;
-          transition: all .2s ease;
+          transition: all 0.2s ease;
 
           &:hover {
             transform: scale(1.1);
@@ -103,7 +99,7 @@
       color: rgb(41, 41, 41);
 
       strike {
-        font-size: .8em;
+        font-size: 0.8em;
       }
 
       span {
@@ -154,6 +150,7 @@
   .product-detail {
     padding: 20px;
     margin: 30px 0;
+    min-height: calc(100vh - (60px + 118px + 60px));
   }
 }
 
@@ -161,11 +158,13 @@
   .product-detail {
     padding: 10px;
     margin: 20px 0;
+    min-height: calc(100vh - (60px + 129px + 40px));
 
     &__labels {
       position: relative;
       right: auto;
       top: auto;
+      margin-top: 3px;
     }
 
     &__item {
@@ -187,11 +186,11 @@
 }
 
 @media screen and (max-width: 350px) {
-    .product-detail__item {
-      &__images {
-        grid-template-columns: repeat(4, 70px);
-        grid-template-rows: 1fr 1fr 1fr 1fr 80px;
-        height: 530px;
-      }
+  .product-detail__item {
+    &__images {
+      grid-template-columns: repeat(4, 70px);
+      grid-template-rows: 1fr 1fr 1fr 1fr 80px;
+      height: 530px;
     }
+  }
 }

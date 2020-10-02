@@ -42,8 +42,7 @@ function* handleRemoveCartItem({ payload: { id, selectedColor } }) {
   const cart = getFromLocalStorage('cart');
   const newCart = cart.filter(
     (item) =>
-      item.id !== id ||
-      (item.id === id && item.selectedColor !== selectedColor)
+      item.id !== id || (item.id === id && item.selectedColor !== selectedColor)
   );
 
   setToLocalStorage('cart', newCart);

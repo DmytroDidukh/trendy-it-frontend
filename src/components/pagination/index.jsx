@@ -1,33 +1,30 @@
-import React from "react";
-import { Pagination as BasePagination } from 'semantic-ui-react'
+import React from 'react';
+import { Pagination as BasePagination } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+import { push } from 'connected-react-router';
 
-const Pagination = ({productsFilter, setProductsToShow, setCurrentPage}) => {
-    const productsAfterFiltering = productsFilter();
+const Pagination = ({ pagination, setQuery }) => {
+  const dispatch = useDispatch();
 
-    const onPageChange = (e, data) => {
-        let lengthIndex;
-        if (data.activePage.toString().includes('.')) {
-            lengthIndex = data.activePage.toString().split('.')[0] * 12
-        } else  {
-            lengthIndex = (data.activePage === 1 || data.activePage === undefined ? 0 : data.activePage - 1) * 12
-        }
-        if (lengthIndex >= productsAfterFiltering.length) return
+  const onPageChange = (e, { activePage }) => {
+    setQuery((query) => ({
+      ...query,
+      page: +activePage
+    }));
+    dispatch(push(`/catalog/pages=${activePage}`));
+  };
 
-        setCurrentPage(lengthIndex)
-        setProductsToShow(lengthIndex)
-    }
+  return (
+    <BasePagination
+      defaultActivePage={pagination.currentPage}
+      firstItem={null}
+      lastItem={null}
+      pointing
+      secondary
+      totalPages={pagination.totalPages}
+      onPageChange={onPageChange}
+    />
+  );
+};
 
-    return (
-            <BasePagination
-                defaultActivePage={1}
-                firstItem={null}
-                lastItem={null}
-                pointing
-                secondary
-                totalPages={productsAfterFiltering.length / 12}
-                onPageChange={onPageChange}
-            />
-    )
-}
-
-export default Pagination
+export default Pagination;

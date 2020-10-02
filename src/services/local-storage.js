@@ -1,22 +1,23 @@
 export const clearLocalStorage = () => {
-    const trendy = {
-        wishlist: [],
-        cart: []
-    };
-    localStorage.setItem('trendyIT', JSON.stringify(trendy));
+  const trendy = {
+    wishlist: [],
+    cart: [],
+    theme: 'dark'
+  };
+  localStorage.setItem('trendyIT', JSON.stringify(trendy));
 };
 
 if (!localStorage.getItem('trendyIT')) {
-    clearLocalStorage();
+  clearLocalStorage();
 }
 
 export const getFromLocalStorage = (name) => {
-    const localObject = JSON.parse(localStorage.getItem('trendyIT'));
-    return localObject[name];
+  const localObject = JSON.parse(localStorage.getItem('trendyIT'));
+  return localObject[name];
 };
 
 export const setToLocalStorage = (name, item) => {
-    const localObject = JSON.parse(localStorage.getItem('trendyIT'));
-    localObject[name] = item;
-    localStorage.setItem('trendyIT', JSON.stringify(localObject));
+  const localObject = JSON.parse(localStorage.getItem('trendyIT'));
+  localObject[name] = item;
+  localStorage.setItem('trendyIT', JSON.stringify(localObject));
 };

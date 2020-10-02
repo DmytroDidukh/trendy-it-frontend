@@ -3,7 +3,7 @@
   max-width: 1400px;
   margin: 50px auto;
 
-  @media screen and (max-width: 992px){
+  @media screen and (max-width: 992px) {
     flex-direction: column;
   }
 
@@ -14,8 +14,7 @@
 
   &__table {
     background: #ffffff;
-    box-shadow: 13px 13px 26px #e3e3e3,
-    -13px -13px 26px #ffffff;
+    box-shadow: 13px 13px 26px #e3e3e3, -13px -13px 26px #ffffff;
     height: fit-content;
     padding: 20px;
 
@@ -38,12 +37,11 @@
   }
 
   &__checkout {
-
     label {
       font-weight: 400 !important;
     }
 
-    @media screen and (max-width: 992px){
+    @media screen and (max-width: 992px) {
       margin-top: 10px;
     }
 
@@ -54,7 +52,7 @@
   }
 }
 
-@media screen and (max-width: 450px){
+@media screen and (max-width: 450px) {
   .cart {
     margin: 30px 0;
 

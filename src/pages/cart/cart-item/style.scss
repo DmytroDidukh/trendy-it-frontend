@@ -27,11 +27,11 @@
     right: 5px;
     top: 5px;
     cursor: pointer;
-    transition: all .1s ease-in-out;
-    opacity: .3;
+    transition: all 0.1s ease-in-out;
+    opacity: 0.3;
 
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
       color: #db2828;
     }
   }
@@ -53,7 +53,7 @@
 
         pre {
           font-family: inherit;
-          white-space: pre-line
+          white-space: pre-line;
         }
       }
     }
@@ -90,20 +90,18 @@
         align-self: flex-end;
       }
 
-      @media screen and (max-width: 500px){
+      @media screen and (max-width: 500px) {
         flex-direction: column;
       }
     }
   }
 }
 
-@media screen and (max-width: 500px){
-.cart-item__price {
-  .ui.red.label {
-    padding: 5px;
-    margin-left: 10px;
+@media screen and (max-width: 500px) {
+  .cart-item__price {
+    .ui.red.label {
+      padding: 5px;
+      margin-left: 10px;
+    }
   }
-}
-
-
 }

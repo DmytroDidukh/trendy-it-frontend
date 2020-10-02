@@ -12,23 +12,21 @@ import {
   GET_NOVAPOSHTA_CITIES,
   GET_NOVAPOSHTA_WAREHOUSES,
   GET_NOVAPOSHTA_STREETS,
-  GET_NOVAPOSHTA_DELIVERY_PRICE,
+  GET_NOVAPOSHTA_DELIVERY_PRICE
 } from './novaposhta.types';
 import {
   getNovaPoshtaCities,
   getNovaPoshtaWarehouses,
   getNovaPoshtaStreets,
-  getNovaPoshtaPrices,
+  getNovaPoshtaPrices
 } from '../../services/novaposhta';
-
 
 export function* handleCities({ payload }) {
   try {
-
     const cities = yield call(getNovaPoshtaCities, payload);
     yield put(setNovaPoshtaCities(cities.data.getNovaPoshtaCities));
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 }
 
@@ -40,7 +38,7 @@ export function* handleWarehouse({ payload }) {
 
     yield put(setLoading(false));
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 }
 
@@ -53,19 +51,19 @@ export function* handleStreets({ payload }) {
 
     yield put(setLoading(false));
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 }
 
 export function* handleDeliveryPrice({ payload }) {
   try {
-
     const deliveryPrice = yield call(getNovaPoshtaPrices, payload);
-    const actualPrice = deliveryPrice.data.getNovaPoshtaPrices[0]
-    yield put(setNovaPoshtaDeliveryPrice(actualPrice.cost + actualPrice.costRedelivery))
-
+    const actualPrice = deliveryPrice.data.getNovaPoshtaPrices[0];
+    yield put(
+      setNovaPoshtaDeliveryPrice(actualPrice.cost + actualPrice.costRedelivery)
+    );
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 }
 

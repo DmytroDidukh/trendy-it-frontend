@@ -1,10 +1,11 @@
 .phone {
-  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
     -webkit-appearance: none !important;
     margin: 0 !important;
   }
 
-  input[type=number] {
+  input[type='number'] {
     -moz-appearance: textfield !important;
   }
 }
@@ -17,7 +18,7 @@
 
 .checkout-error {
   color: #9f3a38;
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 .checkout-dropdown {
@@ -50,13 +51,13 @@
     top: 50% !important;
     left: initial !important;
 
-    &:after, &:before {
+    &:after,
+    &:before {
       height: 1.2rem !important;
       width: 1.2rem !important;
     }
   }
 }
-
 
 .modal {
   .order-header {
@@ -93,11 +94,10 @@
     flex-direction: column;
     align-items: flex-end;
 
-    p:first-child, p:nth-child(2) {
-      font-size: .8rem;
+    p:first-child,
+    p:nth-child(2) {
+      font-size: 0.8rem;
       margin: 0 0 5px;
     }
   }
 }
-
-
