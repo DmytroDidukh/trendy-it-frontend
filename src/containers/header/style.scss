@@ -38,6 +38,10 @@
       &:hover {
         transform: scale(1.1);
       }
+
+      h3 {
+        font-size: 1.3rem;
+      }
     }
   }
 
@@ -138,7 +142,8 @@
         }
       }
 
-      .ui.fitted.toggle.checkbox {
+      .ui.fitted.toggle.checkbox,
+      .ui.toggle.checkbox input {
         label {
           margin: 0 !important;
           z-index: 5 !important;
@@ -329,17 +334,10 @@
     &__catalog {
       margin-left: 5px;
 
-      h3 {
-        font-size: 0.9rem;
-      }
-    }
-
-    &__right-bar {
-      position: relative;
-      right: -14px;
-
-      .theme-control {
-        transform: rotate(90deg);
+      a {
+        h3 {
+          font-size: 0.9rem;
+        }
       }
     }
   }
