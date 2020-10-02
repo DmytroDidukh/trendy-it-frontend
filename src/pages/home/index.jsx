@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Banners, HotItems, Slider } from '../../containers';
 import { Spinner } from '../../components';
-import './style.scss';
 import { getProducts } from '../../redux/products/products.actions';
 import { getBanners } from '../../redux/banners/banners.actions';
+import './style.scss';
 
 const Home = () => {
   const products = useSelector(({ Products }) => Products.list);

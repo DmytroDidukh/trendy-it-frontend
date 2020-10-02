@@ -93,12 +93,11 @@
 }
 
 @media screen and (max-width: 400px) {
-  .filter-block {
-    width: 100%;
-  }
-
   .filter-block_active {
     transform: translateX(0);
     left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
   }
 }

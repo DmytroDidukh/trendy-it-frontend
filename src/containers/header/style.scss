@@ -333,5 +333,14 @@
         font-size: 0.9rem;
       }
     }
+
+    &__right-bar {
+      position: relative;
+      right: -14px;
+
+      .theme-control {
+        transform: rotate(90deg);
+      }
+    }
   }
 }
