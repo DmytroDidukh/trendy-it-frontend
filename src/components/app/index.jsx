@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
-import { getProducts } from '../../redux/products/products.actions';
 import { Header } from '../../containers';
 import { Footer, LoadingOverlay } from '../index';
 import { history } from '../../store/store';
 import Routes from '../../routes';
 import { getWishlist } from '../../redux/wishlist/wishlist.actions';
-import { getBanners } from '../../redux/banners/banners.actions';
 import { getCart } from '../../redux/cart/cart.actions';
-import { clearLocalStorage } from '../../services/local-storage';
+import {
+  clearLocalStorage,
+  getFromLocalStorage
+} from '../../services/local-storage';
 
 import 'semantic-ui-css/semantic.min.css';
+
+const defaultTheme =
+  getFromLocalStorage('theme') === 'light' ? 'light' : 'dark';
+export const ThemeContext = React.createContext({
+  theme: defaultTheme,
+  setTheme: () => {}
+});
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,6 +33,9 @@ const App = () => {
 
   const [loadingPageVisibility, setLoadingPageVisibility] = useState(true);
 
+  const [theme, setTheme] = useState(defaultTheme);
+  const value = { theme, setTheme };
+
   if (!localStorage.getItem('trendyIT')) {
     clearLocalStorage();
   }
@@ -32,8 +43,6 @@ const App = () => {
   useEffect(() => {
     dispatch(getWishlist());
     dispatch(getCart());
-    dispatch(getProducts());
-    dispatch(getBanners());
   }, [dispatch]);
 
   useEffect(() => {
@@ -44,10 +53,12 @@ const App = () => {
 
   return (
     <ConnectedRouter history={history}>
-      <LoadingOverlay isVisible={loadingPageVisibility} />
-      <Header />
-      <Routes />
-      <Footer />
+      <ThemeContext.Provider value={value}>
+        <LoadingOverlay isVisible={loadingPageVisibility} />
+        <Header />
+        <Routes />
+        <Footer />
+      </ThemeContext.Provider>
     </ConnectedRouter>
   );
 };

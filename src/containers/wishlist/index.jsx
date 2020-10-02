@@ -40,11 +40,11 @@ const Wishlist = () => {
           {wishlistItems.length ? (
             wishlistItems.map((item) => (
               <Item key={item.id}>
-                <a href={`/catalog/${item.id}`}>
+                <a href={`/product/${item.id}`}>
                   <Item.Image size='tiny' src={item.images.product[0].url} />
                 </a>
                 <Item.Content>
-                  <Item.Header as='a' href={`/catalog/${item.id}`}>
+                  <Item.Header as='a' href={`/product/${item.id}`}>
                     {item.name}
                   </Item.Header>
                   <Item.Extra>{item.price} UAH</Item.Extra>

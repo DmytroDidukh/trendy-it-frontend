@@ -8,11 +8,20 @@
 
   &__hero {
     display: grid;
-    grid-template-columns: 1fr 450px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 350px;
     grid-gap: 10px;
 
     @media screen and (max-width: 1200px) {
       grid-template-columns: 1fr;
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-rows: 1fr 160px;
+    }
+
+    @media screen and (max-width: 400px) {
+      grid-template-rows: 1fr 100px;
     }
   }
 }

@@ -1,12 +1,14 @@
-const productSortObject = {
-  sortOptions: [
-    { key: 'priceLow', text: 'Спочатку дешевші', value: 'priceLow' },
-    { key: 'priceHigh', text: 'Спочатку дорожчі', value: 'priceHigh' },
-    { key: 'hot', text: 'Популярні', value: 'hot' },
-    { key: 'new', text: 'Новинки', value: 'new' },
-    { key: 'sale', text: 'Розпродаж', value: 'sale' }
+const SORT_OPTIONS = {
+  options: [
+    { key: '-createdAt', text: 'За замовчуванням', value: '-createdAt' },
+    { key: 'price', text: 'Спочатку дешевші', value: 'price' },
+    { key: '-price', text: 'Спочатку дорожчі', value: '-price' },
+    { key: '-hot', text: 'Популярні', value: '-hot' },
+    { key: '-new', text: 'Новинки', value: '-new' },
+    { key: '-sale', text: 'Розпродаж', value: '-sale' },
+    { key: '-available', text: 'В наявності', value: '-available' }
   ],
-  sortName: 'Сортувати за'
+  name: 'Сортувати за'
 };
 
-export default productSortObject;
+export default SORT_OPTIONS;

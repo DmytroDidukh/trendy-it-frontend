@@ -7,3 +7,4 @@ export { default as LoadingOverlay } from './loading-overlay';
 export { default as NumberInput } from './number-input';
 export { default as DropDown } from './drop-down';
 export { default as Pagination } from './pagination';
+export { default as Ranger } from './ranger';

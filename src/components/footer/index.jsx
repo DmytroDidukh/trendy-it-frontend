@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { ThemeContext } from '../app';
 import './style.scss';
 
 const Footer = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className='footer-container'>
+    <div className={`footer-container footer-container_${theme}`}>
       <div className='footer-list'>
         <div className='footer-list__item'>
           <Link className='footer-list__item-content' to='/about-us'>

@@ -2,19 +2,19 @@ import React from 'react';
 import { Card, Image, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { LABELS_DATA } from '../../../constants';
-import { salePercentage } from '../../../utils';
+import { LABELS_DATA } from '../../../../constants';
+import { salePercentage } from '../../../../utils';
 import './style.scss';
 
 const ProductCard = ({ product }) => {
   const labelGenerator = ({ color, inner }) => (
-    <Label color={color} ribbon>
+    <Label color={color} horizontal>
       {inner}
     </Label>
   );
 
   return (
-    <Link className='ui card product-card' to={`/catalog/${product.id}`}>
+    <Link className='ui card product-card' to={`/product/${product.id}`}>
       <div className={'product-card__label-container'}>
         {product.newItem && labelGenerator(LABELS_DATA.newItem)}
         {product.hot && labelGenerator(LABELS_DATA.hot)}

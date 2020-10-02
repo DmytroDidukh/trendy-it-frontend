@@ -8,6 +8,7 @@ import {
   removeItemFromWishlist
 } from '../../redux/wishlist/wishlist.actions';
 import { addItemToCart } from '../../redux/cart/cart.actions';
+import { getProductById } from '../../redux/products/products.actions';
 import Breadcrumb from './breadcrumb';
 import ImageViewer from './image-viewer';
 import Colors from './colors';
@@ -19,14 +20,14 @@ import './style.scss';
 
 const ProductDetailPage = ({ productId }) => {
   const dispatch = useDispatch();
-  const { wishlistItems, productsList } = useSelector(
+  const { wishlistItems, product, loading } = useSelector(
     ({ Wishlist, Products }) => ({
       wishlistItems: Wishlist.list,
-      productsList: Products.list
+      product: Products.product,
+      loading: Products.loading
     })
   );
 
-  const [product, setProduct] = useState(null);
   const [isItemInWishlist, setIsItemInWishlist] = useState(false);
   const [selectedColor, setSelectedColor] = useState(null);
   const [isColorErrorVisible, setIsColorErrorVisible] = useState(false);
@@ -36,10 +37,8 @@ const ProductDetailPage = ({ productId }) => {
   }, []);
 
   useEffect(() => {
-    if (productsList.length) {
-      setProduct(productsList.find((item) => item.id === productId));
-    }
-  }, [productsList.length]);
+    productId && dispatch(getProductById(productId));
+  }, [productId, dispatch]);
 
   useEffect(() => {
     if (product) {
@@ -75,12 +74,14 @@ const ProductDetailPage = ({ productId }) => {
     </Label>
   );
 
+  console.log('product', product);
+
   const productDescription =
     product && product.description && parse(product.description);
 
   return (
     <div className='product-detail'>
-      {product ? (
+      {product && !loading ? (
         <>
           <Breadcrumb itemName={product.name} />
           <div className='product-detail__labels'>

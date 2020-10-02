@@ -7,10 +7,8 @@ import { useSelector } from 'react-redux';
 
 const Slider = () => {
   const sliderProducts = useSelector(({ Products }) =>
-    Products.list.filter((item) => item.available && item.toSlider)
+    Products.list.filter((item) => item.toSlider)
   );
-
-  console.log(sliderProducts);
 
   return (
     <Carousel className='slider'>
@@ -25,7 +23,7 @@ const Slider = () => {
           />
           <Carousel.Caption>
             <h2 className='product-main-title'>{product.name}</h2>
-            <Link to={`/catalog/${product.id}`}>
+            <Link to={`/product/${product.id}`}>
               <Button variant='dark'>КУПИТИ {product.price} UAH</Button>
             </Link>
           </Carousel.Caption>

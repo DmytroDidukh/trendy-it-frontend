@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useParams } from 'react-router-dom';
 
 import {
   ProductListPage,
@@ -30,9 +30,16 @@ const Routes = () => {
       <Route exact path='/catalog' component={ProductListPage} />
       <Route
         exact
-        path='/:catalog/:id'
-        render={({ match }) => (
-          <ProductDetailPage productId={match.params.id} />
+        path='/catalog/pages=:page'
+        render={({ match: { params } }) => (
+          <ProductListPage page={params.page} />
+        )}
+      />
+      <Route
+        exact
+        path='/product/:id'
+        render={({ match: { params } }) => (
+          <ProductDetailPage productId={params.id} />
         )}
       />
     </Switch>
