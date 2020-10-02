@@ -1,13 +1,54 @@
 .footer-container {
   padding: 30px 30px 20px;
-  background: #ececec;
-  box-shadow: 0px -8px 26px #d4d4d4, 0px 17px 26px #909090;
-  border-bottom: 1px solid darken(#ececec, 2%);
   display: flex;
   flex-direction: column;
 
   @media screen and (max-width: 450px) {
     padding: 5px;
+  }
+}
+
+.footer-container_dark {
+  background: #1b1c1d;
+  box-shadow: 0px -8px 26px #737373, 0px 15px 20px 0px #848484;
+  border-top: 1px solid #161718;
+
+  .footer-list {
+    &__item {
+      a {
+        color: #ececec !important;
+      }
+
+      &-social {
+        color: #ececec !important;
+      }
+    }
+  }
+
+  .footer-company {
+    color: rgb(107, 107, 109);
+  }
+}
+
+.footer-container_light {
+  background: #ececec;
+  box-shadow: 0 8px 26px #d4d4d4, 0px -17px 26px #909090;
+  border-bottom: 1px solid darken(#ececec, 2%);
+
+  .footer-list {
+    &__item {
+      a {
+        color: #1b1c1d !important;
+      }
+
+      &-social {
+        color: #1b1c1d !important;
+      }
+    }
+  }
+
+  .footer-company {
+    color: #646464;
   }
 }
 
@@ -33,7 +74,6 @@
 
     &-content {
       display: block;
-      color: black !important;
       font-size: 1.2em;
       font-weight: 400;
       transition: all 0.4s;
@@ -70,7 +110,6 @@
   margin: 10px 0 0 0;
   text-align: center;
   font-size: 0.8em;
-  color: #6b6b6b;
 
   @media screen and (max-width: 450px) {
     font-size: 0.45em;
@@ -79,7 +118,6 @@
 }
 
 .telegram {
-  color: black !important;
   display: block !important;
   cursor: pointer;
   margin-left: 10px;
@@ -87,7 +125,6 @@
 }
 
 .viber {
-  color: black !important;
   display: block !important;
   cursor: pointer;
   margin-left: 10px;
@@ -95,7 +132,6 @@
 }
 
 .instagram {
-  color: black !important;
   display: block !important;
   cursor: pointer;
   margin-left: 10px;

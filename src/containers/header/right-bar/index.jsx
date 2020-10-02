@@ -1,4 +1,4 @@
-import React, { createRef, useContext, useRef, createElement } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Icon, Label, Radio, Ref } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ import {
 
 const RightBar = () => {
   const cartItems = useSelector(({ Cart }) => Cart.list);
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { setTheme } = useContext(ThemeContext);
 
   const handleThemeChange = (_, { checked }) => {
     const newTheme = checked ? 'dark' : 'light';
@@ -21,21 +21,8 @@ const RightBar = () => {
   };
 
   const toggleRef = useRef(null);
-  const ToggleButton = (
-    <div ref={toggleRef} id={'toggle-container'}>
-      <Radio
-        toggle
-        checked={getFromLocalStorage('theme') === 'dark'}
-        onChange={handleThemeChange}
-      />
-    </div>
-  );
-
   const onRefClick = () => {
-    //toggleRef.current.click()
-    //toggleRef.current.lastChild.click()
     toggleRef.current.firstChild.click();
-    console.dir(toggleRef.current.firstChild);
   };
 
   return (

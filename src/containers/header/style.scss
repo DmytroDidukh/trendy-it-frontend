@@ -92,7 +92,9 @@
       font-size: 0.6em;
 
       @media screen and (max-width: 550px) {
-        font-size: 0.5rem !important;
+        font-size: 0.45rem !important;
+        right: -3px;
+        z-index: 10;
       }
     }
 
@@ -112,20 +114,38 @@
         @media screen and (max-width: 550px) {
           font-size: 0.9rem !important;
         }
+
+        @media screen and (max-width: 400px) {
+          font-size: 0.7rem !important;
+        }
       }
 
       i.sun {
         right: 29px;
+
+        @media screen and (max-width: 400px) {
+          right: 25.5px;
+          top: 2.5px;
+        }
       }
 
       i.moon {
         right: 0;
+
+        @media screen and (max-width: 400px) {
+          right: 5px;
+          top: 3px;
+        }
       }
 
       .ui.fitted.toggle.checkbox {
         label {
           margin: 0 !important;
           z-index: 5 !important;
+        }
+
+        @media screen and (max-width: 400px) {
+          width: 2.9rem !important;
         }
       }
 
@@ -144,6 +164,24 @@
       .ui.checkbox input:indeterminate ~ label:after,
       .ui.toggle.checkbox input:checked ~ .box:after {
         z-index: 5 !important;
+      }
+
+      .ui.toggle.checkbox .box:after,
+      .ui.toggle.checkbox label:after {
+        @media screen and (max-width: 400px) {
+          width: 0.9rem !important;
+          height: 0.9rem !important;
+          top: 5px !important;
+        }
+      }
+
+      .ui.toggle.checkbox .box:before,
+      .ui.toggle.checkbox label:before {
+        @media screen and (max-width: 400px) {
+          width: 2.5rem !important;
+          height: 1rem !important;
+          top: 5px !important;
+        }
       }
     }
   }
@@ -227,6 +265,12 @@
         left: -1px;
         position: absolute;
         z-index: -1;
+
+        @media screen and (max-width: 400px) {
+          width: 33px;
+          height: 14px;
+          top: 2px;
+        }
       }
     }
   }
@@ -252,12 +296,19 @@
   h3 {
     color: #ececec !important;
   }
+
+  .ui.toggle.checkbox input:checked ~ .box:after,
+  .ui.toggle.checkbox input:checked ~ label:after {
+    @media screen and (max-width: 400px) {
+      left: 1.45rem !important;
+    }
+  }
 }
 
 @media screen and (max-width: 400px) {
   .main-header {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 10px;
+    padding: 0 3px;
 
     &__logo {
       grid-area: 1/2/2/3;

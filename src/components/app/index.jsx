@@ -12,7 +12,6 @@ import {
   clearLocalStorage,
   getFromLocalStorage
 } from '../../services/local-storage';
-import { THEME } from '../../constants';
 
 import 'semantic-ui-css/semantic.min.css';
 
