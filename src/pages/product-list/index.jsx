@@ -67,7 +67,7 @@ const ProductList = ({ page }) => {
         </div>
         <DropDown
           value={query.sort}
-          options={SORT_OPTIONS.options}
+          options={SORT_OPTIONS}
           handleDropDown={handleSortChange}
         />
       </div>
