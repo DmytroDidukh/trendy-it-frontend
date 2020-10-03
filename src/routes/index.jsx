@@ -10,7 +10,8 @@ import {
   AboutUs,
   Production,
   PaymentAndShipping,
-  Contacts
+  Contacts,
+  NotFound
 } from '../pages';
 
 const Routes = () => {
@@ -42,6 +43,7 @@ const Routes = () => {
           <ProductDetailPage productId={params.id} />
         )}
       />
+      <Route component={NotFound} />
     </Switch>
   );
 };
