@@ -8,7 +8,10 @@ import { getBanners } from '../../redux/banners/banners.actions';
 import './style.scss';
 
 const Home = () => {
-  const products = useSelector(({ Products }) => Products.list);
+  const { products, banners } = useSelector(({ Products, Banners }) => ({
+    products: Products.list,
+    banners: Banners.list
+  }));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +30,7 @@ const Home = () => {
         <>
           <div className='home__hero'>
             <Slider />
-            <Banners />
+            {!!banners.length && <Banners />}
           </div>
           <HotItems />
         </>
