@@ -89,6 +89,7 @@
   .filter-block_active {
     transform: translateX(0);
     left: 0;
+    position: fixed;
   }
 }
 
@@ -98,6 +99,5 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    position: fixed;
   }
 }
