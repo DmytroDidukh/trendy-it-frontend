@@ -10,20 +10,24 @@ const Header = () => {
   const pathname = useSelector(({ router }) => router.location.pathname);
   const { theme } = useContext(ThemeContext);
 
+  const logo =
+    theme === 'light'
+      ? 'https://res.cloudinary.com/d-didukh/image/upload/v1601757799/trendy-it/logo-light_cun1rm.png'
+      : 'https://res.cloudinary.com/d-didukh/image/upload/v1601757799/trendy-it/logo-dark_riofgj.png';
+
   return (
     <div className={`main-header main-header_${theme}`}>
-      <div className='main-header__logo'>
-        <Link to='/'>
-          <img src={'https://i.imgur.com/RUBp39w.png'} alt={'Shop logo'} />
-          <h1>Trendy IT</h1>
-        </Link>
-      </div>
       <div className='main-header__catalog'>
         {!pathname.includes('/catalog') && (
           <Link to={`/catalog/pages=${1}`}>
             <h3>Каталог</h3>
           </Link>
         )}
+      </div>
+      <div className='main-header__logo'>
+        <Link to='/'>
+          <img src={logo} alt={'Shop logo'} />
+        </Link>
       </div>
       <RightBar />
     </div>
