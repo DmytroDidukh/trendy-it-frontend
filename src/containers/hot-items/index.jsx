@@ -35,11 +35,7 @@ const HotItems = () => {
   return (
     <div className='hot'>
       <h2>ХІТИ</h2>
-      <Carousel
-        className='hot__carousel'
-        responsive={RESPONSIVE}
-        swipeable={false}
-      >
+      <Carousel className='hot__carousel' responsive={RESPONSIVE} swipeable>
         {productList}
       </Carousel>
     </div>
