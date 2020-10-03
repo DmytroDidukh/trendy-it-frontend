@@ -47,6 +47,7 @@ const ImageViewer = ({ images }) => {
         closeBtnTitle={'Закрити'}
         leftArrowTitle={'Назад'}
         rightArrowTitle={'Вперед'}
+        backdropCloseable
       />
       <div className='product-detail__item__images'>
         {primaryImage}
