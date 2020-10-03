@@ -162,7 +162,7 @@ const CheckoutForm = () => {
           name: item.name,
           price: item.price,
           quantity: item.quantity,
-          color: item.selectedColor
+          color: item.color
         }))
       ],
       orderId: orderIdGenerator(),

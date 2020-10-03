@@ -113,6 +113,7 @@ const Filter = ({
               style={{ backgroundColor: color.hex }}
               data-id={color.type}
               onClick={() => onColorSelect(color.type)}
+              title={color.name}
             />
           ))}
         </div>

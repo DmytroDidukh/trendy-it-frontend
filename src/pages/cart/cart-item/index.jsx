@@ -65,7 +65,7 @@ const CartItem = ({ product }) => {
               Колір:
               <span
                 style={{
-                  backgroundColor: COLORS_DATA[product.selectedColor].hex
+                  backgroundColor: COLORS_DATA[product.color].hex
                 }}
               />
             </div>
