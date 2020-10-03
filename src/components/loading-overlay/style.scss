@@ -20,13 +20,15 @@
     z-index: -1;
   }
 
-  h2 {
-    font-family: 'MarcellusSC', sans-serif !important;
-    font-size: 10em;
-    color: #000000;
+  .page-logo {
+    width: 500px;
+  }
+}
 
-    @media screen and (max-width: 552px) {
-      font-size: 5em;
+@media screen and (max-width: 450px) {
+  .loading-page {
+    .page-logo {
+      width: 250px;
     }
   }
 }

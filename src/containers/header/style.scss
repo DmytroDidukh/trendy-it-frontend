@@ -300,6 +300,14 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 0 3px;
 
+    &__logo {
+      a {
+        img {
+          height: 45px;
+        }
+      }
+    }
+
     &__catalog {
       margin-left: 5px;
 

@@ -10,6 +10,10 @@
     font-size: 10rem;
     color: #000000;
   }
+
+  .page-logo {
+    width: 500px;
+  }
 }
 
 @media screen and (max-width: 552px) {
@@ -18,13 +22,13 @@
       font-size: 5rem;
     }
 
-    h2 {
-      font-size: 1.1rem;
+    .page-logo {
+      width: 250px;
     }
 
     .basic-button {
-      width: 180px;
-      font-size: 1.3rem;
+      width: 120px;
+      font-size: 1rem;
     }
   }
 }

@@ -6,8 +6,12 @@ import './style.scss';
 const ThanksPage = () => {
   return (
     <div className='thanks-page'>
-      <h2 className='title'>Trendy IT</h2>
-      <h2>Дякуємо за покупку!</h2>
+      <img
+        className={'page-logo'}
+        src='https://res.cloudinary.com/d-didukh/image/upload/v1601758317/trendy-it/trendy-light-large_xptvpp.png'
+        alt='Trendy IT'
+      />
+      <h3>Дякуємо за покупку!</h3>
       <Link to='/'>
         <button className='basic-button'>На головну</button>
       </Link>

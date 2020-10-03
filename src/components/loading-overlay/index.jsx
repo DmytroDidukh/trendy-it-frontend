@@ -20,7 +20,11 @@ const LoadingOverlay = ({ isVisible }) => {
         hide && 'disabled'
       }`}
     >
-      <h2>Trendy IT</h2>
+      <img
+        className={'page-logo'}
+        src='https://res.cloudinary.com/d-didukh/image/upload/v1601758317/trendy-it/trendy-light-large_xptvpp.png'
+        alt='Trendy IT'
+      />
       <Spinner />
     </div>
   );
