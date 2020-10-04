@@ -31,9 +31,6 @@ const ProductDetailPage = ({ productId }) => {
 
   useEffect(() => {
     window.scroll(0, 0);
-  }, []);
-
-  useEffect(() => {
     productId && dispatch(getProductById(productId));
   }, [productId, dispatch]);
 
@@ -64,8 +61,6 @@ const ProductDetailPage = ({ productId }) => {
       {inner}
     </Label>
   );
-
-  console.log('product', product);
 
   const productDescription =
     product && product.description && parse(product.description);

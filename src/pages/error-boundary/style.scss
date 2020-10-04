@@ -1,0 +1,10 @@
+.error-boundary {
+  min-height: calc(100vh - 168px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 450px) {
+    min-height: calc(100vh - 190px);
+  }
+}

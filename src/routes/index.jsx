@@ -11,7 +11,8 @@ import {
   Production,
   PaymentAndShipping,
   Contacts,
-  NotFound
+  NotFound,
+  ErrorBoundary
 } from '../pages';
 
 const Routes = () => {
@@ -42,6 +43,11 @@ const Routes = () => {
         render={({ match: { params } }) => (
           <ProductDetailPage productId={params.id} />
         )}
+      />
+      <Route
+        exact
+        path='/error'
+        render={() => <ErrorBoundary error={true} />}
       />
       <Route component={NotFound} />
     </Switch>

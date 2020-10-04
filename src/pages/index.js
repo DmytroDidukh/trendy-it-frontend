@@ -8,3 +8,4 @@ export { default as Production } from './production';
 export { default as Contacts } from './contacts';
 export { default as PaymentAndShipping } from './payment-and-shipping';
 export { default as NotFound } from './not-found';
+export { default as ErrorBoundary } from './error-boundary';

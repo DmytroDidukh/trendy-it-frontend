@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import { Header } from '../../containers';
+import { ErrorBoundary } from '../../pages';
 import { Footer, LoadingOverlay } from '../index';
 import { history } from '../../store/store';
 import Routes from '../../routes';
@@ -17,7 +18,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 const defaultTheme =
   getFromLocalStorage('theme') === 'light' ? 'light' : 'dark';
-export const ThemeContext = React.createContext({
+export const ThemeContext = createContext({
   theme: defaultTheme,
   setTheme: () => {}
 });
@@ -55,9 +56,11 @@ const App = () => {
     <ConnectedRouter history={history}>
       <ThemeContext.Provider value={value}>
         <LoadingOverlay isVisible={loadingPageVisibility} />
-        <Header />
-        <Routes />
-        <Footer />
+        <ErrorBoundary>
+          <Header />
+          <Routes />
+          <Footer />
+        </ErrorBoundary>
       </ThemeContext.Provider>
     </ConnectedRouter>
   );
