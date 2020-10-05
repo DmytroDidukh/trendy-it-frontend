@@ -94,14 +94,14 @@ a {
   font-size: 1.1em;
   cursor: pointer;
   border-radius: 5px;
-  background: #272727;
+  background: #1b1c1d;
   box-shadow: 1px 2px 5px #737373, -5px -5px 31px #cecece;
   transition: all 0.2s ease;
   outline: none;
 }
 
 .basic-button:hover:not(:disabled) {
-  background: #151515;
+  background: darken(#1b1c1d, 5%);
   transform: scale(1.05);
 }
 

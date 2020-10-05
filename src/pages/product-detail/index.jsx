@@ -39,7 +39,7 @@ const ProductDetailPage = ({ productId }) => {
       const checkedWishlistItem = wishlistItems.find(
         (item) => item.id === product.id
       );
-      checkedWishlistItem && setIsItemInWishlist(true);
+      setIsItemInWishlist(!!checkedWishlistItem);
     }
   }, [wishlistItems, isItemInWishlist, product]);
 

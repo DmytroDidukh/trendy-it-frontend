@@ -11,18 +11,19 @@ import {
   getFromLocalStorage,
   setToLocalStorage
 } from '../../services/local-storage';
+import { setLoading as setBannersLoading } from '../banners/banners.actions';
+import { setLoading as setProductsLoading } from '../products/products.actions';
 
 function* handleCartLoad() {
   const cart = getFromLocalStorage('cart');
   yield put(setCart(cart));
+  yield put(setBannersLoading(false));
+  yield put(setProductsLoading(false));
 }
 
 function* handleAddCartItem({ payload }) {
   const cart = getFromLocalStorage('cart');
-  const possibleItemInCart = cart.find(
-    (item) =>
-      item.id === payload.id && item.selectedColor === payload.selectedColor
-  );
+  const possibleItemInCart = cart.find((item) => item.id === payload.id);
 
   let newCart;
   if (possibleItemInCart) {
@@ -38,12 +39,9 @@ function* handleAddCartItem({ payload }) {
   yield put(setCart(newCart));
 }
 
-function* handleRemoveCartItem({ payload: { id, selectedColor } }) {
+function* handleRemoveCartItem({ payload: { id, color } }) {
   const cart = getFromLocalStorage('cart');
-  const newCart = cart.filter(
-    (item) =>
-      item.id !== id || (item.id === id && item.selectedColor !== selectedColor)
-  );
+  const newCart = cart.filter((item) => item.id !== id);
 
   setToLocalStorage('cart', newCart);
   yield put(setCart(newCart));
@@ -51,14 +49,14 @@ function* handleRemoveCartItem({ payload: { id, selectedColor } }) {
 
 function* handleSetCartItemQuantity({
   payload: {
-    item: { id, selectedColor },
+    item: { id },
     value,
     key
   }
 }) {
   const cart = getFromLocalStorage('cart');
   const newCart = cart.map((item) => {
-    if (item.id === id && item.selectedColor === selectedColor) {
+    if (item.id === id) {
       // key will be true if user typing inside input
       item.quantity = key ? value || 1 : item.quantity + value;
     }
