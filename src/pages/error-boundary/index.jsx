@@ -22,12 +22,16 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <div className={'error-boundary'}>
-          <h2>GG WP</h2>
+          <img
+            src='https://res.cloudinary.com/d-didukh/image/upload/v1601886392/trendy-it/Asset_4_jzjeur.png'
+            alt='error'
+          />
+          <h4>Щось пішло не так...</h4>
           <button
             className={'basic-button'}
             onClick={() => this.onBackHome(this.props)}
           >
-            на головну
+            На головну
           </button>
         </div>
       );

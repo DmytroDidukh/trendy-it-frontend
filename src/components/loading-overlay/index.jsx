@@ -22,7 +22,7 @@ const LoadingOverlay = ({ isVisible }) => {
     >
       <img
         className={'page-logo'}
-        src='https://res.cloudinary.com/d-didukh/image/upload/v1601758317/trendy-it/trendy-light-large_xptvpp.png'
+        src='https://res.cloudinary.com/d-didukh/image/upload/v1601889295/trendy-it/logo-large_phy39y.png'
         alt='Trendy IT'
       />
       <Spinner />

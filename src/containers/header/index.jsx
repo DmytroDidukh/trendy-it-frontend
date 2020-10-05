@@ -12,8 +12,8 @@ const Header = () => {
 
   const logo =
     theme === 'light'
-      ? 'https://res.cloudinary.com/d-didukh/image/upload/v1601757799/trendy-it/logo-light_cun1rm.png'
-      : 'https://res.cloudinary.com/d-didukh/image/upload/v1601757799/trendy-it/logo-dark_riofgj.png';
+      ? 'https://res.cloudinary.com/d-didukh/image/upload/v1601889295/trendy-it/logo-light_rkygqe.png'
+      : 'https://res.cloudinary.com/d-didukh/image/upload/v1601889295/trendy-it/logo-dark_o9wf1x.png';
 
   return (
     <div className={`main-header main-header_${theme}`}>
