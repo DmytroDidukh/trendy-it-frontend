@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component {
       return (
         <div className={'error-boundary'}>
           <img
-            src='https://res.cloudinary.com/d-didukh/image/upload/v1601886392/trendy-it/Asset_4_jzjeur.png'
+            src='https://res.cloudinary.com/d-didukh/image/upload/v1601891849/trendy-it/error_fjwbzq.png'
             alt='error'
           />
           <h4>Щось пішло не так...</h4>
