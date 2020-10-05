@@ -45,10 +45,7 @@ const ProductList = ({ page }) => {
   };
 
   return (
-    <div
-      className='product-list__container'
-      style={{ overflowY: filterVisibility ? 'hidden' : 'auto' }}
-    >
+    <div className='product-list__container'>
       <div className='product-list__title'>КАТАЛОГ</div>
 
       <div className='product-list__dropdown-section'>

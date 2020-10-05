@@ -39,6 +39,10 @@
   &__image {
     img {
       width: 100px;
+
+      @media screen and (max-width: 450px) {
+        width: 60px;
+      }
     }
   }
 

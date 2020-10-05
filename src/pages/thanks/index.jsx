@@ -11,7 +11,7 @@ const ThanksPage = () => {
         src='https://res.cloudinary.com/d-didukh/image/upload/v1601889295/trendy-it/logo-large_phy39y.png'
         alt='Trendy IT'
       />
-      <h4>Дякуємо за покупку!</h4>
+      <h3>Дякуємо за покупку!</h3>
       <Link to='/'>
         <button className='basic-button'>На головну</button>
       </Link>

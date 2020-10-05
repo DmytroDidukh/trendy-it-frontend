@@ -117,3 +117,17 @@ a {
   width: 40px !important;
   height: 40px !important;
 }
+
+.btn-dark {
+  background: #1b1c1d;
+
+  &:hover {
+    background: darken(#1b1c1d, 5%);
+  }
+}
+
+.btn-outline-dark {
+  &:hover {
+    background: #1b1c1d;
+  }
+}

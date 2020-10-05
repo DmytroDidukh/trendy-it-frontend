@@ -16,12 +16,12 @@ const Pagination = ({ pagination, setQuery }) => {
 
   return (
     <BasePagination
-      defaultActivePage={pagination.currentPage}
+      defaultActivePage={pagination ? pagination.currentPage : 1}
       firstItem={null}
       lastItem={null}
       pointing
       secondary
-      totalPages={pagination.totalPages}
+      totalPages={pagination ? pagination.totalPages : 1}
       onPageChange={onPageChange}
     />
   );
