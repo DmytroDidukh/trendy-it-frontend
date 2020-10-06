@@ -127,20 +127,9 @@
   }
 }
 
-.telegram {
-  display: block !important;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: all 0.2s;
-}
-
-.viber {
-  display: block !important;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: all 0.2s;
-}
-
+.telegram,
+.viber,
+.facebook,
 .instagram {
   display: block !important;
   cursor: pointer;
@@ -154,6 +143,10 @@
 
 .viber:hover {
   color: #815df5 !important;
+}
+
+.facebook:hover {
+  color: #3b5998 !important;
 }
 
 .instagram:hover {

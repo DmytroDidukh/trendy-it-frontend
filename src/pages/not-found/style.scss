@@ -1,5 +1,5 @@
 .not-found {
-  min-height: calc(100vh - 168px);
+  min-height: calc(100vh - 139px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,6 +26,6 @@
   }
 
   @media screen and (max-width: 450px) {
-    min-height: calc(100vh - 190px);
+    min-height: calc(100vh - 163px);
   }
 }
