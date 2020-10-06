@@ -55,8 +55,9 @@ const Footer = () => {
         </div>
       </div>
       <div className={'footer-company'}>
-        Copyright © DiVi <img src='/images/divi-shrimp.png' alt='DiVi logo' />{' '}
-        Corp. All Rights Reserved.
+        Copyright © DiVi & Co.{' '}
+        <img src='/images/divi-shrimp.png' alt='DiVi logo' /> All Rights
+        Reserved.
       </div>
     </div>
   );
