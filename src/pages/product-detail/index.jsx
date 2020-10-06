@@ -69,7 +69,7 @@ const ProductDetailPage = ({ productId }) => {
     <div className='product-detail'>
       {product && !loading ? (
         <>
-          <Breadcrumb itemName={product.name} />
+          {/*<Breadcrumb itemName={product.name} />*/}
           <div className='product-detail__labels'>
             {product.newItem && labelGenerator(LABELS_DATA.newItem)}
             {product.hot && labelGenerator(LABELS_DATA.hot)}

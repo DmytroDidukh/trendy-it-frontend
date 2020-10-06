@@ -67,8 +67,6 @@ const Filter = ({
 
     dispatch(push(`/catalog/pages=${1}`));
     setIsFilterTouched(false);
-    //setColors([])
-    //setPriceRange([0, 5000])
   };
 
   return (
@@ -102,7 +100,7 @@ const Filter = ({
         <Ranger values={priceRange} setValues={onPriceRangeChange} />
       </div>
       <div className={'filter-block__colors'}>
-        <h4>Кольори:</h4>
+        <h4>Колір:</h4>
         <div className={'filter-block__colors-container'}>
           {Object.values(COLORS_DATA).map((color) => (
             <div

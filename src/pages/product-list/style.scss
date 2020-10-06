@@ -59,6 +59,10 @@
 
   .ui.selection.dropdown {
     width: 200px;
+
+    @media screen and (max-width: 450px) {
+      width: 180px;
+    }
   }
 
   .small-wide-filter-btn,

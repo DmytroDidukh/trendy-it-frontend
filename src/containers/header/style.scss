@@ -5,6 +5,8 @@
   height: 60px;
   align-items: center;
   padding: 0 20px;
+  z-index: 1;
+  position: relative;
 
   &__logo {
     display: flex;

@@ -100,5 +100,12 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+
+    .filter-block__price,
+    .filter-block__colors {
+      h4 {
+        font-size: 0.9em;
+      }
+    }
   }
 }

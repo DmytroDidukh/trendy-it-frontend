@@ -41,13 +41,14 @@
       font-weight: 400 !important;
     }
 
-    @media screen and (max-width: 992px) {
-      margin-top: 10px;
+    &__title {
+      @media screen and (max-width: 450px) {
+        font-size: 1.2em;
+      }
     }
 
-    &__title {
-      margin: 30px 0;
-      border-bottom: 1px solid silver;
+    @media screen and (max-width: 992px) {
+      margin-top: 10px;
     }
   }
 }
@@ -59,6 +60,16 @@
     > * {
       margin-left: 10px;
       margin-right: 10px;
+    }
+
+    &__table {
+      &__title {
+        font-size: 1.2em;
+      }
+
+      &__total {
+        font-size: 1.2em;
+      }
     }
 
     .basic-button {
