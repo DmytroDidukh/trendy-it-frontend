@@ -18,6 +18,11 @@
       border-radius: 5px !important;
     }
   }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    z-index: 0;
+  }
 }
 
 @media screen and (max-width: 400px) {

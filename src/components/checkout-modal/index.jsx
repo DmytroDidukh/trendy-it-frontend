@@ -58,7 +58,10 @@ const ModalCheckout = ({
             </p>
             <br />
             <p>
-              Метод зв‘язку: <span>{order.connectionMethod}</span>
+              Спосіб оплати: <span>{order.paymentMethod}</span>
+            </p>
+            <p>
+              Спосіб зв‘язку: <span>{order.connectionMethod}</span>
             </p>
             <p>
               Спосіб доставки: <span>{order.delivery.method}</span>
@@ -129,7 +132,7 @@ const ModalCheckout = ({
             </div>
           </Modal.Content>
           <Modal.Actions>
-            <p>Наш менеджер зв‘яжеться з Вами найближчим часом.</p>
+            <p>Ми зв‘яжемось з Вами найближчим часом.</p>
             <Button onClick={handleButtonClick} inverted color='red'>
               Відмінити
             </Button>
