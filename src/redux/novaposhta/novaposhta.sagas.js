@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-//import { push } from 'connected-react-router';
+import { push } from 'connected-react-router';
 
 import {
   setNovaPoshtaCities,
@@ -27,6 +27,7 @@ export function* handleCities({ payload }) {
     yield put(setNovaPoshtaCities(cities.data.getNovaPoshtaCities));
   } catch (e) {
     console.log(e);
+    yield put(push('/error'));
   }
 }
 
@@ -39,6 +40,8 @@ export function* handleWarehouse({ payload }) {
     yield put(setLoading(false));
   } catch (e) {
     console.log(e);
+    yield put(push('/error'));
+    yield put(setLoading(false));
   }
 }
 
@@ -52,6 +55,8 @@ export function* handleStreets({ payload }) {
     yield put(setLoading(false));
   } catch (e) {
     console.log(e);
+    yield put(push('/error'));
+    yield put(setLoading(false));
   }
 }
 
@@ -64,6 +69,8 @@ export function* handleDeliveryPrice({ payload }) {
     );
   } catch (e) {
     console.log(e);
+    yield put(push('/error'));
+    yield put(setLoading(false));
   }
 }
 

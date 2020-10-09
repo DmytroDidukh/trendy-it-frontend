@@ -25,15 +25,31 @@ const Footer = () => {
 
         <div className='footer-list__item'>
           <div className='footer-list__item-social'>
-            <a className='telegram' href='https://web.telegram.org/#/login'>
+            <a
+              className='telegram'
+              href='https://web.telegram.org/#/login'
+              target='-_blank'
+            >
               <Icon name='telegram' size='big' />
             </a>
-            <a className='viber' href='https://www.viber.com/ru/'>
+            <a
+              className='viber'
+              href='https://www.viber.com/ru/'
+              target='-_blank'
+            >
               <Icon name='viber' size='big' />
+            </a>
+            <a
+              className='facebook'
+              href='https://www.facebook.com'
+              target='-_blank'
+            >
+              <Icon name='facebook official' size='big' />
             </a>
             <a
               className='instagram'
               href='https://www.instagram.com/trendy_it_bags/'
+              target='-_blank'
             >
               <Icon name='instagram' size='big' />
             </a>
@@ -55,7 +71,9 @@ const Footer = () => {
         </div>
       </div>
       <div className={'footer-company'}>
-        Copyright © DiVi Corp. All Rights Reserved.
+        Copyright © DiVi & Co.{' '}
+        <img src='/images/divi-shrimp.png' alt='DiVi logo' /> All Rights
+        Reserved.
       </div>
     </div>
   );

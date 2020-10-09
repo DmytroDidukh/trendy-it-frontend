@@ -1,6 +1,6 @@
 export const COLORS_DATA = {
   black: { hex: '#000000', name: 'Чорний', type: 'black' },
-  silver: { hex: '#6c757d', name: 'Сірий', type: 'silver' },
+  grey: { hex: '#6c757d', name: 'Сірий', type: 'grey' },
   white: { hex: '#ffffff', name: 'Білий', type: 'white' },
   blue: { hex: '#007bff', name: 'Синій', type: 'blue' },
   purple: { hex: '#6f42c1', name: 'Фіолетовий', type: 'purple' },

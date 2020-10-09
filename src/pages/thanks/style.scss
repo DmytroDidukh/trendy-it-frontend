@@ -1,30 +1,41 @@
 .thanks-page {
-  height: calc(100vh - (60px + 89px));
+  height: calc(100vh - (60px + 79px));
   min-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .title {
-    font-family: 'MarcellusSC', sans-serif;
-    font-size: 10rem;
-    color: #000000;
+
+  .page-logo {
+    height: 45%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .thanks-page {
+    .basic-button {
+      width: 100px;
+      font-size: 0.9rem;
+    }
+
+    .page-logo {
+      height: 35%;
+    }
   }
 }
 
 @media screen and (max-width: 552px) {
   .thanks-page {
-    .title {
-      font-size: 5rem;
+    .page-logo {
+      height: 25%;
     }
 
-    h2 {
-      font-size: 1.1rem;
+    h3 {
+      font-size: 0.9em;
     }
 
     .basic-button {
-      width: 180px;
-      font-size: 1.3rem;
+      width: 100px;
     }
   }
 }

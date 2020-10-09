@@ -2,7 +2,7 @@ import { SET_BANNERS, SET_LOADING } from './banners.types';
 
 const initialState = {
   list: [],
-  loading: false
+  loading: true
 };
 
 const bannersReducer = (state = initialState, { type, payload }) => {

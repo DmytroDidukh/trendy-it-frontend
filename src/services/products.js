@@ -26,7 +26,7 @@ export const getProducts = async ({ filter, sort, page, limit = 0 }) => {
                 publicId
               }
             }
-            colors
+            color
             price
             oldPrice
             description
@@ -72,7 +72,7 @@ export const getProductById = async (id) => {
               url
             }
           }
-          colors
+          color
           price
           oldPrice
           description

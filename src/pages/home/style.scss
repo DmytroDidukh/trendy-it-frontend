@@ -1,6 +1,6 @@
 .home {
   min-height: calc(100vh - 178px);
-  margin-top: 10px;
+  z-index: 2;
 
   .spinner-it {
     margin-top: 100px;
@@ -9,7 +9,7 @@
   &__hero {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 350px;
+    grid-template-rows: auto;
     grid-gap: 10px;
 
     @media screen and (max-width: 1200px) {

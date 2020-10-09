@@ -39,6 +39,10 @@
   &__image {
     img {
       width: 100px;
+
+      @media screen and (max-width: 450px) {
+        width: 60px;
+      }
     }
   }
 
@@ -63,6 +67,10 @@
       font-weight: 600;
       &:hover {
         color: #0088cc;
+      }
+
+      @media screen and (max-width: 450px) {
+        font-size: 1.1em;
       }
     }
 
@@ -99,9 +107,12 @@
 
 @media screen and (max-width: 500px) {
   .cart-item__price {
+    font-size: 0.8em;
+
     .ui.red.label {
       padding: 5px;
       margin-left: 10px;
+      font-size: 0.6em;
     }
   }
 }

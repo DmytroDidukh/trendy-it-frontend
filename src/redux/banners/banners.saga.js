@@ -1,4 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
 import { setBanners, setLoading } from './banners.actions';
 import { getBannersByUsability } from '../../services/banners';
@@ -10,8 +11,10 @@ function* handleBannersLoad() {
     const banners = yield call(getBannersByUsability);
     yield put(setBanners(banners.data.getBannerByUsability));
     yield put(setLoading(false));
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.log(e);
+    yield put(push('/error'));
+    yield put(setLoading(false));
   }
 }
 

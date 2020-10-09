@@ -1,4 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
 import {
   setProducts,
@@ -26,6 +27,8 @@ function* handleProductsLoad({ payload }) {
     yield put(setLoading(false));
   } catch (error) {
     console.log(error);
+    yield put(push('/error'));
+    yield put(setLoading(false));
   }
 }
 
@@ -38,8 +41,9 @@ function* handleProductsSearch({ payload }) {
 
     yield put(setSearchLoading(false));
   } catch (error) {
-    yield put(setSearchLoading(false));
     console.log(error);
+    yield put(setSearchLoading(false));
+    yield put(push('/error'));
   }
 }
 
@@ -51,6 +55,7 @@ function* handleGetProductBuyId({ payload }) {
     yield put(setProduct(product));
     yield put(setLoading(false));
   } catch (error) {
+    yield put(push('/error'));
     yield put(setLoading(false));
     console.log(error);
   }

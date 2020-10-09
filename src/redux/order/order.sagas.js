@@ -14,6 +14,7 @@ function* handleAddOrder({ payload }) {
     yield put(push('/thanks'));
   } catch (e) {
     console.log(e);
+    yield put(push('/error'));
   }
 }
 

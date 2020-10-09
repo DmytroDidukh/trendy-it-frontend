@@ -1,6 +1,10 @@
 .about-us {
-  min-height: calc(100vh - 178px);
+  min-height: calc(100vh - 139px);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 450px) {
+    min-height: calc(100vh - 163px);
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Icon, Label, Radio, Ref } from 'semantic-ui-react';
+import { Icon, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import { SearchBar, Wishlist } from '../../index';
@@ -14,15 +14,15 @@ const RightBar = () => {
   const cartItems = useSelector(({ Cart }) => Cart.list);
   const { setTheme } = useContext(ThemeContext);
 
-  const handleThemeChange = (_, { checked }) => {
-    const newTheme = checked ? 'dark' : 'light';
+  const handleThemeChange = ({ target }) => {
+    const newTheme = target.checked ? 'dark' : 'light';
     setTheme(newTheme);
     setToLocalStorage('theme', newTheme);
   };
 
   const toggleRef = useRef(null);
   const onRefClick = () => {
-    toggleRef.current.firstChild.click();
+    toggleRef.current.click();
   };
 
   return (
@@ -37,15 +37,16 @@ const RightBar = () => {
           </Label>
         )}
       </Link>
-      <div className={'theme-control'}>
+      <div className='theme-toggle'>
         <Icon name={'sun'} onClick={onRefClick} />
-        <Ref innerRef={toggleRef}>
-          <Radio
-            toggle
-            checked={getFromLocalStorage('theme') === 'dark'}
-            onChange={handleThemeChange}
-          />
-        </Ref>
+        <input
+          onChange={handleThemeChange}
+          type='checkbox'
+          id='theme-toggle'
+          ref={toggleRef}
+          checked={getFromLocalStorage('theme') === 'dark'}
+        />
+        <label htmlFor='theme-toggle' />
         <Icon name={'moon'} onClick={onRefClick} />
       </div>
     </div>

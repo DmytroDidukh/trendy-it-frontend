@@ -11,9 +11,8 @@ import { addItemToCart } from '../../redux/cart/cart.actions';
 import { getProductById } from '../../redux/products/products.actions';
 import Breadcrumb from './breadcrumb';
 import ImageViewer from './image-viewer';
-import Colors from './colors';
 import { Spinner } from '../../components';
-import { LABELS_DATA } from '../../constants';
+import { COLORS_DATA, LABELS_DATA } from '../../constants';
 import { salePercentage } from '../../utils';
 
 import './style.scss';
@@ -29,14 +28,9 @@ const ProductDetailPage = ({ productId }) => {
   );
 
   const [isItemInWishlist, setIsItemInWishlist] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [isColorErrorVisible, setIsColorErrorVisible] = useState(false);
 
   useEffect(() => {
     window.scroll(0, 0);
-  }, []);
-
-  useEffect(() => {
     productId && dispatch(getProductById(productId));
   }, [productId, dispatch]);
 
@@ -45,7 +39,7 @@ const ProductDetailPage = ({ productId }) => {
       const checkedWishlistItem = wishlistItems.find(
         (item) => item.id === product.id
       );
-      checkedWishlistItem && setIsItemInWishlist(true);
+      setIsItemInWishlist(!!checkedWishlistItem);
     }
   }, [wishlistItems, isItemInWishlist, product]);
 
@@ -59,22 +53,14 @@ const ProductDetailPage = ({ productId }) => {
     }
   };
 
-  const onAddToCart = () => {
-    if (!selectedColor) {
-      setIsColorErrorVisible(true);
-      return;
-    }
-
-    dispatch(addItemToCart({ ...product, selectedColor, quantity: 1 }));
-  };
+  const onAddToCart = () =>
+    dispatch(addItemToCart({ ...product, quantity: 1 }));
 
   const labelGenerator = ({ color, inner }) => (
     <Label color={color} horizontal>
       {inner}
     </Label>
   );
-
-  console.log('product', product);
 
   const productDescription =
     product && product.description && parse(product.description);
@@ -83,7 +69,7 @@ const ProductDetailPage = ({ productId }) => {
     <div className='product-detail'>
       {product && !loading ? (
         <>
-          <Breadcrumb itemName={product.name} />
+          {/*<Breadcrumb itemName={product.name} />*/}
           <div className='product-detail__labels'>
             {product.newItem && labelGenerator(LABELS_DATA.newItem)}
             {product.hot && labelGenerator(LABELS_DATA.hot)}
@@ -103,13 +89,12 @@ const ProductDetailPage = ({ productId }) => {
               <div className='product-detail__item__description-about'>
                 {productDescription}
               </div>
-              <Colors
-                colors={product.colors}
-                selectedColor={selectedColor}
-                setSelectedColor={setSelectedColor}
-                isColorErrorVisible={isColorErrorVisible}
-                setIsColorErrorVisible={setIsColorErrorVisible}
+
+              <div
+                className={'product-color'}
+                style={{ backgroundColor: COLORS_DATA[product.color].hex }}
               />
+
               <div className='to-order'>
                 <div className='to-order-buy'>
                   <Popup
@@ -122,7 +107,6 @@ const ProductDetailPage = ({ productId }) => {
                         Купити
                       </button>
                     }
-                    disabled={!selectedColor}
                     content='Додано в корзину'
                     on={['click']}
                   />

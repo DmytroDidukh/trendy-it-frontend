@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useParams } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import {
   ProductListPage,
@@ -10,7 +10,9 @@ import {
   AboutUs,
   Production,
   PaymentAndShipping,
-  Contacts
+  Contacts,
+  NotFound,
+  ErrorBoundary
 } from '../pages';
 
 const Routes = () => {
@@ -42,6 +44,12 @@ const Routes = () => {
           <ProductDetailPage productId={params.id} />
         )}
       />
+      <Route
+        exact
+        path='/error'
+        render={() => <ErrorBoundary error={true} />}
+      />
+      <Route component={NotFound} />
     </Switch>
   );
 };

@@ -18,7 +18,6 @@ const ProductList = ({ page }) => {
   const dispatch = useDispatch();
 
   const [filterVisibility, setFilterVisibility] = useState(false);
-
   const [query, setQuery] = useState({
     filter: {},
     sort: '-createdAt',
@@ -68,7 +67,7 @@ const ProductList = ({ page }) => {
         </div>
         <DropDown
           value={query.sort}
-          options={SORT_OPTIONS.options}
+          options={SORT_OPTIONS}
           handleDropDown={handleSortChange}
         />
       </div>

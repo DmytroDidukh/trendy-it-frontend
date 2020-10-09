@@ -12,7 +12,7 @@ const initialState = {
   searchedList: [],
   pagination: null,
   product: null,
-  loading: false,
+  loading: true,
   searchLoading: false
 };
 
