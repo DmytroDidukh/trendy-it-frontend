@@ -1,8 +1,8 @@
 ### To start use `npm run dev`
 
-### Backend
+-Backend
 https://github.com/DmytroDidukh/trendy-it-backend
-### Admin
+-Admin
 https://github.com/DmytroDidukh/trendy-it-admin
 
 ### Deployment
