@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 
@@ -15,6 +15,8 @@ const Home = () => {
   }));
   const dispatch = useDispatch();
 
+  const [FBVisible, setFBVisible] = useState(false);
+
   useEffect(() => {
     const filter = {
       isHomeQuery: true
@@ -24,6 +26,8 @@ const Home = () => {
     dispatch(getBanners());
     window.scroll(0, 0);
   }, [dispatch]);
+
+  console.log(FBVisible);
 
   return (
     <div className='home'>
@@ -38,13 +42,18 @@ const Home = () => {
       ) : (
         <Spinner />
       )}
-      <MessengerCustomerChat
-        pageId={'101134448446261'}
-        appId={'713686025904610'}
-        /*
-          onClick={() => setMailFormVisible(false)}
-*/
-      />
+      <button
+        className={'basic-button'}
+        onClick={() => setFBVisible(!FBVisible)}
+      >
+        click
+      </button>
+      {FBVisible && (
+        <MessengerCustomerChat
+          pageId={'101134448446261'}
+          appId={'713686025904610'}
+        />
+      )}
     </div>
   );
 };
