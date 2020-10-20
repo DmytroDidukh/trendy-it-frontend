@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import { Banners, HotItems, Slider } from '../../containers';
 import { Spinner } from '../../components';
@@ -37,6 +38,13 @@ const Home = () => {
       ) : (
         <Spinner />
       )}
+      <MessengerCustomerChat
+        pageId={'101134448446261'}
+        appId={'713686025904610'}
+        /*
+          onClick={() => setMailFormVisible(false)}
+*/
+      />
     </div>
   );
 };
