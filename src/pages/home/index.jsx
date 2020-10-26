@@ -27,8 +27,6 @@ const Home = () => {
     window.scroll(0, 0);
   }, [dispatch]);
 
-  console.log(FBVisible);
-
   return (
     <div className='home'>
       {products.length ? (

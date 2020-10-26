@@ -131,3 +131,18 @@ a {
     background: #1b1c1d;
   }
 }
+
+.fb_dialog.fb_dialog_content iframe {
+  margin: 0px 12px;
+  padding: 0px;
+  position: fixed;
+  z-index: 2147483644;
+  bottom: 170px;
+  height: 60px;
+  width: 60px;
+  border-radius: 29px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px;
+  background: none;
+  display: block;
+  right: 12px;
+}
